@@ -1,0 +1,24 @@
+dn: uid=rnugroho,ou=2017_paris,ou=2017,ou=paris,ou=people,dc=42,dc=fr
+uid: rnugroho
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: apple-user
+objectClass: ftUser
+objectClass: inetOrgPerson
+objectClass: ftExtended
+uidNumber: 25926
+alias: rnugroho@student.42.fr
+alias: nugroho.rizky-ario@student.42.fr
+alias: rizky-ario.nugroho@student.42.fr
+gidNumber: 4249
+sn: NUGROHO
+loginShell: /bin/zsh
+mail: ario@riz.ky
+givenName: Rizky ario
+cn: Rizky ario NUGROHO
+homeDirectory: /Users/rnugroho
+status: iscsi-voluntary=no,iscsi-warn=no,iscsi-portal=10.51.1.229,iscsi-iqn=iq
+ n.2016-08.fr.42.homedirs:rnugroho,home=iscsi,iscsi-ws=https://student-storage
+ -1.42.fr
+mobile: +33769450006
+
