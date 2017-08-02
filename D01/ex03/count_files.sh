@@ -1,0 +1,1 @@
+find . -type fd | wc -l | sed 's/ //g'
