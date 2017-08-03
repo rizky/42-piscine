@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/02 10:25:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 00:13:28 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,33 @@ int		ft_putchar(char c)
 	return (0);
 }
 
-void	ft_is_negative(int n)
+void	ft_putnbr(int number)
 {
-	if (n >= 0)
-		ft_putchar('P');
-	else
-		ft_putchar('N');
+	int tens;
+	int i;
+
+	if (number < 0)
+	{
+		ft_putchar('-');
+		number = number * -1;
+	}
+	tens = 1;
+	i = number / 10;
+	while (i > 0)
+	{
+		i = i / 10;
+		tens = tens * 10;
+	}
+	while (tens > 0)
+	{
+		ft_putchar(number / tens + '0');
+		number = number % tens;
+		tens = tens / 10;
+	}
 }
 
 int		main(void)
 {
-	ft_is_negative(0);
+	ft_putnbr(-1929);
 	return (0);
 }

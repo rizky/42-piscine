@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_print_combn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/02 10:25:59 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 00:13:28 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 02:15:51 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 02:15:54 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,35 @@ int		ft_putchar(char c)
 	return (0);
 }
 
-void	ft_is_negative(int n)
+void	ft_print_comb(void)
 {
-	if (n >= 0)
-		ft_putchar('P');
-	else
-		ft_putchar('N');
+	int i[2];
+
+	i[0] = -1;
+	while (i[0]++ < 99)
+	{
+		i[1] = -1;
+		while (i[1]++ < 99)
+		{
+			if (i[0] < i[1])
+			{
+				if (!(i[0] == 0 && i[1] == 1))
+				{
+					ft_putchar(',');
+					ft_putchar(' ');
+				}
+				ft_putchar(i[0] / 10 + '0');
+				ft_putchar(i[0] % 10 + '0');
+				ft_putchar(' ');
+				ft_putchar(i[1] / 10 + '0');
+				ft_putchar(i[1] % 10 + '0');
+			}
+		}
+	}
 }
 
 int		main(void)
 {
-	ft_is_negative(0);
+	ft_print_comb();
 	return (0);
 }
