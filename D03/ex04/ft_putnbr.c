@@ -21,30 +21,24 @@ int		ft_putchar(char c)
 void	ft_putnbr(int number)
 {
 	int tens;
+	int i;
 
 	if (number < 0)
 	{
 		ft_putchar('-');
-		if (number <= -2147483648)
-		{
-			ft_putchar('2');
-			number = -147483648;
-		}
 		number = number * -1;
 	}
 	tens = 1;
-	while (tens < number / 10)
+	i = number / 10;
+	while (i > 0)
+	{
+		i = i / 10;
 		tens = tens * 10;
+	}
 	while (tens > 0)
 	{
 		ft_putchar(number / tens + '0');
 		number = number % tens;
 		tens = tens / 10;
 	}
-}
-
-int		main(void)
-{
-	ft_putnbr(-7687);
-	return (0);
 }

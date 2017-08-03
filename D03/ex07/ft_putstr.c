@@ -1,50 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 16:55:20 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 17:04:02 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include<unistd.h>
 
-int		ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (0);
 }
 
-void	ft_putnbr(int number)
+void	ft_putstr(char *str)
 {
-	int tens;
+	char *c;
 
-	if (number < 0)
+	c = str;
+	while (*c != '\0')
 	{
-		ft_putchar('-');
-		if (number <= -2147483648)
-		{
-			ft_putchar('2');
-			number = -147483648;
-		}
-		number = number * -1;
+		ft_putchar(*c);
+		c++;
 	}
-	tens = 1;
-	while (tens < number / 10)
-		tens = tens * 10;
-	while (tens > 0)
-	{
-		ft_putchar(number / tens + '0');
-		number = number % tens;
-		tens = tens / 10;
-	}
-}
-
-int		main(void)
-{
-	ft_putnbr(-7687);
-	return (0);
 }

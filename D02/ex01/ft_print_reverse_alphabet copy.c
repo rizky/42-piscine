@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/02 10:12:27 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/02 23:59:11 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,22 @@ int		ft_putchar(char c)
 	return (0);
 }
 
-void	ft_putnbr(int number)
+void	ft_print_reverse_alphabet(void)
 {
-	int tens;
+	char i;
+	char n;
 
-	if (number < 0)
+	i = 'z';
+	n = 'a';
+	while (i >= n)
 	{
-		ft_putchar('-');
-		if (number <= -2147483648)
-		{
-			ft_putchar('2');
-			number = -147483648;
-		}
-		number = number * -1;
-	}
-	tens = 1;
-	while (tens < number / 10)
-		tens = tens * 10;
-	while (tens > 0)
-	{
-		ft_putchar(number / tens + '0');
-		number = number % tens;
-		tens = tens / 10;
+		ft_putchar(i);
+		i = i - 1;
 	}
 }
 
 int		main(void)
 {
-	ft_putnbr(-7687);
+	ft_print_reverse_alphabet();
 	return (0);
 }

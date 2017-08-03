@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 18:26:35 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 20:07:23 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include<unistd.h>
+#include "ft_putnbr.c"
 
-int		ft_putchar(char c)
+int		ft_atoi(char *str)
 {
-	write(1, &c, 1);
-	return (0);
-}
-
-void	ft_putnbr(int number)
-{
+	char *c;
+	int i;
 	int tens;
 
-	if (number < 0)
+	c = str;
+	i = 0;
+	while (*c != '\0')
 	{
-		ft_putchar('-');
-		if (number <= -2147483648)
-		{
-			ft_putchar('2');
-			number = -147483648;
-		}
-		number = number * -1;
+		if (*c >= '0' && *c <= '9')
+			i = *c - '0' + (i * 10);
+		else if (*c != ' ')
+			break ;
+		c++;
 	}
-	tens = 1;
-	while (tens < number / 10)
-		tens = tens * 10;
-	while (tens > 0)
-	{
-		ft_putchar(number / tens + '0');
-		number = number % tens;
-		tens = tens / 10;
-	}
+	return (i);
 }
 
 int		main(void)
 {
-	ft_putnbr(-7687);
+	char *str = "  1293A";
+
+	ft_putnbr(ft_atoi(str));
 	return (0);
 }
