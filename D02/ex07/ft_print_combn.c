@@ -6,12 +6,11 @@
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 15:10:00 by rnugroho         ###   ########.fr       */
+/*   Updated: 2017/08/05 16:40:10 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int		ft_putchar(char c)
 {
@@ -19,80 +18,93 @@ int		ft_putchar(char c)
 	return (0);
 }
 
-void	ft_putnbr(int number)
+void	ft_print_tab(int *tab, int number)
 {
-	int tens;
 	int i;
 
-	if (number < 0)
+	i = 0;
+	while (i < number)
 	{
-		ft_putchar('-');
-		number = number * -1;
-	}
-	tens = 1;
-	i = number / 10;
-	while (i > 0)
-	{
-		i = i / 10;
-		tens = tens * 10;
-	}
-	while (tens > 0)
-	{
-		ft_putchar(number / tens + '0');
-		number = number % tens;
-		tens = tens / 10;
+		ft_putchar(tab[i] + '0');
+		i++;
 	}
 }
 
-int		ft_checkcomb(int i, int pow)
+int		ft_check_comb(int *tab, int number)
 {
+	int i;
 	int ok;
-	int div;
-	int mod;
-	int tens;
+	int prev;
 
-	tens = pow;
-	mod = i;
+	i = 0;
 	ok = 1;
-	div = 0;
-	while (mod > 0)
+	prev = -1;
+	while (i < number)
 	{
-		if ((div >= mod / tens || mod % 10 == 0) && i > 9)
+		if (prev >= tab[i])
 			ok = 0;
-		div = mod / tens;
-		mod = mod % tens;
-		tens = tens / 10;
+		prev = tab[i];
+		i++;
 	}
 	return (ok);
 }
 
-void	ft_print_combn(int number)
+void	ft_increase_tab(int *tab, int number)
 {
-	int i;
-	int pow;
 	int tens;
+	int i;
 
-	i = 0;
-	tens = 1;
-	while (i++ < number - 1)
+	tens = 0;
+	i = number - 1;
+	if(tab[0] == 1 && tab[8] == 0 && number == 9)
+		while (i++ < number)
+			tab[i] = i + 1;
+	else
 	{
-		tens = tens * 10;
-	}
-
-	number = pow * 10 - 1;
-	i = -1;
-	while (i++ < number)
-	{
-		if (ft_checkcomb(i, pow))
+		while (--i >= 0)
 		{
-			printf("%d ", i);
-			//ft_putnbr(i);
+			if (i == number - 1)
+				tab[i] = tab[i] + 1;
+			else
+			{
+				tab[i] = tab[i] + tens;
+				tens = 0;
+			}
+			if (tab[i] == 10)
+			{
+				tab[i] = 0;
+				tens = 1;
+			}
 		}
 	}
 }
 
-int		main(void)
+void	ft_print_combn(int number)
 {
-	ft_print_combn(2);
-	return (0);
+	int tab[number];
+	int i;
+	int first;
+
+	i = 0;
+	first = 1;
+	while (i++ < number + 1)
+		tab[i - 1] = 0;
+	if (number > 0 && number < 10)
+		while (tab[0] < 9)
+		{
+			if (ft_check_comb(tab, number))
+			{
+				if (!first)
+				{
+					ft_putchar(',');
+					ft_putchar(' ');
+				}
+				else
+					first = 0;
+				ft_print_tab(tab, number);
+				if ((number == 9 && tab[0] == 1 && tab[8] == 9))
+					break ;
+			}
+			ft_increase_tab(tab, number);
+		}
 }

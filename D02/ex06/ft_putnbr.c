@@ -33,7 +33,7 @@ void	ft_putnbr(int number)
 		number = number * -1;
 	}
 	tens = 1;
-	while (tens < number / 10)
+	while (tens <= number / 10)
 		tens = tens * 10;
 	while (tens > 0)
 	{
@@ -45,6 +45,6 @@ void	ft_putnbr(int number)
 
 int		main(void)
 {
-	ft_putnbr(-7687);
+	ft_putnbr(-2147483648);
 	return (0);
 }

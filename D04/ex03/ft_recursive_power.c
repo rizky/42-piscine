@@ -1,45 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 14:34:43 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 12:43:21 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
-
-char		*ft_strrev(char *str)
+int		ft_recursive_power(int nb, int power)
 {
-	char *c;
-	char *rev;
-	char temp;
-
-	rev = str;
-	while (*rev != '\0')
-	{
-		rev++;
-	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else
+		return (nb * ft_recursive_power(nb, power - 1));
 }

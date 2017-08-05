@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 17:08:21 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 17:23:14 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
+#include <unistd.h>
 
-char		*ft_strrev(char *str)
+int		ft_putchar(char c);
+
+void	ft_putnbr(int nb)
 {
-	char *c;
-	char *rev;
-	char temp;
+	int tens;
 
-	rev = str;
-	while (*rev != '\0')
+	if (nb < 0)
 	{
-		rev++;
+		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			nb = -147483648;
+		}
+		nb = nb * -1;
 	}
-	rev--;
-	c = str;
-	while (rev > c)
+	tens = 1;
+	while (tens < nb / 10)
+		tens = tens * 10;
+	while (tens > 0)
 	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
+		ft_putchar(nb / tens + '0');
+		nb = nb % tens;
+		tens = tens / 10;
 	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
 }

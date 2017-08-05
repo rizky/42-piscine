@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 18:26:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/05 01:22:51 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 15:16:08 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 11:21:49 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "ft_sqrt.c"
 
-int		ft_atoi(char *str)
+int main()
 {
-	char	*c;
-	int		i;
-	int		sign;
+	printf("%d\n", ft_sqrt(-4));
+	printf("%d\n", ft_sqrt(0));
+	printf("%d\n", ft_sqrt(3));
+	printf("%d\n", ft_sqrt(4));
+	printf("%d\n", ft_sqrt(143));
+	printf("%d\n", ft_sqrt(144));
+	printf("%d\n", ft_sqrt(145));
+	printf("%d\n", ft_sqrt(146));
+	printf("%d\n", ft_sqrt(147));
+	printf("%d\n", ft_sqrt(2147483467));
+	printf("%d\n", ft_sqrt(2077627561));
+	printf("%d\n", ft_sqrt(2077536400));
 
-	c = str;
-	sign = 1;;
-	while ((*c == ' ') || (*c == '\t') || (*c == '\v') || (*c == '0'))
-		c++;
-	if (*c == '-')
-		sign = -1;
-	else if (*c == '+')
-		sign = 1;
-	c++;
-	i = 0;
-	while (*c != '\0')
-	{
-		if (*c >= '0' && *c <= '9')
-			i = *c - '0' + (i * 10);
-		else
-			break ;
-		c++;
-	}
-	return (i * sign);
 }

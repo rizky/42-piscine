@@ -1,45 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 18:38:46 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 19:30:10 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
-
-char		*ft_strrev(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
-	char *c;
-	char *rev;
-	char temp;
+	int i;
 
-	rev = str;
-	while (*rev != '\0')
+	i = 0;
+	while (src[i])
 	{
-		rev++;
+		dest[i] = src[i];
+		i++;
 	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }

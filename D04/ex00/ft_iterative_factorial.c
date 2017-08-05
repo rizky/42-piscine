@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 11:25:38 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 10:56:40 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
-
-char		*ft_strrev(char *str)
+int		ft_iterative_factorial(int nb)
 {
-	char *c;
-	char *rev;
-	char temp;
+	int i;
+	int fact;
+	int sign;
 
-	rev = str;
-	while (*rev != '\0')
+	fact = 1;
+	i = 1;
+	sign = 1;
+	if (nb < 0)
 	{
-		rev++;
+		return (0);
 	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
+	if (nb == 0)
+		fact = 1;
+	else if (nb > 12)
+		fact = 0;
+	else
+		while (++i <= nb)
+			fact = fact * i;
+	return (fact * sign);
 }

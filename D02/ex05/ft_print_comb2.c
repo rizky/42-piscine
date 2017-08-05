@@ -18,7 +18,7 @@ int		ft_putchar(char c)
 	return (0);
 }
 
-void	ft_print_comb(void)
+void	ft_print_comb2(void)
 {
 	int i[2];
 
@@ -47,6 +47,6 @@ void	ft_print_comb(void)
 
 int		main(void)
 {
-	ft_print_comb();
+	ft_print_comb2();
 	return (0);
 }

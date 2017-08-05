@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 14:50:33 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 10:58:31 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
+#include <stdio.h>
+#include "ft_fibonacci.c"
 
-char		*ft_strrev(char *str)
+int main()
 {
-	char *c;
-	char *rev;
-	char temp;
+	printf("%d\n", ft_fibonacci(-1));
+	printf("%d\n", ft_fibonacci(0));
+	printf("%d\n", ft_fibonacci(1));
+	printf("%d\n", ft_fibonacci(2));
+	printf("%d\n", ft_fibonacci(3));
+	printf("%d\n", ft_fibonacci(4));
+	printf("%d\n", ft_fibonacci(5));
+	printf("%d\n", ft_fibonacci(46));
+	printf("%d\n", ft_fibonacci(47));
 
-	rev = str;
-	while (*rev != '\0')
-	{
-		rev++;
-	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
 }

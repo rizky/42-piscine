@@ -1,45 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 14:26:23 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/04 14:33:41 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
+#include <stdio.h>
+#include "ft_iterative_power.c"
 
-char		*ft_strrev(char *str)
+int main()
 {
-	char *c;
-	char *rev;
-	char temp;
-
-	rev = str;
-	while (*rev != '\0')
-	{
-		rev++;
-	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
+	printf("%d\n",ft_iterative_power(-2,-5));
+	printf("%d\n",ft_iterative_power(-2,-10));
+	printf("%d\n",ft_iterative_power(-2,-20));
+	printf("%d\n",ft_iterative_power(2,30));
+	printf("%d\n",ft_iterative_power(5,2));
+	printf("%d\n",ft_iterative_power(5,10));
+	printf("%d\n",ft_iterative_power(5,100));
 }

@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 17:22:42 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 18:32:36 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
-
-char		*ft_strrev(char *str)
+int		ft_atoi(char *str)
 {
-	char *c;
-	char *rev;
-	char temp;
+	char 	*c;
+	int		sign;
+	int		number;
 
-	rev = str;
-	while (*rev != '\0')
-	{
-		rev++;
-	}
-	rev--;
 	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
+	sign = 1;
+	number = 0;
+	while (*c == ' ' || *c == '\t' || *c == '\v')
 		c++;
-		rev--;
+	if (*c == '-')
+	{
+		sign = -1;
+		c++;
 	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
+	else if (*c == '+')
+	{
+		sign = 1;
+		c++;
+	}
+	while (*c != '\0')
+	{
+		if (*c >= '0' && *c <= '9')
+		{
+			number = (number * 10) + (*c - '0');
+		}
+		else
+			break ;
+		c++;
+	}
+	return (number * sign);
 }

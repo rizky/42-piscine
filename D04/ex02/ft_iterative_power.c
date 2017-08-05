@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 17:14:44 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 18:17:50 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/04 14:19:08 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 12:38:23 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-#include "ft_putstr.c"
-
-char		*ft_strrev(char *str)
+int		ft_iterative_power(int nb, int power)
 {
-	char *c;
-	char *rev;
-	char temp;
+	int res;
+	int i;
 
-	rev = str;
-	while (*rev != '\0')
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else
 	{
-		rev++;
+		i = 0;
+		res = 1;
+		while (i < power)
+		{
+			res = res * nb;
+			i++;
+		}
+		return (res);
 	}
-	rev--;
-	c = str;
-	while (rev > c)
-	{
-		temp = *c;
-		*c = *rev;
-		*rev = temp;
-		c++;
-		rev--;
-	}
-	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
 }
