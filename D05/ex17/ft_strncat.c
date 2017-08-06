@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/06 16:41:58 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/06 16:47:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+char	*ft_strncat(char *dest, char *src, int nb)
 {
-	char 	*ptr1;
-	char 	*ptr2;
-	int		diff;
+	char	*ptr1;
+	char	*ptr2;
+	int		i;
 
-	diff = 0;
-	ptr1 = s1;
-	ptr2 = s2;
-	while (*ptr1 != '\0' && *ptr2 != '\0')
-	{
-		diff = *ptr1 - *ptr2;
-		if(diff > 0)
-			break ;
+	ptr1 = dest;
+	while (*ptr1)
 		ptr1++;
+	ptr2 = src;
+	i = 0;
+	while (*ptr2 && i < nb)
+	{
+		*ptr1 = *ptr2;
 		ptr2++;
+		ptr1++;
+		i++;
 	}
-
-	return (*ptr1 - *ptr2);
+	*ptr1 = '\0';
+	return (dest);
 }

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/06 14:51:41 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/06 14:51:43 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+int		ft_str_is_uppercase(char *str)
 {
-	char 	*ptr1;
-	char 	*ptr2;
-	int		diff;
+	int		i;
+	int		res;
 
-	diff = 0;
-	ptr1 = s1;
-	ptr2 = s2;
-	while (*ptr1 != '\0' && *ptr2 != '\0')
+	i = 0;
+	res = 1;
+	if (!str[i])
+		return (1);
+	while (str[i])
 	{
-		diff = *ptr1 - *ptr2;
-		if(diff > 0)
+		if (str[i] < 'A' || str[i] > 'Z')
+		{
+			res = 0;
 			break ;
-		ptr1++;
-		ptr2++;
+		}
+		i++;
 	}
-
-	return (*ptr1 - *ptr2);
+	return (res);
 }
