@@ -10,13 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcapitalize(char *str)
+char	*ft_strlowcase(char *str)
 {
 	int		i;
 
 	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] - 'A' + 'a';
+		i++;
+	}
+	return (str);
+}
+
+char	*ft_strcapitalize(char *str)
+{
+	int		i;
+
+	str = ft_strlowcase(str);
 	if (str[0] != '\0')
 		str[0] = str[0] - 'a' + 'A';
+	i = 0;
 	while (str[i])
 	{
 		if (str[i] == ' ' || str[i] == '-' || str[i] == '+')

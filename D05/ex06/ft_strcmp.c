@@ -12,21 +12,19 @@
 
 int		ft_strcmp(char *s1, char *s2)
 {
-	char 	*ptr1;
-	char 	*ptr2;
-	int		diff;
+	int	i;
+	int diff;
 
 	diff = 0;
-	ptr1 = s1;
-	ptr2 = s2;
-	while (*ptr1 != '\0' && *ptr2 != '\0')
+	i = 0;
+	while (s1[i] && s2[i])
 	{
-		diff = *ptr1 - *ptr2;
+		diff = s1[i] - s2[i];
 		if(diff > 0)
 			break ;
-		ptr1++;
-		ptr2++;
+		i++;
 	}
-
-	return (*ptr1 - *ptr2);
+	if(diff == 0)
+		diff = s1[i] - s2[i];
+	return (diff);
 }

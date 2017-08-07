@@ -1,13 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "ft_strstr.c"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	char str[] = "this is a haystack";
-	char to_find[] = " ";
-	char *ptr;
+	if (argc < 2)
+	{
+	exit(EXIT_FAILURE);
+	}
 	
-	ptr = ft_strstr(str, to_find);
-	printf("%s\n", ptr);
+	printf("%s\n", strstr(argv[1], argv[2]));
+	printf("%s\n", ft_strstr(argv[1], argv[2
+	]));
 	return (0);
 }

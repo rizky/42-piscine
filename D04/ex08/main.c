@@ -3,6 +3,6 @@
 
 int main()
 {
-    printf("solution: %d", ft_eight_queens_puzzle());
+    printf("solution: %d\n", ft_eight_queens_puzzle());
     return (0);
 }
