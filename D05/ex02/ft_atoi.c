@@ -12,31 +12,24 @@
 
 int		ft_atoi(char *str)
 {
-	char 	*c;
+	char	*c;
 	int		sign;
 	int		number;
 
 	c = str;
 	sign = 1;
 	number = 0;
-	while (*c == ' ' || *c == '\t' || *c == '\v')
+	while (*c == ' ' || *c == '\t' || *c == '\v' || *c == '+')
 		c++;
 	if (*c == '-')
 	{
 		sign = -1;
 		c++;
 	}
-	else if (*c == '+')
-	{
-		sign = 1;
-		c++;
-	}
 	while (*c != '\0')
 	{
 		if (*c >= '0' && *c <= '9')
-		{
 			number = (number * 10) + (*c - '0');
-		}
 		else
 			break ;
 		c++;

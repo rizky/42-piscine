@@ -4,9 +4,8 @@
 int main()
 {
 	int		nb20 = 456;
-	char	base[100] = "102";
 	int		min_int = -2147483648;
-	ft_putnbr_base(214783647, "0123456789");
+	ft_putnbr_base(min_int, "0123456789");
 	printf("\n");	
 	ft_putnbr_base(4, "01");
 	printf("\n");

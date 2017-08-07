@@ -26,8 +26,8 @@ char			*ft_strcpy(char *dest, char *src)
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char	*ptr;
-	int		i;
+	char			*ptr;
+	unsigned int		i;
 
 	ptr = src;
 	i = 0;
@@ -36,6 +36,8 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		ptr++;
 		i++;
 	}
+	if(!size)
+		return (i);
 	dest = ft_strcpy(dest, src);
 	return (i);
 }

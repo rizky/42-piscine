@@ -6,7 +6,7 @@
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/06 17:40:35 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 20:52:25 by rnugroho         ###   ########.fr       */
+/*   Updated: 2017/08/06 21:30:15 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,11 @@ int		ft_isvalid(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int ibase;
-	int sign;
+	int			ibase;
+	int			sign;
+	long long	long_nbr;
 
+	long_nbr = nbr;
 	if (ft_isvalid(base))
 	{
 		ibase = ft_strlen(base);
@@ -101,12 +103,12 @@ void	ft_putnbr_base(int nbr, char *base)
 		{
 			ft_putchar('-');
 			sign = -1;
-			nbr = sign * nbr;
+			long_nbr = sign * long_nbr;
 		}
-		if (nbr > 0)
+		if (long_nbr > 0)
 		{
-			ft_putnbr_base(nbr / ibase, base);
-			ft_putchar(base[(nbr % ibase)]);
+			ft_putnbr_base(long_nbr / ibase, base);
+			ft_putchar(base[(long_nbr % ibase)]);
 		}
 	}
 }

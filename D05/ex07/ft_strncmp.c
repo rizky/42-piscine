@@ -12,14 +12,15 @@
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	char	*ptr1;
-	char	*ptr2;
-	int		diff;
-	int		i;
+	char				*ptr1;
+	char				*ptr2;
+	int					diff;
+	unsigned int		i;
 
 	diff = 0;
 	ptr1 = s1;
 	ptr2 = s2;
+	i = 0;
 	while ((*ptr1 != '\0' && i < n) && *ptr2 != '\0')
 	{
 		diff = *ptr1 - *ptr2;
