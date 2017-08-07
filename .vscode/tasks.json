@@ -1,0 +1,9 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "clang++",
+    "isShellCommand": true,
+    "args": ["/Users/rizkyario/Documents/Codes/C/piscine/D03/ex10/main.c", "-std=c++11", "-g"],
+    "showOutput": "always"
+}
