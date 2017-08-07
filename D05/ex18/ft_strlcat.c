@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/06 16:51:30 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/06 17:12:26 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+char			*ft_strcat(char *dest, char *src)
 {
-	char 	*ptr1;
-	char 	*ptr2;
-	int		diff;
+	char	*ptr1;
+	char	*ptr2;
 
-	diff = 0;
-	ptr1 = s1;
-	ptr2 = s2;
-	while (*ptr1 != '\0' && *ptr2 != '\0')
-	{
-		diff = *ptr1 - *ptr2;
-		if(diff > 0)
-			break ;
+	ptr1 = dest;
+	while (*ptr1)
 		ptr1++;
+	ptr2 = src;
+	while (*ptr2)
+	{
+		*ptr1 = *ptr2;
 		ptr2++;
+		ptr1++;
 	}
+	*ptr1 = '\0';
+	return (dest);
+}
 
-	return (*ptr1 - *ptr2);
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	char	*ptr;
+	int		i;
+
+	ptr = src;
+	i = 0;
+	while (*ptr)
+	{
+		ptr++;
+		i++;
+	}
+	dest = ft_strcat(dest, src);
+	return (size + i);
 }

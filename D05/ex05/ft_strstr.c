@@ -12,31 +12,26 @@
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char *ptr1;
-	char *ptr2;
 	char *ret;
 
-	ptr1 = str;	
-	while (*ptr1 != '\0')
+	while (*str != '\0')
 	{
-		ptr2 = to_find;
-		ret = ptr1;
-		while (*ptr2 != '\0')
+		ret = str;
+		while (*to_find != '\0')
 		{
-			if(*ret == *ptr2)
+			if (*ret == *to_find)
 				ret++;
 			else
 				break ;
-			ptr2++;
+			to_find++;
 		}
-		if(*ptr2 == '\0')
+		if (*to_find == '\0')
 		{
-			ret = ptr1;
+			ret = str;
 			break ;
 		}
 		ret = 0;
-		ptr1++;
+		str++;
 	}
-
-	return ret;
+	return (ret);
 }

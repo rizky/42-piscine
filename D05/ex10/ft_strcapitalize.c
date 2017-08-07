@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/06 14:01:53 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/06 14:24:37 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+char	*ft_strcapitalize(char *str)
 {
-	char 	*ptr1;
-	char 	*ptr2;
-	int		diff;
+	int		i;
 
-	diff = 0;
-	ptr1 = s1;
-	ptr2 = s2;
-	while (*ptr1 != '\0' && *ptr2 != '\0')
+	i = 0;
+	if (str[0] != '\0')
+		str[0] = str[0] - 'a' + 'A';
+	while (str[i])
 	{
-		diff = *ptr1 - *ptr2;
-		if(diff > 0)
-			break ;
-		ptr1++;
-		ptr2++;
+		if (str[i] == ' ' || str[i] == '-' || str[i] == '+')
+			if (str[i + 1] != '\0')
+				if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+					str[i + 1] = str[i + 1] - 'a' + 'A';
+		i++;
 	}
-
-	return (*ptr1 - *ptr2);
+	return (str);
 }
