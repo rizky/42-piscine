@@ -29,7 +29,7 @@ char	*ft_strcapitalize(char *str)
 	int		i;
 
 	str = ft_strlowcase(str);
-	if (str[0] != '\0')
+	if (str[0] != '\0' && (str[0] >= 'a' && str[0] <= 'z'))
 		str[0] = str[0] - 'a' + 'A';
 	i = 0;
 	while (str[i])

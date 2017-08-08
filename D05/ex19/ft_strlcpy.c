@@ -10,34 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char			*ft_strcpy(char *dest, char *src)
+int ft_strlen(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (src[i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i;
+
+	i = 0;
+	while (i < n)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char			*ptr;
-	unsigned int		i;
+	int	i;
+	int len_src;
+	int len;
 
-	ptr = src;
-	i = 0;
-	while (*ptr)
-	{
-		ptr++;
-		i++;
-	}
-	if(!size)
-		return (i);
-	dest = ft_strcpy(dest, src);
-	return (i);
+	len_src = ft_strlen (src) ;
+	len = len_src ;
+	if (!dest[0] || size == 0) 
+        return len_src ;
+    
+    if (size - 1 < len) {
+        len = size - 1 ;
+    }
+    ft_strncpy (dest, src, len) ;
+    dest [len] = '\0' ;
+    return len_src ;
 }

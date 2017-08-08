@@ -21,28 +21,27 @@ int		ft_putchar(char c)
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	char *ret;
+	int i;
+	int j;
 
-	while (*str != '\0')
+	if (to_find[0] == '\0')
+		return (str);
+	i = 0;
+	while (str[i])
 	{
-		ret = str;
-		while (*to_find != '\0')
+		j = 0;
+		while (to_find[j])
 		{
-			if (*ret == *to_find)
-				ret++;
+			if (str[i + j] == to_find[j])
+				j++;
 			else
 				break ;
-			to_find++;
 		}
-		if (*to_find == '\0')
-		{
-			ret = str;
-			break ;
-		}
-		ret = 0;
-		str++;
+		if (to_find[j] == '\0')
+			return (str+i);
+		i++;
 	}
-	return (ret);
+	return (NULL);
 }
 
 int		ft_strlen(char *str)

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include<unistd.h>
-#include "ft_putstr.c"
 
 char		*ft_strrev(char *str)
 {
@@ -35,11 +34,4 @@ char		*ft_strrev(char *str)
 		rev--;
 	}
 	return (str);
-}
-
-int		main(void)
-{
-	char str[]="fab0cdef";
-	ft_putstr(ft_strrev(str));
-	return (0);
 }

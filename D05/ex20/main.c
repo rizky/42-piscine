@@ -24,6 +24,9 @@ int main()
 	ft_putnbr_base(nb20, "abc+te");
 	printf("\n");
 	ft_putnbr_base(nb20, "abcee");
-
+	printf("\n");
+	ft_putnbr_base(-131744, "0123456789ABCDEF");
+	printf("\n");
+	ft_putnbr_base(103, "0123456789");
 	return (0);
 }

@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "ft_putnbr.c"
-
 void	ft_swap(int *a, int *b)
 {
 	int temp;
@@ -45,26 +42,4 @@ void	ft_sort_integer_table(int *tab, int size)
 		i++;
 		ptri++;
 	}
-
 }
-
-// int main(void)
-// {
-// 	int tab[9] = { 1, 4, 3, 2, 1, 0, 11, 29, 1 };
-// 	int *ptr;
-// 	int i;
-// 	int size;
-
-// 	size = 9;
-// 	ft_sort_integer_table(tab, size);
-
-// 	ptr = tab;
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		ft_putnbr(*ptr);
-// 		ptr++;
-// 		i++;
-// 	}
-
-// }
