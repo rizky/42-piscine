@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ft_short_integer_table.c"
+#include "ft_sort_integer_table.c"
 
 int main()
 {

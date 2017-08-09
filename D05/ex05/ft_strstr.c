@@ -31,7 +31,7 @@ char	*ft_strstr(char *str, char *to_find)
 				break ;
 		}
 		if (to_find[j] == '\0')
-			return (str+i);
+			return (str + i);
 		i++;
 	}
 	return (NULL);

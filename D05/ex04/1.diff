@@ -1,0 +1,22 @@
+--- user_output_test1	2017-08-08 23:39:59.000000000 +0200$
++++ test1.output	2017-08-08 23:39:59.000000000 +0200$
+@@ -1,14 +1,15 @@$
+ ojAkgFtLOnGBHTI$
+ oAAEPlmIPCSCQLeOEnfDOpuZESnVmftbrwnTcR$
+-Urux$
+-fvxjDqNxTBqtbDqWJICTwUAXmZEKunsy$
++UruxPlmIPCSCQLeOEnfDOpuZESnVmftbrwnTcR$
++fvxjDqNxTBqtbDqWJICTwUAXmZEKunsyrwnTcR$
+ CqPm$
+ Px$
+ HaC$
+ gKvoKSmqdThPmashEIAtrodGgPDeYtH$
+-mGGAqNctYIw$
++mGGAqNctYIwPmashEIAtrodGgPDeYtH$
++I test a strncpy,$
++ because I like it$
+ I test a strncpy,$
+  because I like it$
+-$
+ I test a st$
+ rncpy,$

@@ -1,45 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_short_integer_table.c                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 21:03:13 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 22:51:18 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 16:55:20 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 17:04:02 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
-{
-	int temp;
+int		ft_putchar(char c);
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-void	ft_sort_integer_table(int *tab, int size)
+void	ft_putstr(char *str)
 {
-	int *ptri;
-	int *ptrj;
-	int i;
-	int j;
-	
-	i = 0;
-	ptri = tab;
-	while (i < size)
+	char *c;
+
+	c = str;
+	while (*c != '\0')
 	{
-		j = i + 1;
-		ptrj = ptri + 1;
-		while (j < size)
-		{
-			if (*ptri > *ptrj)
-				ft_swap(ptri, ptrj);
-			j++;
-			ptrj++;
-		}
-		i++;
-		ptri++;
+		ft_putchar(*c);
+		c++;
 	}
 }

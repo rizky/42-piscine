@@ -1,25 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_sort_integer_table.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/08 19:40:26 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/08 19:40:27 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+void	ft_swap(int *a, int *b)
 {
-	int	i;
+	int temp;
 
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	ft_sort_integer_table(int *tab, int size)
+{
+	int *ptri;
+	int *ptrj;
+	int i;
+	int j;
+	
 	i = 0;
-	while (s1[i] || s2[i])
+	ptri = tab;
+	while (i < size)
 	{
-		if ((s1[i] - s2[i]) != 0)
-			return (s1[i] - s2[i]);
+		j = i + 1;
+		ptrj = ptri + 1;
+		while (j < size)
+		{
+			if (*ptri > *ptrj)
+				ft_swap(ptri, ptrj);
+			j++;
+			ptrj++;
+		}
 		i++;
+		ptri++;
 	}
-	return (0);
 }

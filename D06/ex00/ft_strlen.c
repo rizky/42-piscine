@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 17:06:37 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 17:10:28 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(char *s1, char *s2)
+int		ft_strlen(char *str)
 {
-	int	i;
+	char	*c;
+	int		len;
 
-	i = 0;
-	while (s1[i] || s2[i])
+	len = 0;
+	c = str;
+	while (*c != '\0')
 	{
-		if ((s1[i] - s2[i]) != 0)
-			return (s1[i] - s2[i]);
-		i++;
+		c++;
+		len++;
 	}
-	return (0);
+	return (len);
 }

@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	char a[34] = "first part of string";
+	char a[34] = "";
 	char b[] = "second part";
 	printf("%s\n",strncat(a,b,3));
 	char d[34] = "first part of string";

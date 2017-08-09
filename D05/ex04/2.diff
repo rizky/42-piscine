@@ -1,0 +1,11 @@
+--- user_output_test1	2017-08-08 16:45:53.000000000 +0200$
++++ test1.output	2017-08-08 16:45:53.000000000 +0200$
+@@ -4,7 +4,7 @@$
+ ZGfaIfWDDXgIqDUaKzfO$
+ ZJq$
+ jM$
+-BLKBLK$
++BLK$
+ ZkGq$
+ uwYZwETelHQlxqpuZXhxYBw$
+ I test a strncpy,$

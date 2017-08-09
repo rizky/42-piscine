@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int		ft_putchar(char c)
 {
@@ -38,7 +37,7 @@ char	*ft_strstr(char *str, char *to_find)
 				break ;
 		}
 		if (to_find[j] == '\0')
-			return (str+i);
+			return (str + i);
 		i++;
 	}
 	return (NULL);
@@ -104,10 +103,13 @@ void	ft_putnbr_base(int nbr, char *base)
 			sign = -1;
 			long_nbr = sign * long_nbr;
 		}
-		if (long_nbr > 0)
+		if ((long_nbr) > 0)
 		{
-			ft_putnbr_base(long_nbr / ibase, base);
+			if ((long_nbr / ibase) != 0)
+				ft_putnbr_base(long_nbr / ibase, base);
 			ft_putchar(base[(long_nbr % ibase)]);
 		}
+		else if (long_nbr == 0)
+			ft_putchar(base[(long_nbr % ibase)]);
 	}
 }

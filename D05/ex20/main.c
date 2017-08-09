@@ -27,6 +27,8 @@ int main()
 	printf("\n");
 	ft_putnbr_base(-131744, "0123456789ABCDEF");
 	printf("\n");
-	ft_putnbr_base(103, "0123456789");
+	ft_putnbr_base(908, "0123456789");
+	printf("\n");
+	ft_putnbr_base(0, "0123456789");
 	return (0);
 }

@@ -4,21 +4,21 @@
 
 int main(void)
 {
-	char a[34] = "this is 10\0";
+	char a[34] = "";
 	char b[] = "this 6\0";
-	printf("%lu\n",strlcat(a,b,17));
+	printf("%lu\n",strlcat(a,b,10));
 	printf("%s\n",a);
-	char d[34] = "this 6\0";
-	char e[] = "this is 10\0";
+	char d[34] = "this 6";
+	char e[] = "";
 	printf("%lu\n",strlcat(d,e,5));
 	printf("%s\n",d);
 	printf("-------------------\n");
-	char f[34] = "this is 10\0";
+	char f[34] = "";
 	char g[] = "this 6\0";
-	printf("%d\n",ft_strlcat(f,g,17));
+	printf("%d\n",ft_strlcat(f,g,10));
 	printf("%s\n",f);
 	char h[34] = "this 6\0";
-	char i[] = "this is 10\0";
+	char i[] = "";
 	printf("%d\n",ft_strlcat(h,i,5));
 	printf("%s\n",h);
 
