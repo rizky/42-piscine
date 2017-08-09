@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/09 09:01:51 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/09 09:01:52 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
 char	*ft_strstr(char *str, char *to_find)
 {
 	int i;
@@ -17,7 +31,7 @@ char	*ft_strstr(char *str, char *to_find)
 				break ;
 		}
 		if (to_find[j] == '\0')
-			return (str+i);
+			return (str + i);
 		i++;
 	}
 	return (NULL);
@@ -66,44 +80,31 @@ int		ft_isvalid(char *base)
 	return (i);
 }
 
-int ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
-    int		ibase;
 	int		sign;
 	int		number;
-    char    * alpha;
-    int     offset;
-    int     i;
-    char	s[2];
+	int		i;
+	char	s[2];
 
 	if (ft_isvalid(base))
 	{
-        ibase = ft_strlen(base);
-        i = 0;
-        sign = 1;
-        number = 0;
-        while (str[i] < ' ' || str[i] == '+')
-            i++;
-        if (str[i] == '-')
-        {
-            sign = -1;
-            i++;
-        }
-        while (str[i] != '\0')
-        {
-            s[0] = str[i];
-            s[1] ='\0';
-            alpha = ft_strstr(base, s);
-		    if (alpha)
-            {
-                offset = alpha - base;
-                number = (number * ibase) + offset;
-            }
-            else
-                break ;
-            i++;
-        }
-        
-    }
-     return (number * sign);
+		i = 0;
+		sign = 1;
+		number = 0;
+		while (str[i] <= ' ' || str[i] == '+')
+			i++;
+		if (str[i++] == '-')
+			sign = -1;
+		while (str[i++] != '\0')
+		{
+			s[0] = str[i - 1];
+			s[1] = '\0';
+			if (ft_strstr(base, s))
+				number = (number * ft_strlen(base)) + ft_strstr(base, s) - base;
+			else
+				break ;
+		}
+	}
+	return (number * sign);
 }

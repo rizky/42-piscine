@@ -4,6 +4,6 @@
 int main()
 {
     int i ;
-    i = ft_atoi_base("caa", "ac");
+    i = ft_atoi_base("-0110101010", "01");
 	printf("%d\n", i);
 }
