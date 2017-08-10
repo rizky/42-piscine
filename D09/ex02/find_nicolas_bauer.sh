@@ -1,0 +1,1 @@
+cat $1 | grep -i "nicolas\tbauer\|bauer\tnicolas" | grep -o -E '\d{1,}[-|.]\d.*\t' | tr -d '\t'

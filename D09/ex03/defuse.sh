@@ -1,0 +1,1 @@
+stat -r bomb.txt | cut -d ' ' -f 9 | xargs -I % echo -1 + %  | bc

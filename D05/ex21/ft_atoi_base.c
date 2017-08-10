@@ -87,11 +87,11 @@ int		ft_atoi_base(char *str, char *base)
 	int		i;
 	char	s[2];
 
+	i = 0;
+	sign = 1;
+	number = 0;
 	if (ft_isvalid(base))
 	{
-		i = 0;
-		sign = 1;
-		number = 0;
 		while (str[i] <= ' ' || str[i] == '+')
 			i++;
 		if (str[i++] == '-')

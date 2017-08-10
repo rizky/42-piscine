@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_concat_params.c                                 :+:      :+:    :+:   */
+/*   ft_rot42.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 02:14:33 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/10 14:21:45 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/10 20:53:01 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/10 20:53:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,31 @@
 int		ft_strlen(char *str)
 {
 	int i;
-
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_rot42(char *str)
 {
-	char	*ptr1;
-	char	*ptr2;
-
-	ptr1 = dest;
-	while (*ptr1)
-		ptr1++;
-	ptr2 = src;
-	while (*ptr2)
-	{
-		*ptr1 = *ptr2;
-		ptr2++;
-		ptr1++;
-	}
-	*ptr1 = '\0';
-	return (dest);
-}
-
-char	*ft_concat_params(int argc, char **argv)
-{
-	char	*str;
-	int		len;
+	char	*rot42;
+	char	alpha_upper[26] = "PQRSTUVWXYZABCDEFGHIJKLMNO";
+	char	alpha_lower[26] = "pqrstuvwxyzabcdefghijklmno";
 	int		i;
+	
+	rot42 = (char*)malloc(sizeof(*rot42) * (ft_strlen(str) + 1));
 
-	i = 1;
-	len = 0;
-	while (i < argc)
+	i = 0;
+	while(str[i])
 	{
-		len = len + ft_strlen(argv[i]);
+		if(str[i] >= 'A' && str[i] <= 'Z')
+			rot42[i] = alpha_upper[str[i] - 'A'];
+		else if(str[i] >= 'a' && str[i] <= 'z')
+			rot42[i] = alpha_lower[str[i] - 'a'];
+		else
+			rot42[i] = str[i];
 		i++;
 	}
-	str = (char*)malloc(sizeof(*str) * (len + 1));
-	i = 1;
-	while (i < argc)
-	{
-		if (i != 1)
-			str = ft_strcat(str, "\n");
-		str = ft_strcat(str, argv[i]);
-		i++;
-	}
-	return (str);
+	return (rot42);
 }

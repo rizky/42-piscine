@@ -1,0 +1,3 @@
+nicolas	Bauer	424242-4242	bauer@42staff.fr
+NiCoLaS	bauer	San Francisco	78097	192.168.0.42	bauerdu93@live.fr
+Bauer	Nicolas	583-682932-1	admin@cti.com
