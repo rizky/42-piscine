@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_spy.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/11 14:19:12 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/11 14:19:13 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putstr(char *s)
@@ -19,7 +31,7 @@ int		ft_strcmp(char *s1, char *s2)
 	i = 0;
 	while (s1[i] || s2[i])
 	{
-		if(!(s1[i] == ' ' || s2[i] == ' '))
+		if (!(s1[i] == ' ' || s2[i] == ' '))
 			if ((s1[i] - s2[i]) != 0)
 				return (s1[i] - s2[i]);
 		i++;
@@ -41,30 +53,41 @@ char	*ft_strlowcase(char *str)
 	return (str);
 }
 
+void	ft_skip_space(char *str, char *dest)
+{
+	int		j;
+	int		k;
+
+	j = 0;
+	k = 0;
+	while (str[j])
+	{
+		if (str[j] != ' ')
+		{
+			dest[k] = str[j];
+			k++;
+		}
+		j++;
+	}
+	dest[k] = '\0';
+}
+
 int		main(int argc, char **argv)
 {
 	char	str[100];
 	int		i;
-	int		j;
-	int		k;
 
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		k = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] != ' ')
-			{
-				str[k] = argv[i][j];
-				k++;
-			}
-			j++;
-		}
-		str[k] = '\0';
+		ft_skip_space(argv[i], str);
 		ft_strlowcase(str);
-		if (!(ft_strcmp(str, "president")) || !(ft_strcmp(str, "attack")) || !(ft_strcmp(str, "powers")))
+		if (!(ft_strcmp(str, "president")) || !(ft_strcmp(str, "attack")))
+		{
+			ft_putstr("Alert!!!\n");
+			return (0);
+		}
+		else if (!(ft_strcmp(str, "powers")))
 		{
 			ft_putstr("Alert!!!\n");
 			return (0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unmatch.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/11 14:39:28 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/11 14:39:29 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 void	ft_swap(int *a, int *b)
 {
 	int temp;
@@ -13,7 +25,7 @@ void	ft_sort_integer_table(int *tab, int size)
 	int *ptrj;
 	int i;
 	int j;
-	
+
 	i = 0;
 	ptri = tab;
 	while (i < size)
@@ -32,7 +44,7 @@ void	ft_sort_integer_table(int *tab, int size)
 	}
 }
 
-int	ft_unmatch(int *tab, int length)
+int		ft_unmatch(int *tab, int length)
 {
 	int		i;
 	int		unmatch;
@@ -43,7 +55,7 @@ int	ft_unmatch(int *tab, int length)
 	while (i < length)
 	{
 		unmatch = tab[i];
-		if((tab[i] - tab[i + 1]) != 0)
+		if ((tab[i] - tab[i + 1]) != 0)
 			break ;
 		i = i + 2;
 	}

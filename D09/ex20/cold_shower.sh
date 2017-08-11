@@ -1,1 +1,1 @@
-echo "Bonjour, Hello, Etc, etc, et caetera"
+echo "Hello, it's me"

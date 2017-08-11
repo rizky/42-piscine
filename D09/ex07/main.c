@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "ft_collatz_conjecture.c"
 unsigned int ft_collatz_conjecture(unsigned int base);
 int main()
 {
