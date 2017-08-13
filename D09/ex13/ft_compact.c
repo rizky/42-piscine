@@ -40,6 +40,7 @@ void	ft_copy_tab(char **dest, char **src, int length, int compact_len)
 		dest[i] = src[i];
 		i++;
 	}
+	i++;
 	while (i < length)
 	{
 		dest[i][0] = '\0';
@@ -48,7 +49,7 @@ void	ft_copy_tab(char **dest, char **src, int length, int compact_len)
 	}
 }
 
-int		ft_compactb(char **tab, int length)
+int		ft_compact(char **tab, int length)
 {
 	int		i;
 	int		j;
@@ -70,23 +71,4 @@ int		ft_compactb(char **tab, int length)
 	}
 	ft_copy_tab(tab, compacttab, length, compact_len);
 	return (compact_len);
-}
-
-int		ft_compact(char **tab, int length)
-{
-	int		counter1;
-	int		counter2;
-
-	counter1 = 0;
-	counter2 = 0;
-	while (counter1 < length)
-	{
-		if (tab[counter1] == 0)
-			counter2++;
-		else
-			tab[counter1 - counter2] = tab[counter1];
-		counter1++;
-	}
-	tab[counter1 - counter2] = 0;
-	return (counter1 - counter2);
 }

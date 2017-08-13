@@ -1,58 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_join.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/11 15:32:39 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/11 15:32:40 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
-char	*ft_create_str(char **tab, char *sep)
+
+int		ft_strlen(char *str)
 {
 	int i;
-	int j;
-	int c_count;
-	char *str;
 
-	c_count = 0;
 	i = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (tab[i][j])
-		{
-			j++;
-			c_count++;
-		}
+	while (str[i])
 		i++;
-	}
-	j = 0;
-	while (sep[j])
-		j++;
-	str = (char*)malloc(sizeof(*str) * (c_count + (i * j));
-	return (str);
+	return (i);
 }
+
+char	*ft_strcat(char *dest, char *src)
+{
+	char	*ptr1;
+	char	*ptr2;
+
+	ptr1 = dest;
+	while (*ptr1)
+		ptr1++;
+	ptr2 = src;
+	while (*ptr2)
+	{
+		*ptr1 = *ptr2;
+		ptr2++;
+		ptr1++;
+	}
+	*ptr1 = '\0';
+	return (dest);
+}
+
 char	*ft_join(char **tab, char *sep)
 {
-	int i;
-	int j;
-	int c_count;
-	char *str;
-	
-	str = ft_create_str(tab, sep);
-	c_count = 0;
+	char	*str;
+	int		len;
+	int		i;
+
+	i = 1;
+	len = 0;
+	while (tab[i])
+	{
+		len = len + ft_strlen(tab[i]);
+		i++;
+	}
+	str = (char*)malloc(sizeof(*str) * ((len + 1) + (i * ft_strlen(sep))));
 	i = 0;
 	while (tab[i])
 	{
-		j = 0;
-		while (tab[i][j])
-		{
-			str[c_count] = tab[i][j];
-			j++;
-			c_count++;
-		}
-		if(tab[i + 1])
-		{
-			j = 0;
-			while (sep[j])
-			{
-				str[c_count] = sep[i];
-				c_count++;
-				j++;
-			}
-		}
+		if (i != 0)
+			str = ft_strcat(str, sep);
+		str = ft_strcat(str, tab[i]);
 		i++;
 	}
 	return (str);

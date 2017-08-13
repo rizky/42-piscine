@@ -15,16 +15,14 @@ int main(){
     }
     //assign them all something
     sprintf(strings[0], "bird goes tweet");
-    sprintf(strings[1], "mouse goes squeak");
+    sprintf(strings[1], "");
     sprintf(strings[2], "");
-    sprintf(strings[3], "frog goes croak");
-    sprintf(strings[4], "what does the fox say?");
     // Print it out
-    for(i = 0; i < 5; i++){
+    for(i = 0; i < 3; i++){
         printf("Line #%d(length: %lu): %s\n", i, strlen(strings[i]),strings[i]);
     } 
 
-	printf("%d\n", ft_compact_count(strings, 5));
+	printf("%d\n", ft_compact_count(strings, 3));
 	int d =ft_compact(strings, 5);
 
 	// Print it out

@@ -18,21 +18,16 @@ int main(){
     sprintf(strings[1], "b");
     sprintf(strings[2], "c");
     sprintf(strings[3], "d");
-    sprintf(strings[4], NULL);
+    strings[4] = NULL;
     // Print it out
-    for(i = 0; i < 5; i++){
+	i = 0;
+    while (strings[i] != NULL)
+	{
         printf("#%d(length: %lu): %s\n", i, strlen(strings[i]),strings[i]);
+		i++;
     } 
 
-	char sep = '%';
-
-	printf("%s\n", ft_join(strings, "%"));
-
-    // //Free each string
-    // for(i = 0; i < 5; i++){
-    //     free(strings[i]);
-    // }
-    // //finally release the first string
-    // free(strings);
+	// char sep = '%';
+	printf("%s\n", ft_join(strings, "1212"));
     return 0;
 }
