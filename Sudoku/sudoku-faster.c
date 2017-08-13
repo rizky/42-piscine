@@ -137,12 +137,13 @@ int		ft_put_number(int board[9][9], int row, int col, int *solution)
 		if (ft_is_available(board, row, col, number))
 		{
 			board[row][col] = number;
-			ft_print_board(board);
 			if (ft_put_number(board, row, col + 1, solution))
 			{
 				*solution = *solution + 1;
+				ft_print_board(board);
 			}
-			board[row][col] = 0;
+			if (*solution < 2)
+				board[row][col] = 0;
 		}
 		number++;
 	}
