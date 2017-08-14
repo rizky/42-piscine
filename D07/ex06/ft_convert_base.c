@@ -13,11 +13,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_strstr(char *str, char to_find)
+char	*ft_strch(char *str, char to_find)
 {
 	int i;
-	int j;
-
+	
 	if (to_find == '\0')
 		return (str);
 	i = 0;
@@ -51,16 +50,16 @@ int		ft_atoi_base(char *str, char *base, int *sign)
 	number = 0;
 	*sign = 1;
 	while (str[i] <= ' ' || str[i] == '+')
-			i++;
-	if (str[i + 1] == '-')
+		i++;
+	if (str[i] == '-')
 	{
 		*sign = -1;
 		i++;
 	}
 	while (str[i] != '\0')
 	{
-		if (ft_strstr(base, str[i]))
-			number = (number * ft_strlen(base)) + ft_strstr(base, str[i]) - base;
+		if (ft_strch(base, str[i]))
+			number = (number * ft_strlen(base)) + ft_strch(base, str[i]) - base;
 		else
 			break ;
 		i++;
@@ -68,18 +67,16 @@ int		ft_atoi_base(char *str, char *base, int *sign)
 	return (number);
 }
 
-void	ft_itoa_base(int number, char *base, int *count, char **res, int sign)
+void	ft_itoa_base(int number, char *base, int *count, char **res)
 {
 	if (number / ft_strlen(base) > 0)
 	{
 		*count = *count + 1;
-		ft_itoa_base(number / ft_strlen(base), base, count, res, sign);
+		ft_itoa_base(number / ft_strlen(base), base, count, res);
 	}
 	else
 	{
 		*count = *count + 1;
-		if(sign < 0)
-			*count = *count + 1;
 		*res = (char*)malloc(sizeof(char) * (*count + 1));
 	}
 	*count = *count - 1;
@@ -95,8 +92,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 
 	dec = ft_atoi_base(nbr, base_from, &sign);
 	count = 0;
-	ft_itoa_base(dec, base_to, &count, &res, sign);
-	if(sign < 0)
+	if (sign < 0)
+		count = 1;
+	ft_itoa_base(dec, base_to, &count, &res);
+	if (sign < 0)
 		res[0] = '-';
 	return (res);
 }
