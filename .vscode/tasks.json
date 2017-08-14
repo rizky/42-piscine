@@ -4,6 +4,6 @@
     "version": "0.1.0",
     "command": "clang++",
     "isShellCommand": true,
-    "args": ["/Users/rizkyario/Documents/Codes/C/piscine/D07/ex04/main.c", "-std=c++11", "-g"],
+    "args": ["/Users/rizkyario/Documents/Codes/C/piscine/D07/ex06/main.c", "-std=c++11", "-g"],
     "showOutput": "always"
 }
