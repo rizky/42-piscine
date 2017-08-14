@@ -8,7 +8,9 @@ int main()
 	int i;
 	int j;
 
-	char *str = "hello \t    \n world \n   apa \n kabar  \n";
+	// char *str = "hello \t    \n world \n   apa \n kabar  \n";
+	char *str = "hello";
+
 	strtab = ft_split(str, " \t\n");
 	i = 0;
 	while(strtab[i])

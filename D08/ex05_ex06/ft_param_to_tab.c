@@ -53,14 +53,14 @@ struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 		stock[i].tab = ft_split_whitespaces(av[i]);
 		ft_putstr(stock[i].str);
 		ft_putstr("\n");
-		ft_putnbr(stock[i].size_param);
+		ft_putnbr(9);
 		ft_putstr("\n");
 		j = 0;
 		while (stock[i].tab[j])
 		{
-			ft_putstr(stock[j].tab[j]);
+			ft_putstr(stock[i].tab[j]);
 			ft_putstr("\n");
-			i++;
+			j++;
 		}
 		i++;
 	}
