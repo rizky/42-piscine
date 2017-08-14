@@ -12,7 +12,7 @@
 
 #include "ft_stock_par.h"
 
-int					ft_strlen(char *str)
+int					ft_strlen1(char *str)
 {
 	int len;
 
@@ -22,7 +22,7 @@ int					ft_strlen(char *str)
 	return (len);
 }
 
-char				*ft_strcpy(char *dest, char *src)
+char				*ft_strcpy1(char *dest, char *src)
 {
 	int i;
 
@@ -40,16 +40,29 @@ struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 {
 	t_stock_par *stock;
 	int			i;
+	int			j;
 
 	stock = (t_stock_par*)malloc(sizeof(stock) * (ac + 1));
 	i = 0;
 	while (i < ac)
 	{
-		stock[i].size_param = ft_strlen(av[i]);
+		stock[i].size_param = ft_strlen1(av[i]);
 		stock[i].str = av[i];
-		stock[i].copy = (char*)malloc(sizeof(char) * (ft_strlen(av[i]) + 1));
-		stock[i].copy = ft_strcpy(stock[i].copy, av[i]);
+		stock[i].copy = (char*)malloc(sizeof(char) * (ft_strlen1(av[i]) + 1));
+		stock[i].copy = ft_strcpy1(stock[i].copy, av[i]);
 		stock[i].tab = ft_split_whitespaces(av[i]);
+		ft_putstr(stock[i].str);
+		ft_putstr("\n");
+		ft_putnbr(stock[i].size_param);
+		ft_putstr("\n");
+		j = 0;
+		while (stock[i].tab[j])
+		{
+			ft_putstr(stock[j].tab[j]);
+			ft_putstr("\n");
+			i++;
+		}
+		i++;
 	}
 	stock[ac].str = NULL;
 	return (stock);
