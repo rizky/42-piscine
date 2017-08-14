@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/14 15:44:11 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/14 15:44:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/08 13:23:32 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/08 13:26:44 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,4 @@ int		ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (0);
-}
-
-void	ft_putstr(char *str)
-{
-	char *c;
-
-	c = str;
-	while (*c != '\0')
-	{
-		ft_putchar(*c);
-		c++;
-	}
-}
-
-void	ft_print_words_tables(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_putstr(tab[i]);
-		ft_putstr("\n");
-		i++;
-	}
 }

@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/14 15:44:11 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/14 15:44:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 16:55:20 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 17:04:02 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int		ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
+int		ft_putchar(char c);
 
 void	ft_putstr(char *str)
 {
@@ -27,18 +21,5 @@ void	ft_putstr(char *str)
 	{
 		ft_putchar(*c);
 		c++;
-	}
-}
-
-void	ft_print_words_tables(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_putstr(tab[i]);
-		ft_putstr("\n");
-		i++;
 	}
 }

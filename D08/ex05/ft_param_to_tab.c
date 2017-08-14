@@ -1,2 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_param_to_tab.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/14 16:50:03 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/14 16:50:04 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_stock_par.h"
 
+int		ft_strlen(char *str)
+{
+	int len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+struct	s_stock_par *ft_param_to_tab(int ac, char **av)
+{
+	t_stock_par *stock;
+	int			i;
+
+	stock = (t_stock_par*)malloc(sizeof(stock) * (ac + 1));
+	i = 0;
+	while (i < ac)
+	{
+		stock[i].size_param = ft_strlen(av[i]);
+		stock[i].str = av[i];
+		stock[i].copy = (char*)malloc(sizeof(char) * (ft_strlen(av[i]) + 1));
+		stock[i].copy = ft_strcpy(stock[i].copy, av[i]);
+		stock[i].tab = ft_split_whitespaces(av[i]);
+	}
+	stock[ac].str = NULL;
+	return (stock);
+}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/14 15:48:21 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/14 15:48:22 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 char	*ft_strstr(char *str, char to_find)
@@ -11,9 +23,9 @@ char	*ft_strstr(char *str, char to_find)
 	while (str[i])
 	{
 		if (str[i] == to_find)
-			{
-				return (str+i);
-			}
+		{
+			return (str + i);
+		}
 		i++;
 	}
 	return (NULL);
@@ -30,7 +42,7 @@ int		ft_wordcounter(char *str, char *sep)
 	state = 0;
 	while (str[i])
 	{
-		if (ft_strstr(sep,str[i]) != NULL)
+		if (ft_strstr(sep, str[i]) != NULL)
 		{
 			state = 0;
 		}
@@ -44,57 +56,49 @@ int		ft_wordcounter(char *str, char *sep)
 	return (wcount);
 }
 
-int		ft_strlen(char *str)
+char	*ft_strcpy(int ccount, char *str, int i)
 {
-	int i;
+	char	*res;
+	int		k;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	res = (char*)malloc(sizeof(char) * (ccount + 1));
+	k = 0;
+	while (k < ccount)
+	{
+		res[k] = str[i - ccount + k];
+		k++;
+	}
+	res[k] = '\0';
+	ccount = 0;
+	return (res);
 }
 
-char	**ft_word_extractor(char *str, char **strtab, int wcount, char *sep)
+char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[4])
 {
-	int		i;
-	int		j;
-	int		k;
-	int		ccount;
-	int		state;
-
-	i = 0;
-	j = 0;
-	ccount = 0;
-	state = 0;
-	while (i <= ft_strlen(str))
+	while (str[v[4]])
+		v[4]++;
+	while (v[0] <= v[4])
 	{
-		if (ft_strstr(sep,str[i]) != NULL)
+		if (ft_strstr(charset, str[v[0]]) != NULL)
 		{
-			if (state == 1)
+			if (v[3] == 1)
 			{
-				strtab[j] = (char*)malloc(sizeof(*strtab) * (ccount + 1));
-				k = 0;
-				while (k < ccount)
-				{
-					strtab[j][k] = str[i - ccount + k];
-					k++;
-				}
-				strtab[j][k] = '\0';
-				j++;
-				ccount = 0;
-				state = 0;
+				strtab[v[1]] = ft_strcpy(v[2], str, v[0]);
+				v[1]++;
+				v[2] = 0;
+				v[3] = 0;
 			}
 		}
-		else if (state == 0)
+		else if (v[3] == 0)
 		{
-			state = 1;
-			ccount++;
+			v[3] = 1;
+			v[2]++;
 		}
 		else
-			ccount++;
-		i++;
+			v[2]++;
+		v[0]++;
 	}
-	strtab[wcount] = NULL;
+	strtab[ft_wordcounter(str, charset)] = NULL;
 	return (strtab);
 }
 
@@ -103,12 +107,15 @@ char	**ft_split(char *str, char *charset)
 	char	**strtab;
 	int		*tab;
 	int		wcount;
-	int		i;
-	int		j;
+	int		v[5];
 
+	v[0] = 0;
+	v[1] = 0;
+	v[2] = 0;
+	v[3] = 0;
+	v[3] = 0;
 	wcount = ft_wordcounter(str, charset);
 	strtab = (char**)malloc(sizeof(*strtab) * (wcount + 1));
-
-	strtab = ft_word_extractor(str, strtab, wcount, charset);
+	strtab = ft_word_extractor(str, strtab, charset, v);
 	return (strtab);
 }
