@@ -8,14 +8,14 @@ int main()
 	int i;
 	int j;
 
-	char *str = "hello \n \t world apa kabar";
-/*	strtab = ft_split_whitespaces(str);
+	char *str = "hello world apa kabar";
+	strtab = ft_split_whitespaces(str);
 	i = 0;
-	while(strtab[i][0] != '\0')
+	while(strtab[i])
 	{
 		printf("%s, ", strtab[i]);
 		i++;
-		}*/
+	}
 	i = 0;
 	int wcount;
 	wcount = ft_wordcounter(str);
