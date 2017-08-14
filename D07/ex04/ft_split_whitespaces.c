@@ -34,48 +34,17 @@ int		ft_wordcounter(char *str)
 		}
 		i++;
 	}
-	wcount = wcount + 1;
 	return (wcount);
 }
 
-int		*ft_lettercounter(char *str, char **strtab, int wcount)
+int		ft_strlen(char *str)
 {
-	int		*tab;
-	int		i;
-	int		j;
-	int		ccount;
-	int		state;
+	int i;
 
-	tab = (int*)malloc(sizeof(*tab) * (wcount));
 	i = 0;
-	j = 0;
-	ccount = 0;
-	state = 0;
 	while (str[i])
-	{
-		if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n'))
-		{
-			if (state == 1)
-			{
-				tab[j] = ccount;
-				strtab[j] = (char*)malloc(sizeof(*strtab) * (ccount + 1));
-				j++;
-				ccount = 0;
-				state = 0;
-			}
-		}
-		else if (state == 0)
-		{
-			state = 1;
-			ccount++;
-		}
-		else
-			ccount++;
 		i++;
-	}
-	tab[j] = ccount;
-	tab[j + 1] = 1;
-	return (tab);
+	return (i);
 }
 
 char	**ft_word_extractor(char *str, char **strtab, int wcount)
@@ -90,9 +59,9 @@ char	**ft_word_extractor(char *str, char **strtab, int wcount)
 	j = 0;
 	ccount = 0;
 	state = 0;
-	while (str[i])
+	while (i <= ft_strlen(str))
 	{
-		if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n'))
+		if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n') || (str[i] == '\0'))
 		{
 			if (state == 1)
 			{
@@ -121,7 +90,6 @@ char	**ft_word_extractor(char *str, char **strtab, int wcount)
 	strtab[wcount] = NULL;
 	return (strtab);
 }
-
 
 char	**ft_split_whitespaces(char *str)
 {

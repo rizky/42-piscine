@@ -8,7 +8,7 @@ int main()
 	int i;
 	int j;
 
-	char *str = "hello world apa kabar";
+	char *str = "hello \t    \n world \n   apa \n kabar  \n";
 	strtab = ft_split_whitespaces(str);
 	i = 0;
 	while(strtab[i])
@@ -20,10 +20,4 @@ int main()
 	int wcount;
 	wcount = ft_wordcounter(str);
 	printf("\n%d\n", wcount);
-	tab = ft_lettercounter(str, strtab,  wcount);
-	while (i < wcount)
-	{
-		printf("%d, ", tab[i]);
-		i++;
-	}
 }
