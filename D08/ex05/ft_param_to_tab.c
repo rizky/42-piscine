@@ -12,7 +12,7 @@
 
 #include "ft_stock_par.h"
 
-int		ft_strlen(char *str)
+int					ft_strlen(char *str)
 {
 	int len;
 
@@ -22,7 +22,7 @@ int		ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+char				*ft_strcpy(char *dest, char *src)
 {
 	int i;
 
@@ -36,7 +36,7 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-struct	s_stock_par *ft_param_to_tab(int ac, char **av)
+struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 {
 	t_stock_par *stock;
 	int			i;

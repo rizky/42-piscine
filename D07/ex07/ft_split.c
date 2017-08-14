@@ -15,7 +15,6 @@
 char	*ft_strstr(char *str, char to_find)
 {
 	int i;
-	int j;
 
 	if (to_find == '\0')
 		return (str);
@@ -105,7 +104,6 @@ char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[4])
 char	**ft_split(char *str, char *charset)
 {
 	char	**strtab;
-	int		*tab;
 	int		wcount;
 	int		v[5];
 
