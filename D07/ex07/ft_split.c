@@ -72,7 +72,7 @@ char	*ft_strcpy(int ccount, char *str, int i)
 	return (res);
 }
 
-char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[4])
+char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[5])
 {
 	while (str[v[4]])
 		v[4]++;
@@ -111,7 +111,7 @@ char	**ft_split(char *str, char *charset)
 	v[1] = 0;
 	v[2] = 0;
 	v[3] = 0;
-	v[3] = 0;
+	v[4] = 0;
 	wcount = ft_wordcounter(str, charset);
 	strtab = (char**)malloc(sizeof(*strtab) * (wcount + 1));
 	strtab = ft_word_extractor(str, strtab, charset, v);

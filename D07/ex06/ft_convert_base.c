@@ -116,8 +116,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		count;
 	int		sign;
 
-	if(!ft_isvalid(base_from) || !ft_isvalid(base_to))
-		return NULL;
+	if (!ft_isvalid(base_from) || !ft_isvalid(base_to))
+		return (0);
 	dec = ft_atoi_base(nbr, base_from, &sign);
 	count = 0;
 	if (sign < 0)
