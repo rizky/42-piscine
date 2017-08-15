@@ -8,7 +8,7 @@ int main()
 	int i;
 	int j;
 
-	char *str = "hello \t    \n world \n   apa \n kabar  \n";
+	char *str = "hello";
 	// char *str = "hello";
 	strtab = ft_split_whitespaces(str);
 	i = 0;

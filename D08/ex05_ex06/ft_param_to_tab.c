@@ -42,7 +42,7 @@ struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 	int			i;
 	int			j;
 
-	stock = (t_stock_par*)malloc(sizeof(stock) * (ac + 1));
+	stock = (t_stock_par*)malloc(sizeof(*stock) * (ac + 1));
 	i = 0;
 	while (i < ac)
 	{
@@ -51,17 +51,6 @@ struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 		stock[i].copy = (char*)malloc(sizeof(char) * (ft_strlen1(av[i]) + 1));
 		stock[i].copy = ft_strcpy1(stock[i].copy, av[i]);
 		stock[i].tab = ft_split_whitespaces(av[i]);
-		ft_putstr(stock[i].str);
-		ft_putstr("\n");
-		ft_putnbr(9);
-		ft_putstr("\n");
-		j = 0;
-		while (stock[i].tab[j])
-		{
-			ft_putstr(stock[i].tab[j]);
-			ft_putstr("\n");
-			j++;
-		}
 		i++;
 	}
 	stock[ac].str = NULL;

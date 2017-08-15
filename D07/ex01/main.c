@@ -4,7 +4,7 @@
 int main()
 {
 	int min = -5;
-	int max = -10;
+	int max = 7;
 	int *tab = ft_range(min, max);
 	int i;
 	int len = max - min;
