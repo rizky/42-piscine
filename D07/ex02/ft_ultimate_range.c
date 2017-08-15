@@ -21,7 +21,7 @@ int		ft_ultimate_range(int **range, int min, int max)
 	if (min > max)
 		return (0);
 	len = max - min;
-	tab = (int*)malloc(sizeof(*tab) * (len + 1));
+	tab = (int*)malloc(sizeof(*tab) * (len));
 	i = 0;
 	while (i < len)
 	{

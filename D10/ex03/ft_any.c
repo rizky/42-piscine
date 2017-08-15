@@ -1,18 +1,30 @@
-int     ft_any(char **tab, int(*f)(char*))
-{
-    int i;
-    int valid;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/15 15:26:01 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/15 15:26:02 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    valid = 0;
-    while (tab[i])
-    {
-        if(f(tab[i]))
-        {
-            valid = 1;
-            break ;
-        }
-        i++;
-    }
-    return (valid);
+int	ft_any(char **tab, int (*f)(char*))
+{
+	int i;
+	int valid;
+
+	i = 0;
+	valid = 0;
+	while (tab[i])
+	{
+		if (f(tab[i]))
+		{
+			valid = 1;
+			break ;
+		}
+		i++;
+	}
+	return (valid);
 }

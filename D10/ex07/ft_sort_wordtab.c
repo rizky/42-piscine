@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_wordtab.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/15 15:29:10 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/15 15:29:11 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int		ft_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -12,26 +24,26 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void ft_sort_wordtab(char **tab)
+void	ft_sort_wordtab(char **tab)
 {
-    int     i;
-    int     j;
-    char    *temp;
+	int		i;
+	int		j;
+	char	*temp;
 
-    i = 0;
-    while (tab[i])
-    {
-        j = i;
-        while (tab[j])
-        {
-            if (ft_strcmp(tab[i], tab[j]) > 0)
+	i = 0;
+	while (tab[i])
+	{
+		j = i;
+		while (tab[j])
+		{
+			if (ft_strcmp(tab[i], tab[j]) > 0)
 			{
-                temp = tab[i];
-                tab[i] = tab[j];
-                tab[j] = temp;
-            }
-            j++;
-        }
-        i++;
-    }
+				temp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }

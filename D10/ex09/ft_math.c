@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/15 15:24:43 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/15 15:24:44 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/15 15:12:02 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/15 15:12:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_map(int *tab, int length, int (*f)(int))
+int	ft_plus(int a, int b)
 {
-	int i;
-	int *result;
+	return (a + b);
+}
 
-	result = (int*)malloc(sizeof(*result) * (length + 1));
-	i = 0;
-	while (i < length)
-	{
-		result[i] = f(tab[i]);
-	}
-	return (result);
+int	ft_minus(int a, int b)
+{
+	return (a - b);
+}
+
+int	ft_div(int a, int b)
+{
+	return (a / b);
+}
+
+int	ft_mod(int a, int b)
+{
+	return (a % b);
+}
+
+int	ft_mul(int a, int b)
+{
+	return (a * b);
 }
