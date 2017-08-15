@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/15 13:00:35 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/15 13:00:37 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_stock_par.h"
 
 int		ft_putchar(char c)
@@ -18,18 +30,18 @@ void	ft_putstr(char *str)
 	}
 }
 
-void		ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	const char *base = "0123456789";
 
-	if((nb / 10) > 0)
+	if ((nb / 10) > 0)
 		ft_putnbr(nb / 10);
 	ft_putchar(base[nb % 10]);
 }
 
-void   ft_show_tab(struct s_stock_par *par)
+void	ft_show_tab(struct s_stock_par *par)
 {
-    int i;
+	int i;
 	int j;
 
 	i = 0;

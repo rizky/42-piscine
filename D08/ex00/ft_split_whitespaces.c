@@ -12,6 +12,24 @@
 
 #include <stdlib.h>
 
+char	*ft_strstr(char *str, char to_find)
+{
+	int i;
+
+	if (to_find == '\0')
+		return (str);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == to_find)
+		{
+			return (str + i);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
 int		ft_wordcounter(char *str)
 {
 	int		i;
@@ -23,7 +41,7 @@ int		ft_wordcounter(char *str)
 	state = 0;
 	while (str[i])
 	{
-		if ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n'))
+		if (ft_strstr(" \n\t", str[i]) != NULL)
 		{
 			state = 0;
 		}
@@ -35,16 +53,6 @@ int		ft_wordcounter(char *str)
 		i++;
 	}
 	return (wcount);
-}
-
-int		ft_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 char	*ft_strcpy(int ccount, char *str, int i)
@@ -64,11 +72,11 @@ char	*ft_strcpy(int ccount, char *str, int i)
 	return (res);
 }
 
-char	**ft_word_extractor(char *str, char **strtab, int wcount, int v[4])
+char	**ft_word_extractor(char *str, char **strtab, int wcount, int v[5])
 {
-	while (v[0] <= ft_strlen(str))
+	while (v[0] <= v[4])
 	{
-		if ((str[v[0]] == ' ') || (str[v[0]] == '\t') || (str[v[0]] == '\n'))
+		if (ft_strstr(" \n\t\0", str[v[0]]) != NULL)
 		{
 			if (v[3] == 1)
 			{
@@ -94,12 +102,15 @@ char	**ft_word_extractor(char *str, char **strtab, int wcount, int v[4])
 char	**ft_split_whitespaces(char *str)
 {
 	char	**strtab;
-	int		v[4];
+	int		v[5];
 
 	v[0] = 0;
 	v[1] = 0;
 	v[2] = 0;
 	v[3] = 0;
+	v[4] = 0;
+	while (str[v[4]])
+		v[4]++;
 	strtab = (char**)malloc(sizeof(*strtab) * (ft_wordcounter(str) + 1));
 	strtab = ft_word_extractor(str, strtab, ft_wordcounter(str), v);
 	return (strtab);
