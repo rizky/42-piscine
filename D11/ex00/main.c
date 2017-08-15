@@ -30,10 +30,9 @@ void print_list(t_list *list)
 int main()
 {
 	t_list *list;
-	char *str = "Hello";
 
 	list = NULL;
-	list = ft_create_elem(str);
-
+	list = ft_create_elem("Hello");
+	ft_list_push_back(&list, "World");
 	print_list(list);
 }
