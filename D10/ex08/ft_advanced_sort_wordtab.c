@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(char **a, char **b)
+void	ft_swap_pointer(char **a, char **b)
 {
 	char	*tmp;
 
@@ -31,7 +31,7 @@ void	ft_advanced_sort_wordtab(char **tab, int (*cmp)(char *, char *))
 		while (tab[j])
 		{
 			if (cmp(tab[i], tab[j]) > 0)
-				ft_swap(&tab[i], &tab[j]);
+				ft_swap_pointer(&tab[i], &tab[j]);
 			j++;
 		}
 		i++;

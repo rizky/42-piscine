@@ -15,6 +15,7 @@ int		ft_any(char **tab, int (*f)(char *));
 int		ft_count_if(char **tab, int (*f)(char *));
 int		ft_is_sort(int *tab, int length, int (*f)(int, int));
 void	ft_sort_wordtab(char **tab);
+void	ft_advanced_sort_wordtab(char **tab, int (*cmp)(char *, char *));
 
 void	ft_putnbr(int n)
 {
@@ -51,16 +52,31 @@ int		cmp(int a, int b)
 	return (b - a);
 }
 
+int		cmpstr(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if ((s1[i] - s2[i]) != 0)
+			return  (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
 int		main(int ac, char **av)
 {
 	int		k;
 	int		pi[] = {14, 15, 92, 65, 35, 89, 79, 32, 38, 46, 26, 43, 38, 32, 79, 50};
 	int		tab[] = {10, 20, 30, 40};
 	char	*words1[] = {"Hello", "World", "RTFM", "LMGIFY", "GIYF", "NSFW", 0};
+	char	*words3[] = {"Hello", "World", "RTFM", "LMGIFY", "GIYF", "NSFW", 0};
 	char	*words2[] = {"O miseras", "homini", "mentis", "O pectora", "caeca", 0};
 
 	k = -1;
-	while (++k < (ac == 1 ? 7 : ac))
+	while (++k < (ac == 1 ? 8 : ac))
 		switch (ac == 1 ? k : atoi(av[k]))
 		{
 		case 1 :
@@ -94,15 +110,28 @@ int		main(int ac, char **av)
 				ft_print(">>>[Ex06 FAIL]<<<", RED);
 			break ;
 		case 6 :
-				ft_sort_wordtab(words1);
-				int i = 0;
-				while (words1[i])
-				{
-					ft_putstr(words1[i]);
-					ft_putchar('\0');
-				}
+			ft_putstr("\nEx07\n\n");
+			ft_sort_wordtab(words1);
+			int i = 0;
+			while (words1[i])
+			{
+				ft_putstr(words1[i]);
+				ft_putchar('\n');
+				i++;
+			}
 			break ;
 		case 7 :
+			ft_putstr("\nEx08\n\n");
+			ft_advanced_sort_wordtab(words3, &cmpstr);
+			int j = 0;
+			while (words3[j])
+			{
+				ft_putstr(words3[j]);
+				ft_putchar('\n');
+				j++;
+			}
+			break ;
+		case 8 :
 			
 			break ;
 		}
