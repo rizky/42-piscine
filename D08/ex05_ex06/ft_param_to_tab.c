@@ -40,7 +40,6 @@ struct	s_stock_par	*ft_param_to_tab(int ac, char **av)
 {
 	t_stock_par *stock;
 	int			i;
-	int			j;
 
 	stock = (t_stock_par*)malloc(sizeof(*stock) * (ac + 1));
 	i = 0;

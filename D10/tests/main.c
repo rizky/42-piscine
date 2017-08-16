@@ -35,6 +35,12 @@ int		ft_abs_half(int i)
 	return (i >> 1);
 }
 
+
+int		ft_sqr(int i)
+{
+	return (i * i);
+}
+
 int		isupcase(char *str)
 {
 	if (!*str)
@@ -88,7 +94,7 @@ int		main(int ac, char **av)
 			break ;
 		case 2 :
 			ft_putstr("Ex02 : Expected \"5101520\" : \"");
-			ft_foreach(ft_map(tab, 4, &ft_abs_half), 4, &ft_putnbr);
+			ft_foreach(ft_map(tab, 4, &ft_sqr), 4, &ft_putnbr);
 			ft_putstr("\"\n");
 			break ;
 		case 3 :

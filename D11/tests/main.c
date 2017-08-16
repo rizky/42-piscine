@@ -31,8 +31,8 @@ int		main(int ac, char **av)
 			tmp = ft_create_elem(str1);
 			printf("Ex 01 :\n\t- expected [| %s ; %s ; %s |] (normal push back)\n\t\t%s", str1, str2, str2, GREEN);
 			ft_list_push_back(&tmp, str2);
-			ft_list_push_back(&tmp, str2);
-			ft_print_list_str(tmp);
+			// ft_list_push_back(&tmp, str2);
+			// ft_print_list_str(tmp);
 			printf("%s\t- expected [| %s ; %s |] (push back on an empty list)\n\t\t%s", END, str1, str2, GREEN);
 			tmp = NULL;
 			ft_list_push_back(&tmp, str1);
