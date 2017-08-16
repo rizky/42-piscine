@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_OPP_H_
-# define FT_OPP_H_
+#ifndef FT_OPP_H
+# define FT_OPP_H
 
 t_opp g_opptab[] =
 {

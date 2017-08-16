@@ -21,11 +21,11 @@ int		ft_operate(int a, int b, int (*f)(int, int))
 void	ft_execute(int a, int b, char *op)
 {
 	int		i;
-	
+
 	i = 0;
 	while (g_opptab[i].op[0] && ft_strcmp(g_opptab[i].op, op))
 		i++;
-	if(g_opptab[i].op[0])
+	if (g_opptab[i].op[0])
 		ft_putnbr(g_opptab[i].func(a, b));
 	else
 		g_opptab[i].func(a, b);
