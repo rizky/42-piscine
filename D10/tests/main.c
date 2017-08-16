@@ -5,6 +5,8 @@
 #define GREEN "\033[1;32m"
 #define END "\033[1;0m"
 
+// gcc -o main main.c ../ex01/ft_foreach.c ../ex02/ft_map.c ../ex03/ft_any.c ../ex04/ft_count_if.c ../ex05/ft_is_sort.c ../tests/ft_putchar.c ../tests/ft_putstr.c
+
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_foreach(int *tab, int length, void (*f)(int));
@@ -12,6 +14,7 @@ int		*ft_map(int *map, int length, int (*f)(int));
 int		ft_any(char **tab, int (*f)(char *));
 int		ft_count_if(char **tab, int (*f)(char *));
 int		ft_is_sort(int *tab, int length, int (*f)(int, int));
+void	ft_sort_wordtab(char **tab);
 
 void	ft_putnbr(int n)
 {
@@ -57,7 +60,7 @@ int		main(int ac, char **av)
 	char	*words2[] = {"O miseras", "homini", "mentis", "O pectora", "caeca", 0};
 
 	k = -1;
-	while (++k < (ac == 1 ? 6 : ac))
+	while (++k < (ac == 1 ? 7 : ac))
 		switch (ac == 1 ? k : atoi(av[k]))
 		{
 		case 1 :
@@ -89,6 +92,15 @@ int		main(int ac, char **av)
 				ft_print("[Ex05 OK]", GREEN);
 			else
 				ft_print(">>>[Ex06 FAIL]<<<", RED);
+			break ;
+		case 6 :
+				ft_sort_wordtab(words1);
+				int i = 0;
+				while (words1[i])
+				{
+					ft_putstr(words1[i]);
+					ft_putchar('\0');
+				}
 			break ;
 		case 7 :
 			
