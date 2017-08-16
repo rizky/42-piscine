@@ -47,7 +47,7 @@ void	ft_show_tab(struct s_stock_par *par)
 	i = 0;
 	while (par[i].str != NULL)
 	{
-		ft_putstr(par[i].str);
+		ft_putstr(par[i].copy);
 		ft_putstr("\n");
 		ft_putnbr(par[i].size_param);
 		ft_putstr("\n");
