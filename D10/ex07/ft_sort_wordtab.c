@@ -37,7 +37,6 @@ void	ft_sort_wordtab(char **tab)
 {
 	int		i;
 	int		j;
-	char	*temp;
 
 	i = 0;
 	while (tab[i])
@@ -46,7 +45,7 @@ void	ft_sort_wordtab(char **tab)
 		while (tab[j])
 		{
 			if (ft_strcmp(tab[i], tab[j]) > 0)
-				ft_swap(tab[i], tab[j]);
+				ft_swap(tab + i, tab + j);
 			j++;
 		}
 		i++;
