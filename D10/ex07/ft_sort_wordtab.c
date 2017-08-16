@@ -24,6 +24,15 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
+void	ft_swap(char **a, char **b)
+{
+	char	*tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 void	ft_sort_wordtab(char **tab)
 {
 	int		i;
@@ -37,11 +46,7 @@ void	ft_sort_wordtab(char **tab)
 		while (tab[j])
 		{
 			if (ft_strcmp(tab[i], tab[j]) > 0)
-			{
-				temp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = temp;
-			}
+				ft_swap(tab[i], tab[j]);
 			j++;
 		}
 		i++;

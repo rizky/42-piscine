@@ -1,10 +1,11 @@
 NAME = libft.a
 SRC = srcs/*.c
+HEADER_DIR = includes
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Werror -Wextra $(SRC)
+	gcc -c -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 

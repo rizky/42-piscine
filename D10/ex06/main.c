@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_opp.h"
+#include "header.h"
 
 int	ft_operate(int a, int b, int (*f)(int, int))
 {
 	return (f(a, b));
 }
 
-int	ft_execute(int a, int b, char op)
+int	ft_execute(int a, int b, char *op)
 {
 	int (*f)(int, int);
 

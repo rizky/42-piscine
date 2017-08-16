@@ -9,7 +9,8 @@
 /*   Updated: 2017/08/15 15:12:03 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ft_opp.h>
+
+#include "header.h"
 
 int		ft_add(int a, int b)
 {
@@ -36,7 +37,10 @@ int		ft_mul(int a, int b)
 	return (a * b);
 }
 
-void	ft_usage()
+int		ft_usage(int a, int b)
 {
+	a = b;
+	b = a;
 	ft_putstr("error : only [ - + * / % ] are accepted.");
+	return (0);
 }

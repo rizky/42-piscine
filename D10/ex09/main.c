@@ -10,34 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "header.h"
 #include "ft_opp.h"
 
-int	ft_operate(int a, int b, int (*f)(int, int))
+int		ft_operate(int a, int b, int (*f)(int, int))
 {
 	return (f(a, b));
 }
 
-int	ft_execute(int a, int b, char op)
+void	ft_execute(int a, int b, char *op)
 {
-	int (*f)(int, int);
-
-	if (ft_strcmp(op, "+") == 0)
-		f = &ft_plus;
-	else if (ft_strcmp(op, "-") == 0)
-		f = &ft_minus;
-	else if (ft_strcmp(op, "/") == 0)
-		f = &ft_div;
-	else if (ft_strcmp(op, "%") == 0)
-		f = &ft_mod;
-	else if (ft_strcmp(op, "*") == 0)
-		f = &ft_mul;
+	int		i;
+	
+	i = 0;
+	while (g_opptab[i].op[0] && ft_strcmp(g_opptab[i].op, op))
+		i++;
+	if(g_opptab[i].op[0])
+		ft_putnbr(g_opptab[i].func(a, b));
 	else
-		return (0);
-	ft_putnbr(ft_operate(a, b, f));
-	return (0);
+		g_opptab[i].func(a, b);
+	ft_putchar('\n');
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int a;
 	int b;
@@ -48,12 +43,12 @@ int	main(int argc, char **argv)
 		b = ft_atoi(argv[3]);
 		if (b == 0 && (ft_strcmp(argv[2], "/") == 0))
 		{
-			ft_putstr("Stop : division by zero");
+			ft_putstr("Stop : division by zero\n");
 			return (0);
 		}
 		if (b == 0 && (ft_strcmp(argv[2], "%") == 0))
 		{
-			ft_putstr("Stop : module by zero");
+			ft_putstr("Stop : modulo by zero\n");
 			return (0);
 		}
 		ft_execute(a, b, argv[2]);
