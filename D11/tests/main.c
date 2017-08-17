@@ -95,7 +95,54 @@ int		main(int ac, char **av)
 			break ;
 		case 5 :
 			printf("Ex05 : You should the the arguments you passed ina reversed order :\n\t%s", GREEN);
-			ft_print_list_str(ft_list_push_params(ac, av));
+			tmp = NULL;
+			tmp = ft_list_push_params(ac, av);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;
+		case 6 :
+			printf("Ex06 : Should print empty list\n\t%s", GREEN);
+			tmp = NULL;
+			str1 = strdup("1");
+			while (++j < 5)
+				ft_list_push_front(&tmp, str1);
+			ft_print_list_str(tmp);
+			printf("\n");
+			ft_list_clear(&tmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;
+		case 7 :
+			printf("Ex07 : \n\t%s", GREEN);
+			tmp = NULL;
+			char str[2] = "";
+			while (++j < 5)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_push_front(&tmp, strdup(str));
+			}
+			ft_print_list_str(tmp);
+			ft_print_list_str(ft_list_at(tmp, 0));
+			ft_print_list_str(ft_list_at(tmp, 1));			
+			ft_print_list_str(ft_list_at(tmp, 2));
+			ft_print_list_str(ft_list_at(tmp, 3));
+			ft_print_list_str(ft_list_at(tmp, 4));
+			ft_print_list_str(ft_list_at(tmp, 5));
+			printf("%s\n", END);
+			break ;
+		case 8 :
+			printf("Ex08 : Should reverse the linked list \n\t%s", GREEN);
+			tmp = NULL;
+			while (++j < 5)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_push_front(&tmp, strdup(str));
+			}
+			ft_print_list_str(tmp);
+			ft_list_reverse(&tmp);
+			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;
 		}

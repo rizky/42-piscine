@@ -14,7 +14,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/rizkyario/Documents/Codes/C/piscine/a.out",
-            "args": ["5", "Hello"],
+            "args": ["6", "Hello"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],

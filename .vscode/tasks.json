@@ -12,6 +12,7 @@
 		"/Users/rizkyario/Documents/Codes/C/piscine/D11/ex03/ft_list_size.c",
 		"/Users/rizkyario/Documents/Codes/C/piscine/D11/ex05/ft_list_push_params.c",
 		"/Users/rizkyario/Documents/Codes/C/piscine/D11/tests/ft_print_list.c",
+		"/Users/rizkyario/Documents/Codes/C/piscine/D11/ex06/ft_list_clear.c",
 		"-std=c++11", "-g"],
     "showOutput": "always"
 }
