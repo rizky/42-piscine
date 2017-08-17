@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "ft_list.h"
 
 void	ft_print_list_str(t_list *begin_list)
 {

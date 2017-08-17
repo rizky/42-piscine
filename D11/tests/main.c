@@ -14,7 +14,7 @@ int		main(int ac, char **av)
 			if (k + 1 < ac)
 				str1 = av[++k];
 			else
-				str1 = strdup("Foo Bar Baz");
+				str1 = strdup("a");
 			printf("Ex 00 : expected [| %s |] :\t%s", str1, GREEN);
 			ft_print_list_str(ft_create_elem(str1));
 			printf("%s\n", END);
@@ -23,17 +23,17 @@ int		main(int ac, char **av)
 			if (k + 1 < ac)
 				str1 = av[++k];
 			else
-				str1 = strdup("Hello");
+				str1 = strdup("a");
 			if (k + 1 < ac)
 				str2 = av[++k];
 			else
-				str2 = strdup("World");
+				str2 = strdup("b");
 			tmp = ft_create_elem(str1);
-			printf("Ex 01 :\n\t- expected [| %s ; %s ; %s |] (normal push back)\n\t\t%s", str1, str2, str2, GREEN);
+			printf("Ex 01 :\n\t- expected [| %s -> %s -> %s |] (normal push back)\n\t\t%s", str1, str2, str2, GREEN);
 			ft_list_push_back(&tmp, str2);
-			// ft_list_push_back(&tmp, str2);
-			// ft_print_list_str(tmp);
-			printf("%s\t- expected [| %s ; %s |] (push back on an empty list)\n\t\t%s", END, str1, str2, GREEN);
+			ft_list_push_back(&tmp, str2);
+			ft_print_list_str(tmp);
+			printf("%s\t- expected [| %s -> %s |] (push back on an empty list)\n\t\t%s", END, str1, str2, GREEN);
 			tmp = NULL;
 			ft_list_push_back(&tmp, str1);
 			ft_list_push_back(&tmp, str2);
@@ -44,17 +44,17 @@ int		main(int ac, char **av)
 			if (k + 1 < ac)
 				str1 = av[++k];
 			else
-				str1 = strdup("Caesar");
+				str1 = strdup("a");
 			if (k + 1 < ac)
 				str2 = av[++k];
 			else
-				str2 = strdup("Ave");
+				str2 = strdup("b");
 			tmp = ft_create_elem(str1);
-			printf("Ex 02 :\n\t- expected [| %s ; %s ; %s |] (normal front back)\n\t\t%s", str1, str2, str2, GREEN);
+			printf("Ex 02 :\n\t- expected [| %s -> %s -> %s |] (normal front back)\n\t\t%s", str1, str2, str2, GREEN);
 			ft_list_push_front(&tmp, str2);
 			ft_list_push_front(&tmp, str2);
 			ft_print_list_str(tmp);
-			printf("%s\t- expected [| %s ; %s |] (push front on an empty list)\n\t\t%s", END, str1, str2, GREEN);
+			printf("%s\t- expected [| %s -> %s |] (push front on an empty list)\n\t\t%s", END, str1, str2, GREEN);
 			tmp = NULL;
 			ft_list_push_front(&tmp, str1);
 			ft_list_push_front(&tmp, str2);
@@ -71,14 +71,16 @@ int		main(int ac, char **av)
 				i = 13;
 			j = -1;
 			tmp = NULL;
-			str1 = strdup("Tralala");
+			str1 = strdup("1");
 			while (++j < i)
 				ft_list_push_front(&tmp, str1);
 			j = ft_list_size(tmp);
+			ft_print_list_str(tmp);
 			if (j == i)
 				printf("%s[Ex03 OK]%s\t(tested on a list of %i elements)\n", GREEN, END, i);
 			else
 				printf("%s>>>[Ex03 FAIL]<<<%s\t(a list of %i elements is not %i element long)\n", RED, END, i, j);
+			printf("%s\n", END);
 			break ;
 		case 4 :
 			str1 = strdup("\e[1;31m>>>[Ex04 FAIL]<<<\e[0;0m");
@@ -86,8 +88,10 @@ int		main(int ac, char **av)
 			tmp = NULL;
 			i = -1;
 			ft_list_push_front(&tmp, str2);
-			while (++i < 50)
-				ft_list_push_front(&tmp, str1);
+			ft_list_push_front(&tmp, str1);
+			// while (++i < 5)
+			// 	ft_list_push_front(&tmp, str1);
+			ft_print_list_str(tmp);
 			printf("%s\t(tested on a list of 50 elements)\n", (char*)ft_list_last(tmp)->data);
 			break ;
 		case 5 :
