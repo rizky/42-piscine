@@ -17,6 +17,7 @@ t_list	*ft_list_push_params(int ac, char **av)
 	int i;
 	t_list *list;
 
+	list = 0;
 	if(ac == 1)
 		return (0);
 	i = 1;
