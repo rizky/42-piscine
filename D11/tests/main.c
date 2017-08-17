@@ -207,6 +207,7 @@ int		main(int ac, char **av)
 			ft_list_push_front(&tmp, strdup("1"));
 			ft_list_push_front(&tmp, strdup("5"));
 			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("2"));
 			ft_list_push_front(&tmp, strdup("9"));
 			ft_list_push_front(&tmp, strdup("6"));
 			ft_print_list_str(tmp);
