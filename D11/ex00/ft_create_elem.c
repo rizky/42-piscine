@@ -15,13 +15,13 @@
 
 t_list *ft_create_elem(void *data)
 {
-	t_list *list;
+	t_list *list_ptr;
 
-	list = (t_list *)malloc(sizeof(t_list));
-	if (list)
+	list_ptr = (t_list *)malloc(sizeof(t_list));
+	if (list_ptr)
 	{
-		list->data = data;
-		list->next = NULL;
+		list_ptr->data = data;
+		list_ptr->next = NULL;
 	}
-	return (list);
+	return (list_ptr);
 }

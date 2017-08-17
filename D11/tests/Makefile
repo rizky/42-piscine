@@ -4,7 +4,7 @@ SRC = $(shell find ../ -name '*.c')
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) -Wall -Werror -Wextra $(SRC)
+	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC)
 
 clean:
 	/bin/rm -f *.o

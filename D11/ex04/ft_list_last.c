@@ -14,16 +14,16 @@
 
 t_list	*ft_list_last(t_list *begin_list)
 {
-	t_list	*list;
+	t_list	*list_ptr;
 
-	list = begin_list;
-	if (list)
+	list_ptr = begin_list;
+	if (list_ptr)
 	{
-		while (list->next)
+		while (list_ptr->next)
 		{
-			list = list->next;
+			list_ptr = list_ptr->next;
 		}
-		return (list);
+		return (list_ptr);
 	}
-	return (list);
+	return (list_ptr);
 }

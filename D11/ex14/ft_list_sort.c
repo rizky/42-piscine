@@ -14,27 +14,21 @@
 
 void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
-	t_list	*list;
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-	t_list	*before;
-	t_list	*after;
+	t_list	*current_list;
+	t_list	*prev_list;
 
-	list = *begin_list;
-	before = *begin_list;
-	while (list->next)
+	current_list = *begin_list;
+	prev_list = *begin_list;
+	while (current_list)
 	{
-		if ((*cmp)(list->data, list->next->data) > 0)
+		if(cmp(current_list->data, current_list->next->data) < 0)
 		{
-			tmp_a = list;
-			tmp_b = list->next;
-			after = tmp_b->next;
-			before->next = tmp_b;
-			tmp_b->next = tmp_a;
-			tmp_a->next = after;
-			list = tmp_b;
+			prev_list->next = current_list->next;
+			current_list->next = current_list->next->next;
+			prev_list->next->next = current_list;
+			current_list = *begin_list;
 		}
-		else
-			list = list->next;
+		prev_list = current_list;
+		current_list = current_list->next;
 	}
 }

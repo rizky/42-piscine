@@ -25,4 +25,5 @@ typedef struct		s_stock_par {
 char				**ft_split_whitespaces(char *str);
 void				ft_show_tab(struct s_stock_par *par);
 struct s_stock_par	*ft_param_to_tab(int ac, char **av);
+int					ft_putchar(char c);
 #endif

@@ -1,10 +1,25 @@
 #include "header.h"
 
+int		ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if ((s1[i] - s2[i]) != 0)
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
 int		main(int ac, char **av)
 {
 	t_str	str1, str2;
 	int		k, i, j;
 	t_list	*tmp;
+	t_list	*tmp2;
 
 	k = 0;
 	while (k < (ac == 1 ? K_MAX : ac - 1))
@@ -101,9 +116,10 @@ int		main(int ac, char **av)
 			printf("%s\n", END);
 			break ;
 		case 6 :
-			printf("Ex06 : Should print empty list\n\t%s", GREEN);
+			printf("Ex06 : Should print empty list\n%s", GREEN);
 			tmp = NULL;
 			str1 = strdup("1");
+			j = 0;
 			while (++j < 5)
 				ft_list_push_front(&tmp, str1);
 			ft_print_list_str(tmp);
@@ -116,6 +132,7 @@ int		main(int ac, char **av)
 			printf("Ex07 : \n\t%s", GREEN);
 			tmp = NULL;
 			char str[2] = "";
+			j = 0;
 			while (++j < 5)
 			{
 				str[0] = j + '0';
@@ -132,7 +149,7 @@ int		main(int ac, char **av)
 			printf("%s\n", END);
 			break ;
 		case 8 :
-			printf("Ex08 : Should reverse the linked list \n\t%s", GREEN);
+			printf("Ex08 : Should reverse the linked list \n%s", GREEN);
 			tmp = NULL;
 			while (++j < 5)
 			{
@@ -145,5 +162,57 @@ int		main(int ac, char **av)
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;
+		case 12 :
+			printf("Ex12 : Should delete remove \n%s", GREEN);
+			tmp = NULL;
+			j = 0;
+			while (++j < 5)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_push_front(&tmp, strdup(str));
+			}
+			ft_print_list_str(tmp);
+			ft_list_remove_if(&tmp, "2", &ft_strcmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;		
+		case 13 :
+			printf("Ex13 : Should delete remove \n%s", GREEN);
+			tmp = NULL;
+			tmp2 = NULL;
+			j = 0;
+			while (++j < 5)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_push_front(&tmp, strdup(str));
+			}
+			j = 5;
+			while (--j > 0)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_push_front(&tmp2, strdup(str));
+			}
+			ft_print_list_str(tmp);
+			ft_print_list_str(tmp2);
+			ft_list_merge(&tmp, tmp2);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;	
+		case 14 :
+			printf("Ex14 : Should sort the list \n%s", GREEN);
+			tmp = NULL;
+			ft_list_push_front(&tmp, strdup("1"));
+			ft_list_push_front(&tmp, strdup("5"));
+			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("9"));
+			ft_list_push_front(&tmp, strdup("6"));
+			ft_print_list_str(tmp);
+			ft_list_sort(&tmp, &ft_strcmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;								
 		}
 }

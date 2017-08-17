@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/16 11:42:16 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/16 11:42:17 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/08 13:23:32 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/08 13:26:44 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include <unistd.h>
 
-void	ft_list_reverse(t_list **begin_list)
+int		ft_putchar(char c)
 {
-	t_list	*current_list;
-	t_list	*prev_list;
-	t_list	*next_list;
-
-	prev_list = 0;
-	current_list = *begin_list;
-	while (current_list->next)
-	{
-		next_list = current_list->next;
-		current_list->next = prev_list;
-		prev_list = current_list;
-		current_list = next_list;
-	}
-	current_list->next = prev_list;
-	*begin_list = current_list;
+	write(1, &c, 1);
+	return (0);
 }
