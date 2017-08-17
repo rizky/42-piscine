@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdio.h>
 
 t_list	*ft_list_last(t_list *begin_list)
 {

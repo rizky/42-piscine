@@ -1,4 +1,4 @@
-NAME = do-op
+NAME = ft_advanced_do-op
 SRC = *.c
 
 all: $(NAME)

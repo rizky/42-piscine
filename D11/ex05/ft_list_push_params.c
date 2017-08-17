@@ -14,20 +14,15 @@
 
 t_list	*ft_list_push_params(int ac, char **av)
 {
-	int		i;
-	t_list	*list;
-	t_list	*tmp;
+	int i;
+	t_list *list;
 
-	i = 2;
-	if (ac == 1)
+	if(ac == 1)
 		return (0);
-	list = ft_create_elem(av[1]);
-	list->next = 0;
+	i = 1;
 	while (i < ac)
 	{
-		tmp = list;
-		list = ft_create_elem(av[i]);
-		list->next = tmp;
+		ft_list_push_front(&list, av[i]);
 		i++;
 	}
 	return (list);

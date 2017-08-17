@@ -21,8 +21,8 @@ void	ft_list_push_front(t_list **begin_list, void *data)
 		list = ft_create_elem(data);
 		if(list)
 		{
-			list->next = (*begin_list)->next;
-			(*begin_list)->next = list;
+			list->next = (*begin_list);
+			(*begin_list) = list;
 		}
 	}
 	else
