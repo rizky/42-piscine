@@ -214,6 +214,33 @@ int		main(int ac, char **av)
 			ft_list_sort(&tmp, &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
-			break ;								
+			break ;	
+		case 15 :
+			printf("Ex15 : Should reverse the content of the list \n%s", GREEN);
+			tmp = NULL;
+			ft_list_push_front(&tmp, strdup("1"));
+			ft_list_push_front(&tmp, strdup("5"));
+			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("9"));
+			ft_list_push_front(&tmp, strdup("6"));			
+			ft_print_list_str(tmp);
+			ft_list_reverse_fun(tmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;	
+		case 16 :
+			printf("Ex16 : Should be sorted list \n%s", GREEN);
+			tmp = NULL;
+			ft_list_push_front(&tmp, strdup("6"));
+			ft_list_push_front(&tmp, strdup("5"));
+			ft_list_push_front(&tmp, strdup("4"));
+			ft_list_push_front(&tmp, strdup("3"));
+			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("1"));			
+			ft_print_list_str(tmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;										
 		}
 }

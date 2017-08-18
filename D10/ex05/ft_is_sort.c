@@ -33,4 +33,4 @@ int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 		return (1);
 	else
 		return (0);
-}2
+}

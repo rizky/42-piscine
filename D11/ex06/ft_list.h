@@ -7,4 +7,5 @@ typedef struct	s_list
 	void			*data;
 }				t_list;
 
+void	ft_list_clear(t_list **begin_list);
 #endif

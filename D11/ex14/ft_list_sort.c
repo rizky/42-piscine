@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdio.h>
 
-void				ft_print_list_str(t_list *begin_list);
 void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
 	t_list	*current_list;
