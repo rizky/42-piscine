@@ -239,8 +239,31 @@ int		main(int ac, char **av)
 			ft_list_push_front(&tmp, strdup("2"));
 			ft_list_push_front(&tmp, strdup("1"));			
 			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("3"),&ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
-			break ;										
+			break ;		
+		case 17 :
+			printf("Ex16 : Should be sorted list \n%s", GREEN);
+			tmp = NULL;
+			tmp2 = NULL;
+			ft_list_push_front(&tmp, strdup("6"));
+			ft_list_push_front(&tmp, strdup("5"));
+			ft_list_push_front(&tmp, strdup("4"));
+			ft_list_push_front(&tmp, strdup("3"));
+			ft_list_push_front(&tmp, strdup("2"));
+			ft_list_push_front(&tmp, strdup("1"));			
+			ft_print_list_str(tmp);
+			ft_list_push_front(&tmp2, strdup("6"));
+			ft_list_push_front(&tmp2, strdup("5"));
+			ft_list_push_front(&tmp2, strdup("4"));
+			ft_list_push_front(&tmp2, strdup("3"));
+			ft_list_push_front(&tmp2, strdup("2"));
+			ft_list_push_front(&tmp2, strdup("1"));			
+			ft_print_list_str(tmp2);
+			ft_sorted_list_merge(&tmp,tmp2,&ft_strcmp);
+			ft_print_list_str(tmp);
+			printf("%s\n", END);
+			break ;									
 		}
 }
