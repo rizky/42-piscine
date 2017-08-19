@@ -4,6 +4,7 @@
 		"ft_stock_par.h": "c",
 		"opp.h": "c",
 		"ft_opp.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"ft.h": "c"
 	}
 }
