@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/19 13:20:16 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/19 13:20:17 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LIST_H
 # define FT_LIST_H
+# include <stdlib.h>
 
 typedef struct	s_list
 {
@@ -7,5 +20,6 @@ typedef struct	s_list
 	void			*data;
 }				t_list;
 
-void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
+void			ft_list_remove_if(t_list **begin_list,
+				void *data_ref, int (*cmp)());
 #endif

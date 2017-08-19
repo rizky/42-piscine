@@ -173,12 +173,12 @@ int		main(int ac, char **av)
 				ft_list_push_front(&tmp, strdup(str));
 			}
 			ft_print_list_str(tmp);
-			// ft_list_remove_if(&tmp, "2", &ft_strcmp);
+			ft_list_remove_if(&tmp, "2", &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;		
 		case 13 :
-			printf("Ex13 : Should delete remove \n%s", GREEN);
+			printf("Ex13 : Should merge the lists \n%s", GREEN);
 			tmp = NULL;
 			tmp2 = NULL;
 			j = 0;
@@ -211,7 +211,7 @@ int		main(int ac, char **av)
 			ft_list_push_front(&tmp, strdup("9"));
 			ft_list_push_front(&tmp, strdup("6"));
 			ft_print_list_str(tmp);
-			// ft_list_sort(&tmp, &ft_strcmp);
+			ft_list_sort(&tmp, &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;	

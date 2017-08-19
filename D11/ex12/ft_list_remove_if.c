@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
@@ -28,7 +27,7 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 			list_after = list->next;
 			free(list);
 			list_before->next = list_after;
-		}		
+		}
 		list_before = list;
 		list = list->next;
 	}

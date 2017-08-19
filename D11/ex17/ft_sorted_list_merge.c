@@ -13,7 +13,7 @@
 #include "ft_list.h"
 #include <stdlib.h>
 
-t_list *ft_create_elem17(void *data)
+t_list	*ft_create_elem17(void *data)
 {
 	t_list *list_ptr;
 
@@ -26,7 +26,23 @@ t_list *ft_create_elem17(void *data)
 	return (list_ptr);
 }
 
-void	ft_sorted_list_insert17(t_list **begin_list, void *data, int (*cmp)(char *, char *))
+void	ft_insert_list17(t_list **begin_list,
+		void *data, t_list **current_list, t_list **prev_list)
+{
+	if ((*prev_list) == *begin_list)
+	{
+		*begin_list = ft_create_elem17(data);
+		(*begin_list)->next = *current_list;
+	}
+	else
+	{
+		(*prev_list)->next = ft_create_elem17(data);
+		(*prev_list)->next->next = *current_list;
+	}
+}
+
+void	ft_sorted_list_insert17(t_list **begin_list,
+		void *data, int (*cmp)(char *, char *))
 {
 	t_list	*list;
 	t_list	*prev_list;
@@ -40,24 +56,16 @@ void	ft_sorted_list_insert17(t_list **begin_list, void *data, int (*cmp)(char *,
 	prev_list = *begin_list;
 	while (list)
 	{
-		if(cmp(list->data, data) > 0)
+		if (cmp(list->data, data) > 0)
 			break ;
 		prev_list = list;
 		list = list->next;
 	}
-	if(prev_list == *begin_list)
-	{
-		*begin_list = ft_create_elem17(data);
-		(*begin_list)->next = list;
-	}
-	else
-	{
-		prev_list->next = ft_create_elem17(data);
-		prev_list->next->next = list;
-	}
+	ft_insert_list17(begin_list, data, &list, &prev_list);
 }
 
-void	ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2, int (*cmp)())
+void	ft_sorted_list_merge(t_list **begin_list1,
+		t_list *begin_list2, int (*cmp)())
 {
 	t_list	*list;
 	t_list	*list2;

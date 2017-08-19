@@ -20,6 +20,8 @@ void	ft_list_reverse(t_list **begin_list)
 
 	prev_list = 0;
 	current_list = *begin_list;
+	if (!current_list)
+		return ;
 	while (current_list->next)
 	{
 		next_list = current_list->next;
