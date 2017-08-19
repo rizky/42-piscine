@@ -20,6 +20,7 @@ int		main(int ac, char **av)
 	int		k, i, j;
 	t_list	*tmp;
 	t_list	*tmp2;
+	char str[2];
 
 	k = 0;
 	while (k < (ac == 1 ? K_MAX : ac - 1))
@@ -131,7 +132,6 @@ int		main(int ac, char **av)
 		case 7 :
 			printf("Ex07 : \n\t%s", GREEN);
 			tmp = NULL;
-			char str[2] = "";
 			j = 0;
 			while (++j < 5)
 			{
@@ -173,7 +173,7 @@ int		main(int ac, char **av)
 				ft_list_push_front(&tmp, strdup(str));
 			}
 			ft_print_list_str(tmp);
-			ft_list_remove_if(&tmp, "2", &ft_strcmp);
+			// ft_list_remove_if(&tmp, "2", &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;		
@@ -211,7 +211,7 @@ int		main(int ac, char **av)
 			ft_list_push_front(&tmp, strdup("9"));
 			ft_list_push_front(&tmp, strdup("6"));
 			ft_print_list_str(tmp);
-			ft_list_sort(&tmp, &ft_strcmp);
+			// ft_list_sort(&tmp, &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;	
@@ -240,6 +240,10 @@ int		main(int ac, char **av)
 			ft_list_push_front(&tmp, strdup("1"));			
 			ft_print_list_str(tmp);
 			ft_sorted_list_insert(&tmp,strdup("3"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("0"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("7"),&ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;		

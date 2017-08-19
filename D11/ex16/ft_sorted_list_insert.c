@@ -12,23 +12,33 @@
 
 #include "ft_list.h"
 
-void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
+void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)(char *, char *))
 {
 	t_list	*list;
-	t_list	*tmp;
+	t_list	*prev_list;
 
 	list = *begin_list;
-	if (list)
+	if (!list)
 	{
 		*begin_list = ft_create_elem(data);
 		return ;
 	}
-	while ((*cmp)(list->data, data) <= 0 && list->next)
+	prev_list = *begin_list;
+	while (list)
 	{
+		if(cmp(list->data, data) > 0)
+			break ;
+		prev_list = list;
 		list = list->next;
 	}
-	tmp = list->next;
-	list->next = ft_create_elem(data);
-	list = list->next;
-	list->next = tmp;
+	if(prev_list == *begin_list)
+	{
+		*begin_list = ft_create_elem(data);
+		(*begin_list)->next = list;
+	}
+	else
+	{
+		prev_list->next = ft_create_elem(data);
+		prev_list->next->next = list;
+	}
 }
