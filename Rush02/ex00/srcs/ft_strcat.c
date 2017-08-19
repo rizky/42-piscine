@@ -32,6 +32,6 @@ char	*ft_strcat(char *dest, char *src)
 		i++;
 		j++;
 	}
-	comb[ft_strlen(dest) + ft_strlen(src)] = '\0';
+	comb[i] = '\0';
 	return (comb);
 }

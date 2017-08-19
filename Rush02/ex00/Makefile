@@ -6,6 +6,7 @@ all: $(NAME)
 
 $(NAME):
 	# gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
+	clear;
 	gcc -o $(NAME) $(SRC) -I$(HEADER_DIR)
 
 clean:

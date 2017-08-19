@@ -13,25 +13,27 @@
 #include <unistd.h>
 #include "ft.h"
 
+char *base;
+
 void	ft_first(int x)
 {
 	int index;
 
-	ft_putchar('o');
+	base = ft_strcat(base, "o");
 	index = x - 1;
 	while (index > 1)
 	{
-		ft_putchar('-');
+		base = ft_strcat(base, "-");
 		index--;
 	}
 	if (x > 1)
 	{
-		ft_putchar('o');
-		ft_putchar('\n');
+		base = ft_strcat(base, "o");
+		base = ft_strcat(base, "\n");
 	}
 	else
 	{
-		ft_putchar('\n');
+		base = ft_strcat(base, "\n");
 	}
 }
 
@@ -39,31 +41,32 @@ void	ft_middle(int x)
 {
 	int index;
 
-	ft_putchar('|');
+	base = ft_strcat(base, "|");
 	index = x - 1;
 	while (index > 1)
 	{
-		ft_putchar(' ');
+		base = ft_strcat(base, " ");
 		index--;
 	}
 	if (x > 1)
 	{
-		ft_putchar('|');
-		ft_putchar('\n');
+		base = ft_strcat(base, "|");
+		base = ft_strcat(base, "\n");
 	}
 	else
 	{
-		ft_putchar('\n');
+		base = ft_strcat(base, "o");
 	}
 }
 
-void	rush00(int x, int y)
+char	*rush00(int x, int y, int len)
 {
 	int index;
 
+	base = (char*)malloc(sizeof(char) * (len + 1));
 	if (x <= 0 || y <= 0)
 	{
-		ft_putchar(0);
+		base = ft_strcat(base, "");
 	}
 	else
 	{
@@ -79,4 +82,6 @@ void	rush00(int x, int y)
 			ft_first(x);
 		}
 	}
+	base[len ] = '\0';
+	return (base);
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/14 20:30:14 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/14 20:30:15 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
+#include "ft.h"
 
-int		ft_putchar(char c);
-void	ft_putstr(char *str);
-int		ft_strcmp(char *s1, char *s2);
-int		ft_strlen(char *str);
-void	ft_swap(int *a, int *b);
-char	*ft_strcat(char *dest, char *src);
-void	ft_putnbr(int nb);
-char	*rush00(int x, int y, int len);
-#endif
+void	ft_putnbr(int nb)
+{
+	const char *base = "0123456789";
+
+	if ((nb / 10) > 0)
+		ft_putnbr(nb / 10);
+	ft_putchar(base[nb % 10]);
+}
