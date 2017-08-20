@@ -12,9 +12,9 @@
 
 #include "ft_btree.h"
 
-void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
+void	btree_apply_infix(t_btree *root, void (*applyf)())
 {
-	if (!root)
+	if (root)
 	{
 		if (root->left)
 			btree_apply_infix(root->left, applyf);

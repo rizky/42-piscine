@@ -30,7 +30,7 @@ char	*ft_strstr(char *str, char to_find)
 	return (NULL);
 }
 
-int		ft_wordcounter(char *str, char *sep)
+int		ft_wordcounter(char *str, char *charset)
 {
 	int		i;
 	int		wcount;
@@ -41,7 +41,7 @@ int		ft_wordcounter(char *str, char *sep)
 	state = 0;
 	while (str[i])
 	{
-		if (ft_strstr(sep, str[i]) != NULL)
+		if (ft_strstr(charset, str[i]) != NULL)
 		{
 			state = 0;
 		}
@@ -49,6 +49,8 @@ int		ft_wordcounter(char *str, char *sep)
 		{
 			state = 1;
 			wcount++;
+			if (wcount == 2)
+				charset = "\0";
 		}
 		i++;
 	}
@@ -86,22 +88,21 @@ char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[5])
 				v[1]++;
 				v[2] = 0;
 				v[3] = 0;
+				charset = "\0";
 			}
 		}
-		else if (v[3] == 0)
+		else
 		{
 			v[3] = 1;
 			v[2]++;
 		}
-		else
-			v[2]++;
 		v[0]++;
 	}
-	strtab[ft_wordcounter(str, charset)] = NULL;
+	strtab[v[1]] = NULL;
 	return (strtab);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split_once(char *str, char *charset)
 {
 	char	**strtab;
 	int		wcount;

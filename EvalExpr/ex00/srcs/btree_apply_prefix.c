@@ -12,9 +12,9 @@
 
 #include "ft_btree.h"
 
-void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
+void	btree_apply_prefix(t_btree *root, void (*applyf)())
 {
-	if (!root)
+	if (root)
 	{
 		(*applyf)(root->item);
 		if (root->left)

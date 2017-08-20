@@ -22,4 +22,4 @@ fclean: clean
 re: fclean all
 
 run: fclean all
-		./evalexpr "1 + 1"
+		./evalexpr "1 + 1 * 5 + 1"

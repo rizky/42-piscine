@@ -27,7 +27,6 @@ char	*ft_strcatch(char *dest, char src);
 void	ft_putnbr(int nb);
 char	*rush00(int x, int y, int len);
 char	*rush01(int x, int y, int len);
-char	**ft_split_whitespaces(char *str);
-char	**ft_split(char *str, char *charset);
-
+char	**ft_split_once(char *str, char *charset);
+char	*ft_strdup(char *src);
 #endif

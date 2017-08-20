@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btree_apply_suffix.c                               :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsilberm <tsilberm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/25 16:49:28 by tsilberm          #+#    #+#             */
-/*   Updated: 2015/07/25 16:50:02 by tsilberm         ###   ########.fr       */
+/*   Created: 2017/08/08 21:34:21 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/09 01:39:45 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_btree.h"
+#include <stdlib.h>
+#include "ft.h"
 
-void	btree_apply_suffix(t_btree *root, void (*applyf)())
+char	*ft_strdup(char *src)
 {
-	if (root)
+	char	*str;
+	int		len;
+	int		i;
+
+	len = ft_strlen(src);
+	i = 0;
+	str = (char*)malloc(sizeof(*str) * (len + 1));
+	while(src[i])
 	{
-		if (root->left)
-			btree_apply_suffix(root->left, applyf);
-		if (root->right)
-			btree_apply_suffix(root->right, applyf);
-		(*applyf)(root->item);
+		str[i] = src[i];
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }
