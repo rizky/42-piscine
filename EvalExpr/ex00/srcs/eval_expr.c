@@ -1,83 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   eval_expr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/20 22:12:43 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/20 22:12:44 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "eval_expr.h"
 #include "ft.h"
-#include "ft_btree.h"
+#include <stdlib.h>
 
-char	*ft_unparented(char *str)
+int	ft_eval_orde_2(char **str)
 {
-	int i;
-	int j;
+	int		result;
+	char	*s;
 
-	i = 0;
-	while (str[i])
+	s = *str;
+	result = 0;
+	if (*s == '(')
 	{
-		if (!(str[i] == '(' || str[i] == ' '))
-			break ;
-		if (str[i] == '(')
-		{
-			j = ft_strlen(str) - 1;
-			while (j > 0)
-			{
-				if (!(str[j] == ')' || str[j] == ' '))
-					break ;
-				if (str[j] == ')')
-				{
-					str[i] = ' ';
-					str[j] = ' ';
-					break ;
-				}
-				j--;
-			}
-			break ;
-		}
-		i++;
+		s++;
+		result = ft_eval_orde_0(&s);
+		s++;
 	}
-	return (str);
+	else
+	{
+		while (('0' <= *s) && (*s <= '9'))
+		{
+			result = result * 10 + *s - '0';
+			s++;
+		}
+	}
+	*str = s;
+	return (result);
 }
 
-int		ft_build_eval_tree(t_btree **root, char *op)
+int	ft_eval_orde_1(char **str)
 {
-	char **input;
+	int		result;
+	char	*s;
 
-	if (*root)
+	s = *str;
+	result = ft_eval_orde_2(&s);
+	while ((*s == '*') || (*s == '/') || (*s == '%'))
 	{
-		input = ft_split_once((*root)->item, op);
-		if (input[1])
+		if (*s == '*')
 		{
-			(*root)->left = btree_create_node(ft_unparented(input[0]));
-			(*root)->right = btree_create_node(ft_unparented(input[1]));
-			(*root)->item = ft_strdup(op);
-			ft_build_eval_tree(&(*root)->right, "+");
-			ft_build_eval_tree(&(*root)->left, "+");
-			ft_build_eval_tree(&(*root)->right, "-");
-			ft_build_eval_tree(&(*root)->left, "-");
-			ft_build_eval_tree(&(*root)->right, "/");
-			ft_build_eval_tree(&(*root)->left, "/");
-			ft_build_eval_tree(&(*root)->right, "*");
-			ft_build_eval_tree(&(*root)->left, "*");
-			ft_build_eval_tree(&(*root)->right, "%");
-			ft_build_eval_tree(&(*root)->left, "%");
+			s++;
+			result *= ft_eval_orde_2(&s);
 		}
-		else
-			return (0);
+		else if (*s == '/')
+		{
+			s++;
+			result /= ft_eval_orde_2(&s);
+		}
+		else if (*s == '%')
+		{
+			s++;
+			result %= ft_eval_orde_2(&s);
+		}
 	}
-	return (1);
+	*str = s;
+	return (result);
 }
 
-int		eval_expr(char *argv)
+int	ft_eval_orde_0(char **str)
 {
-	t_btree		*root;
+	int		result;
+	char	*s;
 
-	root = btree_create_node(ft_unparented(argv));
-	if (ft_build_eval_tree(&root, "+"))
-		return (btree_evaluate_prefix(root));
-	else if (ft_build_eval_tree(&root, "-"))
-		return (btree_evaluate_prefix(root));
-	else if (ft_build_eval_tree(&root, "/"))
-		return (btree_evaluate_prefix(root));
-	else if (ft_build_eval_tree(&root, "*"))
-		return (btree_evaluate_prefix(root));
-	else if (ft_build_eval_tree(&root, "%"))
-		return (btree_evaluate_prefix(root));
-	btree_apply_prefix(root, &ft_putstr);
-	ft_putstr("\n");
-	return (0);
+	s = *str;
+	result = ft_eval_orde_1(&s);
+	while ((*s == '+') || (*s == '-'))
+	{
+		if (*s == '+')
+		{
+			s++;
+			result += ft_eval_orde_1(&s);
+		}
+		else if (*s == '-')
+		{
+			s++;
+			result -= ft_eval_orde_1(&s);
+		}
+	}
+	*str = s;
+	return (result);
+}
+
+int	eval_expr(char *str)
+{
+	int		result;
+
+	str = ft_remove_whitespaces(str);
+	result = ft_eval_orde_0(&str);
+	return (result);
 }

@@ -6,7 +6,7 @@ all: $(NAME)
 
 $(NAME):
 	clear;
-	gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
+	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
 
 debug:
 	clear;
@@ -21,4 +21,8 @@ fclean: clean
 re: fclean all
 
 run: fclean all
-		./evalexpr "(0 - 1) + (0 - 5)"
+	./evalexpr "1 - 5 - 1";
+
+test: fclean all
+	./evalexpr "1 + 2 + ( ( ( 3  *  4 + 4 * 3 / 2 * 2 * 2) + 3 + 22 ) + 6 * ( ( 2 *  (-9) ) + 2 )  ) -1 - 5";
+	./evalexpr "3 + 42 * (1 - 2 / (3 + 4) - 1 % 21) + 1";

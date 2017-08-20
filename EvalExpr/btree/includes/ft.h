@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/20 22:12:29 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/20 22:12:30 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/14 20:30:14 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/14 20:30:15 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 # define FT_H
 
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 
-void	ft_putchar(char c);
-void	ft_putnbr(int n);
-int		ft_atoi(char *str);
+int		ft_putchar(char c);
+void	ft_putstr(char *str);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(char *str);
-char	*ft_remove_whitespaces(char *str);
+void	ft_swap(int *a, int *b);
+char	*ft_strcat(char *dest, char *src);
+char	*ft_strcatch(char *dest, char src);
+void	ft_putnbr(int nb);
+char	*rush00(int x, int y, int len);
+char	*rush01(int x, int y, int len);
+char	**ft_split_once(char *str, char *charset);
+char	*ft_strdup(char *src);
+int		ft_atoi(char *str);
+int		eval_expr(char *argv);
 #endif
