@@ -2,8 +2,6 @@
 
 #define BUF_SIZE 5
 
-// cat rush-00.txt| ./rush-2
-
 char	*ft_read_stdin()
 {
 	char 	*input;
@@ -45,6 +43,20 @@ int		ft_get_row(char *str)
 	return (len);
 }
 
+void	ft_print_result(char *type, int col, int row)
+{
+	ft_putstr(type);
+	ft_putchar(' ');
+	ft_putchar('[');
+	ft_putnbr(col);
+	ft_putchar(']');
+	ft_putchar(' ');
+	ft_putchar('[');
+	ft_putnbr(row);
+	ft_putchar(']');
+	ft_putchar('\n');
+}
+
 int main()
 {
 	char 	*input;
@@ -55,21 +67,16 @@ int main()
 	input = ft_read_stdin();
 	col = ft_get_col(input);
 	row = ft_get_row(input);
-	ft_putstr(input);
 
 	base = rush00(col, row, ft_strlen(input));
-	ft_putstr(base);
 	if (ft_strcmp(input, base) == 0)
 	{
-		ft_putstr("[rush-00]");
-		ft_putchar(' ');
-		ft_putchar('[');
-		ft_putnbr(col);
-		ft_putchar(']');
-		ft_putchar(' ');
-		ft_putchar('[');
-		ft_putnbr(row);
-		ft_putchar(']');
+		ft_print_result("[rush-00]", col, row);
+	}
+	base = rush01(col, row, ft_strlen(input));
+	if (ft_strcmp(input, base) == 0)
+	{
+		ft_print_result("[rush-01]", col, row);
 	}
 	return (0);
 }

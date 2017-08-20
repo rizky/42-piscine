@@ -35,3 +35,20 @@ char	*ft_strcat(char *dest, char *src)
 	comb[i] = '\0';
 	return (comb);
 }
+
+char	*ft_strcatch(char *dest, char src)
+{
+	char	*comb;
+	int		i;
+
+	comb = (char*)malloc(sizeof(char) * (ft_strlen(dest) + 1 + 1));
+	i = 0;
+	while (dest[i])
+	{
+		comb[i] = dest[i];
+		i++;
+	}
+	comb[i] = src;
+	comb[i + 1] = '\0';
+	return (comb);
+}

@@ -2,7 +2,7 @@
 
 char *base;
 
-void	ft_get_line00(int x, char a, char b, char c)
+void	ft_get_line01(int x, char a, char b, char c)
 {
 	int i;
 	
@@ -22,23 +22,23 @@ void	ft_get_line00(int x, char a, char b, char c)
 	base = ft_strcatch(base, '\n');
 }
 
-char	*rush00(int x, int y, int len)
+char	*rush01(int x, int y, int len)
 {
 	int i;
 	
 	base = (char*)malloc(sizeof(char) * (len + 1));
 	if (y == 1)
-	ft_get_line00(x, 'o', '-', 'o');
+	ft_get_line01(x, '/', '*', '\\');
 	if (y > 1)
 	{
 		i = 2;
-		ft_get_line00(x, 'o', '-', 'o');
+		ft_get_line01(x, '/', '*', '\\');
 		while (i < y)
 		{
-			ft_get_line00(x, '|', ' ', '|');
+			ft_get_line01(x, '*', ' ', '*');
 			i++;
 		}
-		ft_get_line00(x, 'o', '-', 'o');
+		ft_get_line01(x, '\\', '*', '/');
 	}
 	return (base);
 }

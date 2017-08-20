@@ -13,7 +13,7 @@
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/rnugroho/Documents/Piscine/a.out",
+            "program": "/Users/rizkyario/Documents/Codes/C/piscine/Rush02/ex00/a.out",
             "args": ["17", "Hello"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
