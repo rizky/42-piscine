@@ -1,58 +1,72 @@
 #include "ft.h"
 #include "ft_btree.h"
 
-void ft_build_eval_tree(t_btree **root)
+char	*ft_unparented(char *str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (str[i])
+	{
+		if(str[i] == '(')
+		{
+			j = ft_strlen(str) - 1;
+			while (j > 0)
+			{
+				if(!(str[j] == ')' || str[j] == ' '))
+					break ;
+				if(str[j] == ')')
+				{
+					str[i] = ' ';
+					str[j] = ' ';
+					break ;
+				}
+				j--;
+			}
+			break ;
+		}
+		i++;
+	}
+	return (str);
+}
+int	ft_build_eval_tree(t_btree **root, char *op)
 {
 	char		**input;
-	t_btree		*left_node;
-	t_btree		*right_node;
 
 	if(*root)
 	{
-		input = ft_split_once((*root)->item, "+");
+		input = ft_split_once((*root)->item, op);
 		if (input[1])
 		{
-			left_node = btree_create_node(input[0]);
-			(*root)->left = left_node;
-			right_node = btree_create_node(input[1]);
-			(*root)->right = right_node;
-			ft_build_eval_tree(&(*root)->right);
-			ft_build_eval_tree(&(*root)->left);
-			(*root)->item = ft_strdup("+");
+			(*root)->left = btree_create_node(ft_unparented(input[0]));
+			(*root)->right = btree_create_node(ft_unparented(input[1]));
+			(*root)->item = ft_strdup(op);
+			ft_build_eval_tree(&(*root)->right, "+");
+			ft_build_eval_tree(&(*root)->left, "+");
+			ft_build_eval_tree(&(*root)->right, "-");
+			ft_build_eval_tree(&(*root)->left, "-");
+			ft_build_eval_tree(&(*root)->right, "*");
+			ft_build_eval_tree(&(*root)->left, "*");
+			ft_build_eval_tree(&(*root)->right, "/");
+			ft_build_eval_tree(&(*root)->left, "/");
 		}
-		else
-		{
-			input = ft_split_once((*root)->item, "*");
-			if (input[1])
-			{
-				left_node = btree_create_node(input[0]);
-				(*root)->left = left_node;
-				right_node = btree_create_node(input[1]);
-				(*root)->right = right_node;
-				ft_build_eval_tree(&(*root)->right);
-				ft_build_eval_tree(&(*root)->left);
-				(*root)->item = ft_strdup("*");
-			}
-		}
+		return 1;
 	}
+	else
+		return 0;
 }
 
 int eval_expr(char *argv)
 {
-	char 	**input;
 	t_btree		*root;
 
 	root = btree_create_node(argv);
-	ft_build_eval_tree(&root);
+	ft_build_eval_tree(&root, "+");
 
-	btree_apply_suffix(root, &ft_putstr);
-	ft_putstr("\n");
 	btree_apply_prefix(root, &ft_putstr);
 	ft_putstr("\n");
-	btree_apply_infix(root, &ft_putstr);
-	ft_putstr("\n");
-	ft_putstr("\n");
-	return (0);
+	return (btree_evaluate_prefix(root));
 }
 
 int		main(int ac, char **av)

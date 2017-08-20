@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 16:13:45 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 16:40:00 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 17:22:42 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 18:32:36 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_swap(int *a, int *b)
+int		ft_atoi(char *str)
 {
-	int temp;
+	char	*c;
+	int		sign;
+	int		number;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	c = str;
+	sign = 1;
+	number = 0;
+	while (*c == ' ' || *c == '\t' || *c == '\v' || *c == '+')
+		c++;
+	if (*c == '-')
+	{
+		sign = -1;
+		c++;
+	}
+	while (*c != '\0')
+	{
+		if (*c >= '0' && *c <= '9')
+			number = (number * 10) + (*c - '0');
+		else
+			break ;
+		c++;
+	}
+	return (number * sign);
 }

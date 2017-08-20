@@ -29,4 +29,5 @@ char	*rush00(int x, int y, int len);
 char	*rush01(int x, int y, int len);
 char	**ft_split_once(char *str, char *charset);
 char	*ft_strdup(char *src);
+int		ft_atoi(char *str);
 #endif

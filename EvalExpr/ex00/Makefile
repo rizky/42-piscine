@@ -5,9 +5,8 @@ HEADER_DIR = includes
 all: $(NAME)
 
 $(NAME):
-	# gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
 	clear;
-	gcc -o $(NAME) $(SRC) -I$(HEADER_DIR)
+	gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
 
 debug:
 	clear;
@@ -22,4 +21,4 @@ fclean: clean
 re: fclean all
 
 run: fclean all
-		./evalexpr "1 + 1 * 5 + 1"
+		./evalexpr "1 + 10 * 5 + (2 - 1) * 3 * 2 / 2"
