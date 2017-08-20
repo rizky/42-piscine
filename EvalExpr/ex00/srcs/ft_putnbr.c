@@ -12,11 +12,27 @@
 
 #include "ft.h"
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(int number)
 {
-	const char *base = "0123456789";
+	int tens;
+	int i;
 
-	if ((nb / 10) > 0)
-		ft_putnbr(nb / 10);
-	ft_putchar(base[nb % 10]);
+	if (number < 0)
+	{
+		ft_putchar('-');
+		number = number * -1;
+	}
+	tens = 1;
+	i = number / 10;
+	while (i > 0)
+	{
+		i = i / 10;
+		tens = tens * 10;
+	}
+	while (tens > 0)
+	{
+		ft_putchar(number / tens + '0');
+		number = number % tens;
+		tens = tens / 10;
+	}
 }

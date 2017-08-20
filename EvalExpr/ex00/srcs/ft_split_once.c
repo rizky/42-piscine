@@ -69,9 +69,9 @@ char	**ft_word_extractor(char *str, char **strtab, char *charset, int v[5])
 		}
 		else
 		{
-			if(!ft_strstr("(", str[v[0]]))
+			if (!ft_strstr("(", str[v[0]]))
 				par++;
-			if(!ft_strstr(")", str[v[0]]))
+			if (!ft_strstr(")", str[v[0]]))
 				par--;
 			v[3] = 1;
 			v[2]++;
