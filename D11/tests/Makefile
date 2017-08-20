@@ -13,3 +13,7 @@ fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
+	clear
+
+debug:
+	@gcc -g $(NAME) $(SRC)

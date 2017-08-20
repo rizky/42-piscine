@@ -166,14 +166,14 @@ int		main(int ac, char **av)
 			printf("Ex12 : Should delete remove \n%s", GREEN);
 			tmp = NULL;
 			j = 0;
-			while (++j < 5)
+			while (++j < 2)
 			{
 				str[0] = j + '0';
 				str[1] = '\0';
 				ft_list_push_front(&tmp, strdup(str));
 			}
 			ft_print_list_str(tmp);
-			ft_list_remove_if(&tmp, "2", &ft_strcmp);
+			ft_list_remove_if(&tmp, "1", &ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;		
