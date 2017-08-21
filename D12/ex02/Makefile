@@ -16,16 +16,18 @@ fclean: clean
 re: fclean all
 
 run: fclean all
-		./ft_tail srcs/ft_putchar.c files/a.txt files/b.txt;
-		tail srcs/ft_putchar.c files/a.txt files/b.txt;
-
-compare: fclean all
-		./ft_tail srcs/ft_putchar.c files/a.txt > outputs/a.txt;
-		tail srcs/ft_putchar.c files/a.txt > outputs/b.txt;
+		./ft_tail -c 50 srcs/ft_putchar.c;
+		tail -c 50 srcs/ft_putchar.c;
+	
+diff: fclean all
+		./ft_tail -c 50 srcs/ft_putchar.c files/a.txt files/c.txt > outputs/a.txt;
+		tail -c 50 srcs/ft_putchar.c files/a.txt files/c.txt > outputs/b.txt;
 		diff -u outputs/a.txt outputs/b.txt;
 
 test: fclean all
-		./ft_tail srcs/ft_putchar.c;
-		tail srcs/ft_putchar.c;
-		./ft_tail files/a.txt;
-		tail files/a.txt;
+		./ft_tail -c 50 srcs/ft_putchar.c;
+		tail -c 50 srcs/ft_putchar.c;
+		./ft_tail -c 50 files/a.txt;
+		tail -c 50 files/a.txt;
+		./ft_tail -c 50 srcs/ft_putchar.c files/a.txt files/b.txt;
+		tail -c 50 srcs/ft_putchar.c files/a.txt files/b.txt;

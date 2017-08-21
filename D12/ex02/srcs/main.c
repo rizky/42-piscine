@@ -1,23 +1,5 @@
 #include "ft.h"
 
-int		ft_get_row(char *str)
-{
-	int len;
-	int i;
-
-	len = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			len++;
-		i++;
-	}
-	if (str[0] != '\0')
-		len = len + 1;
-	return (len);
-}
-
 void	ft_read_file(int fd, int line)
 {
 	char 	*input;
@@ -25,7 +7,6 @@ void	ft_read_file(int fd, int line)
 	int		ret;
 	int		i;
 	int		j;
-	int		nl_counter;
 
 	input = (char*)malloc(sizeof(char));;
 	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
@@ -35,25 +16,19 @@ void	ft_read_file(int fd, int line)
 		input = ft_strcat(input, buf);
 	}
 
-	i = ft_get_row(input) - line;
+	i = ft_strlen(input) - line;
 	if (i < 0 )
 		i = 0;
 	j = 0;
-	nl_counter = 0;
 	while (input[j])
 	{
-		if (input[j] == '\n' && nl_counter < i -1)
-		{
-			nl_counter++;
-			j++;
-		}
-		if (nl_counter >= i - 1)
+		if (j >= i)
 			ft_putchar(input[j]);
 		j++;
 	}
 }
 
-void	ft_display_file(char *prog_name, char *arg)
+void	ft_display_file(char *prog_name, char *charlimit, char *arg)
 {
 	int		fd;
 
@@ -62,7 +37,7 @@ void	ft_display_file(char *prog_name, char *arg)
 	if (fd == -1)
 			ft_error(prog_name, arg);
 	else
-		ft_read_file(fd, 10);
+		ft_read_file(fd, ft_atoi(charlimit));
 	if (close(fd) == -1 && fd == 3)
 		ft_putstr("Failed to close");
 }
@@ -71,18 +46,18 @@ int		main(int argc, char **argv)
 {
 	int i;
 
-	i = 1;
+	i = 3;
 	while (i < argc)
 	{
-		if (argc > 2)
+		if (argc > 4)
 		{
-			if (i > 1)
+			if (i > 3)
 				ft_putstr("\n");
 			ft_putstr("==> ");
 			ft_putstr(argv[i]);
 			ft_putstr(" <==\n");
 		}
-		ft_display_file (argv[0], argv[i]);
+		ft_display_file (argv[0], argv[2], argv[i]);
 		i++;
 	}
 	return (0);
