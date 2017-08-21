@@ -92,7 +92,7 @@ int		main(int argc, char **argv)
 	{
 		while (i < argc)
 		{
-			ft_display_file(argv[0], argv[i]);
+			ft_display_file("cat", argv[i]);
 			i++;
 		}
 	}

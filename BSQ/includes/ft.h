@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 16:13:45 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 16:40:00 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/21 17:47:09 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/21 17:47:09 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_H
+# define FT_H
 
-void	ft_swap(int *a, int *b)
-{
-	int temp;
+# include <unistd.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <errno.h>
+# include <stdlib.h>
+# define BUF_SIZE 1024
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
+void	ft_putstr(char *str);
+void	ft_putchar(char c);
+void	ft_read_stdin(void);
+void	ft_error(char *prog_name, char *arg);
+int		ft_strlen(char *str);
+char	*ft_strcat(char *dest, char *src);
+
+#endif

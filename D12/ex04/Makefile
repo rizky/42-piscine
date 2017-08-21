@@ -6,7 +6,6 @@ all: $(NAME)
 
 $(NAME):
 	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
-	clear;
 
 clean:
 	@/bin/rm -f *.o

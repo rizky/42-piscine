@@ -34,8 +34,8 @@ int		main(int argc, char **argv)
 {
 	int i;
 	int isC;
-	g_input = (char*)malloc(sizeof(char));
 
+	g_input = (char*)malloc(sizeof(char));
 	isC = 0;
 	if (ft_strcmp(argv[1], "-C") == 0)
 		isC = 1;

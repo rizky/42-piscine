@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 01:18:30 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 02:11:12 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/21 17:53:29 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/21 17:53:29 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	ft_putnbr(int nb)
+void	ft_error(char *prog_name, char *arg)
 {
-	const char *base = "0123456789";
-
-	if ((nb / 10) > 0)
-		ft_putnbr(nb / 10);
-	ft_putchar(base[nb % 10]);
+	if (errno == EACCES)
+	{
+		ft_putstr(prog_name);
+		ft_putstr(": ");
+		ft_putstr(arg);
+		ft_putstr(": Permission Denied\n");
+	}
+	else if (errno == EISDIR)
+	{
+		ft_putstr(prog_name);
+		ft_putstr(": ");
+		ft_putstr(arg);
+		ft_putstr(": Is a directory\n");
+	}
+	else
+	{
+		ft_putstr(prog_name);
+		ft_putstr(": ");
+		ft_putstr(arg);
+		ft_putstr(": No such file or directory\n");
+	}
 }
