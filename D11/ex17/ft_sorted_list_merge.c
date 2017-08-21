@@ -86,7 +86,10 @@ void	ft_sorted_list_merge(t_list **begin_list1,
 		list2 = ft_list_before_last17(begin_list2);
 		ft_sorted_list_insert17(begin_list1, list2->next, cmp);
 		if (list2 == begin_list2)
+		{
+			ft_sorted_list_insert17(begin_list1, list2, cmp);
 			begin_list2 = NULL;
+		}
 		else
 			list2->next = NULL;
 	}
