@@ -26,20 +26,15 @@ int		main(int argc, char **argv)
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
-		{
 			ft_putstr("Failed opening");
-			return (1);
-		}
-		while ((ret = read(fd, buf, BUF_SIZE)))
-		{
-			buf[ret] = '\0';
-			ft_putstr(buf);
-		}
-		if (close(fd) == -1)
-		{
+		else
+			while ((ret = read(fd, buf, BUF_SIZE)))
+			{
+				buf[ret] = '\0';
+				ft_putstr(buf);
+			}
+		if (close(fd) == -1 && fd == 3)
 			ft_putstr("Failed closing");
-			return (1);
-		}
 	}
 	else
 		ft_putstr("Too many arguments.\n");

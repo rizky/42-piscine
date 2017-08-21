@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/21 17:47:22 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/21 17:47:23 by rnugroho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft.h"
 
 void	ft_error(char *prog_name, char *arg)
@@ -42,7 +54,7 @@ void	ft_display_file(char *prog_name, char *arg)
 	char	buffer[BUFFER_SIZE + 1];
 
 	errno = 0;
-	fd = open (arg, O_RDWR);
+	fd = open(arg, O_RDWR);
 	if (fd == -1)
 	{
 		if (arg[0] == '-' && arg[1] == '\0')
@@ -80,7 +92,7 @@ int		main(int argc, char **argv)
 	{
 		while (i < argc)
 		{
-			ft_display_file (argv[0], argv[i]);
+			ft_display_file(argv[0], argv[i]);
 			i++;
 		}
 	}

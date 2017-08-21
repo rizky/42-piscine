@@ -15,16 +15,16 @@
 void	ft_insert_list17(t_list **begin_list,
 	t_list *inserted_list, t_list **current_list, t_list **prev_list)
 {
-if ((*current_list) == *begin_list)
-{
-	*begin_list = inserted_list;
-	(*begin_list)->next = *current_list;
-}
-else
-{
-	(*prev_list)->next = inserted_list;
-	(*prev_list)->next->next = *current_list;
-}
+	if ((*current_list) == *begin_list)
+	{
+		*begin_list = inserted_list;
+		(*begin_list)->next = *current_list;
+	}
+	else
+	{
+		(*prev_list)->next = inserted_list;
+		(*prev_list)->next->next = *current_list;
+	}
 }
 
 void	ft_sorted_list_insert17(t_list **begin_list,
