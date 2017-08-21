@@ -34,5 +34,9 @@ void	ft_error(char *prog_name, char *arg)
 		ft_putstr(": ");
 		ft_putstr(arg);
 		ft_putstr(": No such file or directory\n");
+		ft_putstr(prog_name);
+		ft_putstr(": ");
+		ft_putstr(arg);
+		ft_putstr(": Bad file descriptor\n");
 	}
 }

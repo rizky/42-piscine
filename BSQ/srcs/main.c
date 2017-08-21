@@ -55,9 +55,49 @@ void	ft_display_file(char *prog_name, char *arg)
 		ft_putstr("Failed to close");
 }
 
-void	ft_input_to_array(char *str)
+int		ft_get_col(char *str)
 {
+	int len;
 
+	len = 0;
+	while ((str[len] != '\0') && (str[len] != '\n'))
+		len++;
+	return (len);
+}
+int		ft_get_row(char *str)
+{
+	int len;
+	int i;
+
+	len = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			len++;
+		i++;
+	}
+	return (len);
+}
+
+int		**ft_input_to_array(char *str, int nrow, int ncol)
+{
+	int board[nrow][ncol];
+	int i;
+	int j;
+
+	i = 0
+	while (i < nrow)
+	{
+		j = 0
+		while (j < ncol)
+		{
+			board[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+	
 }
 
 int		main(int argc, char **argv)
@@ -76,6 +116,7 @@ int		main(int argc, char **argv)
 			i++;
 		}
 	}
-	ft_putstr(g_input);
+	ft_putstr(g_input, ft_get_row(g_input), ft_get_col(g_input));
+
 	return (0);
 }

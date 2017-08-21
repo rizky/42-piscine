@@ -53,9 +53,10 @@ int		main(int argc, char **argv)
 	i = 1 + is_c;
 	while (i < argc)
 	{
-		ft_display_file(argv[0], argv[i]);
+		ft_display_file("hexdump", argv[i]);
 		i++;
 	}
-	ft_print_memory(g_input, ft_strlen(g_input), is_c);
+	if (ft_strlen(g_input) > 0)
+		ft_print_memory(g_input, ft_strlen(g_input), is_c);
 	return (0);
 }

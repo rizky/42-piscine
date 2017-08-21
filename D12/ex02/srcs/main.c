@@ -68,7 +68,7 @@ int		main(int argc, char **argv)
 			ft_putstr(argv[i]);
 			ft_putstr(" <==\n");
 		}
-		ft_display_file(argv[0], argv[2], argv[i]);
+		ft_display_file("tail", argv[2], argv[i]);
 		i++;
 	}
 	return (0);
