@@ -14,7 +14,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/rizkyario/Documents/Codes/C/piscine/EvalExpr/ex00/a.out",
-            "args": ["(0 - 1) + (0-5)"],
+            "args": ["1 * - 1"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
