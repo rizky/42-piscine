@@ -26,7 +26,12 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 		{
 			list_after = list->next;
 			free(list);
-			list_before->next = list_after;
+			if ((list_before == *begin_list) && (list_before->next == NULL))
+				*begin_list = NULL;
+			if ((list_before == *begin_list) && (list_after!=NULL))
+				*begin_list = list_after;
+			else
+				list_before->next = list_after;
 		}
 		list_before = list;
 		list = list->next;

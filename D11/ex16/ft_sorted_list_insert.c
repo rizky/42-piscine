@@ -15,7 +15,7 @@
 void	ft_insert_list(t_list **begin_list,
 		void *data, t_list **current_list, t_list **prev_list)
 {
-	if ((*prev_list) == *begin_list)
+	if ((*current_list) == *begin_list)
 	{
 		*begin_list = ft_create_elem(data);
 		(*begin_list)->next = *current_list;

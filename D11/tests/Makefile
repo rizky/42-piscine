@@ -16,4 +16,4 @@ re: fclean all
 	clear
 
 debug:
-	@gcc -g $(NAME) $(SRC)
+	@gcc -g $(SRC)

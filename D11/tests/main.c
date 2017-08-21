@@ -110,9 +110,10 @@ int		main(int ac, char **av)
 			printf("%s\t(tested on a list of 50 elements)\n", (char*)ft_list_last(tmp)->data);
 			break ;
 		case 5 :
-			printf("Ex05 : You should the the arguments you passed ina reversed order :\n\t%s", GREEN);
+			printf("Ex05 : array to list :\n\t%s", GREEN);
 			tmp = NULL;
-			tmp = ft_list_push_params(ac, av);
+			char	*words1[] = {"Hello", 0};
+			tmp = ft_list_push_params(2, words1);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;
@@ -166,15 +167,21 @@ int		main(int ac, char **av)
 			printf("Ex12 : Should delete remove \n%s", GREEN);
 			tmp = NULL;
 			j = 0;
-			while (++j < 2)
+			while (++j <= 7)
 			{
 				str[0] = j + '0';
 				str[1] = '\0';
 				ft_list_push_front(&tmp, strdup(str));
 			}
 			ft_print_list_str(tmp);
-			ft_list_remove_if(&tmp, "1", &ft_strcmp);
-			ft_print_list_str(tmp);
+			j = 8;
+			while (--j > 0)
+			{
+				str[0] = j + '0';
+				str[1] = '\0';
+				ft_list_remove_if(&tmp, str, &ft_strcmp);
+				ft_print_list_str(tmp);
+			}
 			printf("%s\n", END);
 			break ;		
 		case 13 :
@@ -231,19 +238,21 @@ int		main(int ac, char **av)
 			break ;	
 		case 16 :
 			printf("Ex16 : Should be sorted list \n%s", GREEN);
-			tmp = NULL;
-			ft_list_push_front(&tmp, strdup("6"));
-			ft_list_push_front(&tmp, strdup("5"));
-			ft_list_push_front(&tmp, strdup("4"));
-			ft_list_push_front(&tmp, strdup("3"));
-			ft_list_push_front(&tmp, strdup("2"));
-			ft_list_push_front(&tmp, strdup("1"));			
+			tmp = NULL;		
 			ft_print_list_str(tmp);
-			ft_sorted_list_insert(&tmp,strdup("3"),&ft_strcmp);
+			ft_sorted_list_insert(&tmp,strdup("jM"),&ft_strcmp);
 			ft_print_list_str(tmp);
-			ft_sorted_list_insert(&tmp,strdup("0"),&ft_strcmp);
+			ft_sorted_list_insert(&tmp,strdup("Hkh1Zw8"),&ft_strcmp);
 			ft_print_list_str(tmp);
-			ft_sorted_list_insert(&tmp,strdup("7"),&ft_strcmp);
+			ft_sorted_list_insert(&tmp,strdup("ndGY2Ls"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("dgUP8f"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("YGRXFD9"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("MGciqVg"),&ft_strcmp);
+			ft_print_list_str(tmp);
+			ft_sorted_list_insert(&tmp,strdup("QtjqcNO"),&ft_strcmp);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;		
