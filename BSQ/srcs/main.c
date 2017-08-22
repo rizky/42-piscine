@@ -51,7 +51,7 @@ void	ft_display_file(char *prog_name, char *arg)
 			ft_error(prog_name, arg);
 	else
 		ft_read_file(fd);
-	if (close(fd) == -1 && fd == 3)
+	if (close(fd) == -1 && fd != -1)
 		ft_putstr("Failed to close");
 }
 
@@ -72,6 +72,7 @@ int		ft_get_col(char *str)
 	}
 	return (len);
 }
+
 int		ft_get_row(char *str)
 {
 	int len;
@@ -159,6 +160,32 @@ void		ft_count_obstacle(int **board, int nrow, int ncol)
 	}	
 }
 
+void		ft_print_solution(char *str, int row, int col, int size)
+{
+	int c;
+	int i;
+	int crow;
+	int ccol;
+
+	c = 0;
+	while ((str[c] != '\0') && (str[c] != '\n'))
+		c++;
+	c++;
+	i = 0;
+	while (str[c])
+	{
+		ccol = i % ft_get_col(g_input);
+		crow = i / ft_get_col(g_input);
+		if(((ccol >= col) && (ccol <= col + size - 1) )&& ((crow >= row) && (crow <= row + size - 1)))
+			ft_putchar('x');
+		else
+			ft_putchar(str[c]);
+		c++;
+		if (str[c] != '\n')
+			i++;
+	}
+}
+
 void		ft_find_square(int **board, int nrow, int ncol)
 {
 	int i;
@@ -213,13 +240,13 @@ void		ft_find_square(int **board, int nrow, int ncol)
 		}
 		i++;
 	}
-
 	ft_putnbr(max_size);
 	ft_putstr(" - ");
 	ft_putnbr(max_row);
 	ft_putstr(" - ");
 	ft_putnbr(max_col);
 	ft_putstr("\n");
+	ft_print_solution(g_input, max_row, max_col, max_size);
 }
 
 int		main(int argc, char **argv)
