@@ -205,13 +205,13 @@ void		ft_find_square(int **board, int nrow, int ncol)
 	max_row = 0;
 	max_col = 0;
 	max_size = 0;
-	while ((i + size) < nrow)
+	while ((i + size - 1) < nrow)
 	{
 		j = 0;
-		while ((j + size) < ncol)
+		while ((j + size -1) < ncol)
 		{
 			nobs = 0;
-			while (nobs == 0 && (size + i < nrow) && (size + j < ncol))
+			while (nobs == 0 && (size + i - 1 < nrow) && (size + j - 1 < ncol))
 			{
 				if (i > 0 && j > 0)
 					tl = board[i - 1][j - 1];
@@ -260,7 +260,8 @@ int		main(int argc, char **argv)
 		g_input = (char*)malloc(sizeof(char));
 		ft_read_stdin();
 		board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-		ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+		ft_putstr(g_input);
+		ft_putstr("\n");
 		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
 		ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 	}
@@ -271,7 +272,8 @@ int		main(int argc, char **argv)
 			g_input = (char*)malloc(sizeof(char));
 			ft_display_file(argv[0], argv[i]);
 			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-			ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+			ft_putstr(g_input);
+			ft_putstr("\n");
 			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
 			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
