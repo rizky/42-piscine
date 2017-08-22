@@ -176,25 +176,26 @@ void		ft_print_solution(char *str, int row, int col, int size)
 {
 	int c;
 	int i;
-	int crow;
-	int ccol;
+	int j;
 
 	c = 0;
 	while ((str[c] != '\0') && (str[c] != '\n'))
 		c++;
-	c++;
 	i = 0;
+	j = 0;
 	while (str[c])
 	{
-		ccol = i % ft_get_col(g_input);
-		crow = i / ft_get_col(g_input);
-		if(((ccol >= col) && (ccol < ccol + size) )&& ((crow >= row) && (crow < crow + size)))
+		if (str[c] == '\n')
+		{
+			i++;
+			j = 0;
+		}
+		if (i >= row && i <= (row + size - 1) && j >= col && j <= (col + size)   && str[c] != '\n')
 			ft_putchar('x');
 		else
 			ft_putchar(str[c]);
-		if (str[c] != '\n')
-			i++;
 		c++;
+		j++;
 	}
 }
 
