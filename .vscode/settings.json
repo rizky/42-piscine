@@ -5,6 +5,7 @@
 		"opp.h": "c",
 		"ft_opp.h": "c",
 		"unistd.h": "c",
-		"ft.h": "c"
+		"ft.h": "c",
+		"utmp.h": "c"
 	}
 }

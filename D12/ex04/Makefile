@@ -5,7 +5,7 @@ HEADER_DIR = includes
 all: $(NAME)
 
 $(NAME):
-	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
+	@gcc -o $(NAME) $(SRC) -I$(HEADER_DIR)
 
 clean:
 	@/bin/rm -f *.o

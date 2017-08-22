@@ -1,51 +1,39 @@
-#include "ft.h"
+#include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <utmp.h>
 
-char 	*g_input;
-
-void	ft_read_file(int fd)
+void utmpprint(struct utmp *log)
 {
-	char	*buf;
-	int		ret;
-
-	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
-	while ((ret = read(fd, buf, BUF_SIZE)))
-	{
-		buf[ret] = '\0';
-		g_input = ft_strcat(g_input, buf);
-	}
-	
+	printf("\n ut_name: %s ut_line: %ld ut_host %s\n", log->ut_name, log->ut_line, log->ut_host);
 }
 
-void	ft_display_file(char *prog_name, char *arg)
-{
-	int		fd;
+int main() {
 
-	errno = 0;
-	fd = open (arg, O_RDWR);
-	if (fd == -1)
-			ft_error(prog_name, arg);
-	else
-		ft_read_file(fd);
-	if (close(fd) == -1 && fd == 3)
-		ft_putstr("Failed to close");
-}
+	int logsize = 10;
+	int file;
+	struct utmp log[logsize];
+	int i = 0;
 
-int		main(int argc, char **argv)
-{
-	int i;
-	int isC;
-
-	g_input = (char*)malloc(sizeof(char));
-	isC = 0;
-	if (ft_strcmp(argv[1], "-C") == 0)
-		isC = 1;
-	i = 1 + isC;
-	while (i < argc)
-	{
-		ft_display_file (argv[0], argv[i]);
-		// /var/log/accountpolicy.log
-		i++;
+	file = open("/var/run/utmpx", O_RDONLY);
+	if( file < 0 ) 
+	{ 
+	   printf("Failed to open");
+	   return(0);
 	}
-	ft_print_memory(g_input, ft_strlen(g_input), isC);
-	return (0);
+	if (file) {
+			read(file, &log, sizeof(log));
+			for(i = 0; i < logsize; i++) {
+
+					utmpprint(&log[i]);
+			}
+			close(file);
+
+	} else {
+			return(0);
+	}
+	return(0);
 }

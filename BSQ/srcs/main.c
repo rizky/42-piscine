@@ -150,6 +150,18 @@ void		ft_count_obstacle(int **board, int nrow, int ncol)
 	i = 1;
 	while (i < nrow)
 	{
+		board[i][0] += board[i - 1][0];
+		i++;
+	}
+	i = 1;
+	while (i < ncol)
+	{
+		board[0][i] += board[0][i - 1];
+		i++;
+	}
+	i = 1;
+	while (i < nrow)
+	{
 		j = 1;
 		while (j < ncol)
 		{
@@ -176,13 +188,13 @@ void		ft_print_solution(char *str, int row, int col, int size)
 	{
 		ccol = i % ft_get_col(g_input);
 		crow = i / ft_get_col(g_input);
-		if(((ccol >= col) && (ccol <= col + size - 1) )&& ((crow >= row) && (crow <= row + size - 1)))
+		if(((ccol >= col) && (ccol < ccol + size) )&& ((crow >= row) && (crow < crow + size)))
 			ft_putchar('x');
 		else
 			ft_putchar(str[c]);
-		c++;
 		if (str[c] != '\n')
 			i++;
+		c++;
 	}
 }
 
@@ -263,6 +275,7 @@ int		main(int argc, char **argv)
 		ft_putstr(g_input);
 		ft_putstr("\n");
 		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+		ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
 		ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 	}
 	else
@@ -275,6 +288,7 @@ int		main(int argc, char **argv)
 			ft_putstr(g_input);
 			ft_putstr("\n");
 			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+			ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
 			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
