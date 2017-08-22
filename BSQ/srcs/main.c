@@ -181,6 +181,7 @@ void		ft_print_solution(char *str, int row, int col, int size)
 	c = 0;
 	while ((str[c] != '\0') && (str[c] != '\n'))
 		c++;
+	c++;
 	i = 0;
 	j = 0;
 	while (str[c])
@@ -188,9 +189,10 @@ void		ft_print_solution(char *str, int row, int col, int size)
 		if (str[c] == '\n')
 		{
 			i++;
-			j = 0;
+			ft_putchar(str[c]);
+			j = -1;
 		}
-		if (i >= row && i <= (row + size - 1) && j >= col && j <= (col + size)   && str[c] != '\n')
+		else if (i >= row && i <= (row + size - 1) && j >= col && j <= (col + size - 1))
 			ft_putchar('x');
 		else
 			ft_putchar(str[c]);
@@ -253,13 +255,12 @@ void		ft_find_square(int **board, int nrow, int ncol)
 		}
 		i++;
 	}
+	ft_print_solution(g_input, max_row, max_col, max_size);
 	ft_putnbr(max_size);
 	ft_putstr(" - ");
 	ft_putnbr(max_row);
 	ft_putstr(" - ");
 	ft_putnbr(max_col);
-	ft_putstr("\n");
-	ft_print_solution(g_input, max_row, max_col, max_size);
 }
 
 int		main(int argc, char **argv)
@@ -276,7 +277,7 @@ int		main(int argc, char **argv)
 		ft_putstr(g_input);
 		ft_putstr("\n");
 		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-		ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+		// ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
 		ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 	}
 	else
@@ -285,12 +286,12 @@ int		main(int argc, char **argv)
 		{
 			g_input = (char*)malloc(sizeof(char));
 			ft_display_file(argv[0], argv[i]);
-			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-			ft_putstr(g_input);
-			ft_putstr("\n");
-			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-			ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
-			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
+			// board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
+			// ft_putstr(g_input);
+			// ft_putstr("\n");
+			// ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+			// // ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+			// ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
 	}
