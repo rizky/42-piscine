@@ -175,7 +175,7 @@ int		main(int ac, char **av)
 			}
 			ft_print_list_str(tmp);
 			j = 8;
-			while (--j > 0)
+			while (--j >= 0)
 			{
 				str[0] = j + '0';
 				str[1] = '\0';
