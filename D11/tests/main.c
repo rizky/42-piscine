@@ -112,8 +112,8 @@ int		main(int ac, char **av)
 		case 5 :
 			printf("Ex05 : array to list :\n\t%s", GREEN);
 			tmp = NULL;
-			char	*words1[] = {"Hello", 0};
-			tmp = ft_list_push_params(2, words1);
+			char	*words1[] = {"Hello", "How", "Are"};
+			tmp = ft_list_push_params(3, words1);
 			ft_print_list_str(tmp);
 			printf("%s\n", END);
 			break ;

@@ -35,10 +35,8 @@ t_list	*ft_list_push_params(int ac, char **av)
 	t_list	*list_ptr;
 
 	list_ptr = 0;
-	if (ac == 0)
-		return (0);
 	i = 0;
-	while (i < ac - 1)
+	while (i < ac)
 	{
 		ft_list_push_front05(&list_ptr, av[i]);
 		i++;

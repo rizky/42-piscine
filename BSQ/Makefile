@@ -6,7 +6,9 @@ all: $(NAME)
 
 $(NAME):
 	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR);
-	clear;
+
+debug:
+	@gcc -g $(SRC) -I$(HEADER_DIR);
 
 clean:
 	/bin/rm -f *.o
@@ -24,5 +26,5 @@ stdin: fclean all
 
 test: fclean all
 	./bsq files/a.txt;
-	perl bsq.pl 10 10 3 | ./bsq
+	perl bsq.pl 6 18 3 | ./bsq
 	./bsq files/a.txt files/b.txt;
