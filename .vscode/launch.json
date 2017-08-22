@@ -14,7 +14,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "/Users/rizkyario/Documents/Codes/C/piscine/BSQ/a.out",
-            "args": ["/Users/rizkyario/Documents/Codes/C/piscine/BSQ/files/c.txt"],
+            "args": ["/Users/rizkyario/Documents/Codes/C/piscine/BSQ/files/a.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],

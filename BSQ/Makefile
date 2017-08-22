@@ -24,6 +24,9 @@ run: fclean all
 stdin: fclean all
 	perl bsq.pl 10 10 3 | ./bsq
 
+extreme: fclean all
+	./bsq files/extreme.txt;
+
 test: fclean all
 	./bsq files/a.txt;
 	perl bsq.pl 6 18 3 | ./bsq

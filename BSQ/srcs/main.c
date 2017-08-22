@@ -141,6 +141,87 @@ void		ft_print_array(int **board, int nrow, int ncol)
 	}	
 }
 
+void		ft_count_obstacle(int **board, int nrow, int ncol)
+{
+	int i;
+	int j;
+
+	i = 1;
+	while (i < nrow)
+	{
+		j = 1;
+		while (j < ncol)
+		{
+			board[i][j] += board[i][j - 1] + board[i -1][j] - board[i - 1][j - 1];
+			j++;
+		}
+		i++;
+	}	
+}
+
+void		ft_find_square(int **board, int nrow, int ncol)
+{
+	int i;
+	int j;
+	int size;
+	int nobs;
+	int tl;
+	int tr;
+	int bl;
+	int br;
+	int max_size;
+	int max_row;
+	int max_col;
+
+	i = 0;
+	size = 1;
+	max_row = 0;
+	max_col = 0;
+	max_size = 0;
+	while ((i + size) < nrow)
+	{
+		j = 0;
+		while ((j + size) < ncol)
+		{
+			nobs = 0;
+			while (nobs == 0 && (size + i < nrow) && (size + j < ncol))
+			{
+				if (i > 0 && j > 0)
+					tl = board[i - 1][j - 1];
+				else 
+					tl = 0;
+				if (i > 0)
+					tr = board[i - 1][j + size - 1];
+				else
+					tr = 0;
+				if (j > 0)
+					bl = board[i + size - 1][j - 1];
+				else
+					bl = 0;
+				br = board[i + size - 1][j + size - 1];
+				nobs = br - bl - tr + tl;
+				if (max_size < size && nobs == 0)
+				{
+					max_size = size;
+					max_row = i;
+					max_col = j;
+				}
+				if (nobs == 0)
+					size++;
+			}
+			j++;
+		}
+		i++;
+	}
+
+	ft_putnbr(max_size);
+	ft_putstr(" - ");
+	ft_putnbr(max_row);
+	ft_putstr(" - ");
+	ft_putnbr(max_col);
+	ft_putstr("\n");
+}
+
 int		main(int argc, char **argv)
 {
 	int i;
@@ -153,6 +234,8 @@ int		main(int argc, char **argv)
 		ft_read_stdin();
 		board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
 		ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+		ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 	}
 	else
 	{
@@ -162,6 +245,8 @@ int		main(int argc, char **argv)
 			ft_display_file(argv[0], argv[i]);
 			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
 			ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
 	}

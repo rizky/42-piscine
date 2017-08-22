@@ -19,7 +19,7 @@
 # include <sys/uio.h>
 # include <errno.h>
 # include <stdlib.h>
-# define BUF_SIZE 1024
+# define BUF_SIZE 4096
 
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
