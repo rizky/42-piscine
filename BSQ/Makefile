@@ -23,7 +23,7 @@ run: fclean all
 	./bsq files/a.txt;
 
 stdin: fclean all
-	perl bsq.pl 10000 10000 122 | ./bsq
+	perl bsq.pl 15 15 5 | ./bsq
 
 extreme: fclean all
 	./bsq files/extreme.txt;

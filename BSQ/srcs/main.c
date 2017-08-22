@@ -286,12 +286,12 @@ int		main(int argc, char **argv)
 		{
 			g_input = (char*)malloc(sizeof(char));
 			ft_display_file(argv[0], argv[i]);
-			// board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-			// ft_putstr(g_input);
-			// ft_putstr("\n");
-			// ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-			// // ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
-			// ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
+			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
+			ft_putstr(g_input);
+			ft_putstr("\n");
+			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+			// ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
+			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
 	}
