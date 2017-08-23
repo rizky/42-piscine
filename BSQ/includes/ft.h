@@ -31,6 +31,10 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_atoi(char *str);
 void	ft_putstr_at_once(char *str, int len);
 char	*ft_strdup(char *src);
-void	ft_print_tab_string(char **tab_string);
-
+void	ft_print_tab_string(char **tab_string, int ncol);
+void	ft_print_array(int **board, int nrow, int ncol);
+void	ft_add_solution(char **tab_string, int row, int col, int size);
+void	ft_find_square(int **board, int nrow, int ncol);
+void	ft_count_obstacle(int **board, int nrow, int ncol);
+int		**ft_input_to_array(char **str, int nrow, int ncol);
 #endif

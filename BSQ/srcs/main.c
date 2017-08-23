@@ -72,7 +72,6 @@ void	ft_read_input(int fd)
 			state++;
 		}
 	}
-	ft_print_tab_string(g_tab_string);
 }
 
 void	ft_display_file(char *prog_name, char *arg)
@@ -87,110 +86,6 @@ void	ft_display_file(char *prog_name, char *arg)
 		ft_read_input(fd);
 	if (close(fd) == -1 && fd != -1)
 		ft_putstr("Failed to close");
-}
-
-int		**ft_input_to_array(char **str, int nrow, int ncol)
-{
-	int **board;
-	int i;
-	int j;
-
-	board = (int**)malloc(sizeof(int*) * (nrow + 1));
-	i = 0;
-	while (i < nrow)
-	{
-		j = 0;
-		board[i] = (int*)malloc(sizeof(int) * (ncol));
-		while (j < ncol)
-		{
-			if (str[i][j] == g_map_char[0])
-				board[i][j] = 0;
-			else if (str[i][j] == g_map_char[1])
-				board[i][j] = 1;
-			j++;
-		}
-		i++;
-	}
-	return (board);
-}
-
-void		ft_print_array(int **board, int nrow, int ncol)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < nrow)
-	{
-		j = 0;
-		while (j < ncol - 1)
-		{
-			ft_putnbr(board[i][j]);
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
-	}	
-}
-
-void		ft_print_tab_string(char **tab_string)
-{
-	int i;
-
-	i = 0;
-	while (tab_string[i])
-	{
-		ft_putstr_at_once(tab_string[i], g_ncol);
-		i++;
-	}	
-}
-
-void		ft_count_obstacle(int **board, int nrow, int ncol)
-{
-	int i;
-	int j;
-
-	i = 1;
-	while (i < nrow)
-	{
-		board[i][0] += board[i - 1][0];
-		i++;
-	}
-	i = 1;
-	while (i < ncol)
-	{
-		board[0][i] += board[0][i - 1];
-		i++;
-	}
-	i = 1;
-	while (i < nrow)
-	{
-		j = 1;
-		while (j < ncol)
-		{
-			board[i][j] += board[i][j - 1] + board[i -1][j] - board[i - 1][j - 1];
-			j++;
-		}
-		i++;
-	}	
-}
-
-void		ft_print_solution(char **tab_string, int row, int col, int size)
-{
-	int i;
-	int j;
-
-	i = row;
-	while (i < row + size)
-	{
-		j = col;
-		while (j < col + size)
-		{
-			tab_string[i][j] = g_map_char[2];
-			j++;
-		}
-		i++;
-	}
 }
 
 void		ft_find_square(int **board, int nrow, int ncol)
@@ -247,13 +142,50 @@ void		ft_find_square(int **board, int nrow, int ncol)
 		}
 		i++;
 	}
-	ft_putnbr(max_size);
-	ft_putstr(" - ");
-	ft_putnbr(max_row);
-	ft_putstr(" - ");
-	ft_putnbr(max_col);
-	ft_putstr("\n");
-	ft_print_solution(g_tab_string, max_row, max_col, max_size);
+	ft_add_solution(g_tab_string, max_row, max_col, max_size);
+}
+
+void		ft_add_solution(char **tab_string, int row, int col, int size)
+{
+	int i;
+	int j;
+
+	i = row;
+	while (i < row + size)
+	{
+		j = col;
+		while (j < col + size)
+		{
+			tab_string[i][j] = g_map_char[2];
+			j++;
+		}
+		i++;
+	}
+}
+
+int		**ft_input_to_array(char **str, int nrow, int ncol)
+{
+	int **board;
+	int i;
+	int j;
+
+	board = (int**)malloc(sizeof(int*) * (nrow + 1));
+	i = 0;
+	while (i < nrow)
+	{
+		j = 0;
+		board[i] = (int*)malloc(sizeof(int) * (ncol));
+		while (j < ncol)
+		{
+			if (str[i][j] == g_map_char[0])
+				board[i][j] = 0;
+			else if (str[i][j] == g_map_char[1])
+				board[i][j] = 1;
+			j++;
+		}
+		i++;
+	}
+	return (board);
 }
 
 int		main(int argc, char **argv)
@@ -268,7 +200,7 @@ int		main(int argc, char **argv)
 		board = ft_input_to_array(g_tab_string, g_nrow, g_ncol - 1);
 		ft_count_obstacle(board, g_nrow, g_ncol - 1);
 		ft_find_square(board, g_nrow, g_ncol - 1);
-		ft_print_tab_string(g_tab_string);
+		ft_print_tab_string(g_tab_string, g_ncol);
 	}
 	else
 	{
@@ -278,7 +210,7 @@ int		main(int argc, char **argv)
 			board = ft_input_to_array(g_tab_string, g_nrow, g_ncol - 1);
 			ft_count_obstacle(board, g_nrow, g_ncol - 1);
 			ft_find_square(board, g_nrow, g_ncol - 1);
-			ft_print_tab_string(g_tab_string);
+			ft_print_tab_string(g_tab_string, g_ncol);
 			i++;
 		}
 	}

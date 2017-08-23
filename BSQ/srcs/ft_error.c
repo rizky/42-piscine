@@ -36,3 +36,8 @@ void	ft_error(char *prog_name, char *arg)
 		ft_putstr(": No such file or directory\n");
 	}
 }
+
+void	ft_map_error()
+{
+	ft_putstr("map error\n");
+}

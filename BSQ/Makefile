@@ -33,3 +33,4 @@ test: fclean all
 	perl bsq.pl 6 18 3 | ./bsq
 	./bsq files/a.txt files/b.txt;
 	time ./bsq files/extreme.txt > outputs/output.txt
+	time perl bsq.pl 2000 2000 300 | ./bsq > outputs/output.txt
