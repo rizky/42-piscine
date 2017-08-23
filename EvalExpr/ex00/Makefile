@@ -1,15 +1,13 @@
-NAME = evalexpr
+NAME = eval-expr
 SRC = srcs/*.c
 HEADER_DIR = includes
 
 all: $(NAME)
 
 $(NAME):
-	clear;
 	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRC) -I$(HEADER_DIR)
 
 debug:
-	clear;
 	gcc -g $(SRC) -I$(HEADER_DIR)
 
 clean:

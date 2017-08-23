@@ -14,27 +14,13 @@
 
 char 	*g_input;
 
-void	ft_read_file(int fd)
+void	ft_read_input(int fd)
 {
 	char	*buf;
 	int		ret;
 
 	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
 	while ((ret = read(fd, buf, BUF_SIZE)))
-	{
-		buf[ret] = '\0';
-		g_input = ft_strcat(g_input, buf);
-	}
-	
-}
-
-void	ft_read_stdin(void)
-{
-	char	*buf;
-	int		ret;
-
-	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
-	while ((ret = read(0, buf, BUF_SIZE)))
 	{
 		buf[ret] = '\0';
 		g_input = ft_strcat(g_input, buf);
@@ -50,7 +36,7 @@ void	ft_display_file(char *prog_name, char *arg)
 	if (fd == -1)
 			ft_error(prog_name, arg);
 	else
-		ft_read_file(fd);
+		ft_read_input(fd);
 	if (close(fd) == -1 && fd != -1)
 		ft_putstr("Failed to close");
 }
@@ -256,11 +242,6 @@ void		ft_find_square(int **board, int nrow, int ncol)
 		i++;
 	}
 	ft_print_solution(g_input, max_row, max_col, max_size);
-	ft_putnbr(max_size);
-	ft_putstr(" - ");
-	ft_putnbr(max_row);
-	ft_putstr(" - ");
-	ft_putnbr(max_col);
 }
 
 int		main(int argc, char **argv)
@@ -272,12 +253,9 @@ int		main(int argc, char **argv)
 	if (argc < 2)
 	{
 		g_input = (char*)malloc(sizeof(char));
-		ft_read_stdin();
+		ft_read_input(0);
 		board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-		ft_putstr(g_input);
-		ft_putstr("\n");
 		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-		// ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
 		ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 	}
 	else
@@ -287,10 +265,7 @@ int		main(int argc, char **argv)
 			g_input = (char*)malloc(sizeof(char));
 			ft_display_file(argv[0], argv[i]);
 			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-			ft_putstr(g_input);
-			ft_putstr("\n");
 			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-			// ft_print_array(board, ft_get_row(g_input), ft_get_col(g_input));
 			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
