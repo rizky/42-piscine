@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft.h"
+#include <stdio.h>
 
 char	*g_input;
 int		g_nrow;
@@ -88,7 +89,7 @@ void	ft_find_square(int **board, int nrow, int ncol, int **solution)
 		while ((pos[1] + size - 1) < ncol)
 		{
 			obs = 0;
-			while (obs == 0 && (size + pos[0] - 1 < nrow) && (size + pos[1] - pos[0] < ncol))
+			while (obs == 0 && (size + pos[0] - 1 < nrow) && (size + pos[1] - 1 < ncol))
 			{
 				obs = ft_get_obstacle(board, pos, size, solution);
 				if (obs == 0)
@@ -114,6 +115,7 @@ int		ft_run_bsq(char **tab_string, int nrow, int ncol, char *map_char)
 	ft_find_square(board, nrow, ncol - 1, &solution);
 	ft_add_solution(tab_string, solution, map_char);
 	ft_print_tab_string(tab_string, ncol);
+	printf("%d - %d - %d\n", solution[0], solution[1], solution[2]);
 	return (0);
 }
 

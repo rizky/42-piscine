@@ -88,7 +88,6 @@ int		ft_get_obstacle(int **board, int pos[2], int size, int **solution)
 	int corner[4];
 	int obs;
 
-	obs = 0;
 	if (pos[0] > 0 && pos[1] > 0)
 		corner[0] = board[pos[0] - 1][pos[1] - 1];
 	else
@@ -108,7 +107,6 @@ int		ft_get_obstacle(int **board, int pos[2], int size, int **solution)
 		(*solution)[0] = pos[0];
 		(*solution)[1] = pos[1];
 		(*solution)[2] = size;
-		size++;
 	}
 	return (obs);
 }
