@@ -18,7 +18,7 @@ int		g_ncol;
 char	*g_map_char;
 char	**g_tab_string;
 
-void	ft_extract_map(int fd, char *map_desc, char *first_line)
+int		ft_extract_map(int fd, char *map_desc, char *first_line)
 {
 	char	*buf;
 	int		ret;
@@ -39,11 +39,14 @@ void	ft_extract_map(int fd, char *map_desc, char *first_line)
 	while ((ret = read(fd, buf, g_ncol)))
 	{
 		g_tab_string[i] = ft_strdup(buf);
+		if (buf[g_ncol - 1] != '\n')
+			return 0;
 		i++;
 	}
+	return (1);
 }
 
-void	ft_read_input(int fd, int state, int buf_size)
+int		ft_read_input(int fd, int state, int buf_size)
 {
 	char	*buf;
 	int		ret;
@@ -68,7 +71,7 @@ void	ft_read_input(int fd, int state, int buf_size)
 			state++;
 		first_line = ft_strcat(first_line, buf);
 	}
-	ft_extract_map(fd, map_desc, first_line);
+	return (ft_extract_map(fd, map_desc, first_line));
 }
 
 void	ft_find_square(int **board, int nrow, int ncol, int **solution)
@@ -123,8 +126,8 @@ int		main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		ft_read_input(0, 0, 1);
-		ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
+		if (ft_read_input(0, 0, 1))
+			ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
 	}
 	else
 	{
