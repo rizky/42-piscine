@@ -18,9 +18,8 @@ int		g_ncol;
 char	*g_map_char;
 char	**g_tab_string;
 
-int		ft_extract_map(int fd, char *map_desc, char *first_line)
+int		ft_extract_map(int fd, char *map_desc, char *buf, char *first_line)
 {
-	char	*buf;
 	int		ret;
 	int		len_map_desc;
 	int		i;
@@ -40,9 +39,11 @@ int		ft_extract_map(int fd, char *map_desc, char *first_line)
 	{
 		g_tab_string[i] = ft_strdup(buf);
 		if (buf[g_ncol - 1] != '\n')
-			return 0;
+			return (0);
 		i++;
 	}
+	if (i < g_nrow)
+		return (0);
 	return (1);
 }
 
@@ -71,7 +72,7 @@ int		ft_read_input(int fd, int state, int buf_size)
 			state++;
 		first_line = ft_strcat(first_line, buf);
 	}
-	return (ft_extract_map(fd, map_desc, first_line));
+	return (ft_extract_map(fd, map_desc, buf, first_line));
 }
 
 void	ft_find_square(int **board, int nrow, int ncol, int **solution)
@@ -102,21 +103,27 @@ void	ft_find_square(int **board, int nrow, int ncol, int **solution)
 	}
 }
 
-int		ft_run_bsq(char **tab_string, int nrow, int ncol, char *map_char)
+void	ft_run_bsq(char **tab_string, int nrow, int ncol, char *map_char)
 {
 	int **board;
 	int *solution;
+	int dim[2];
 
 	solution = (int*)malloc(sizeof(int) * 3);
 	solution[0] = 0;
 	solution[1] = 0;
 	solution[2] = 0;
-	board = ft_input_to_array(tab_string, nrow, ncol - 1, map_char);
-	ft_count_obstacle(board, nrow, ncol - 1);
-	ft_find_square(board, nrow, ncol - 1, &solution);
-	ft_add_solution(tab_string, solution, map_char);
-	ft_print_tab_string(tab_string, ncol);
-	return (0);
+	dim[0] = nrow;
+	dim[1] = ncol - 1;
+	if (ft_input_to_array(tab_string, &board, dim, map_char))
+	{
+		ft_count_obstacle(board, nrow, ncol - 1);
+		ft_find_square(board, nrow, ncol - 1, &solution);
+		ft_add_solution(tab_string, solution, map_char);
+		ft_print_tab_string(tab_string, ncol);
+	}
+	else
+		ft_map_error();
 }
 
 int		main(int argc, char **argv)
@@ -128,13 +135,17 @@ int		main(int argc, char **argv)
 	{
 		if (ft_read_input(0, 0, 1))
 			ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
+		else
+			ft_map_error();
 	}
 	else
 	{
 		while (i < argc)
 		{
-			ft_file(argv[0], argv[i]);
-			ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
+			if (ft_file(argv[0], argv[i]))
+				ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
+			else
+				ft_map_error();
 			i++;
 		}
 	}

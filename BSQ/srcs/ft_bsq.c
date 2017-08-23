@@ -40,29 +40,30 @@ void	ft_count_obstacle(int **board, int nrow, int ncol)
 	}
 }
 
-int		**ft_input_to_array(char **str, int nrow, int ncol, char *map_char)
+int		ft_input_to_array(char **str, int ***board, int dim[2], char *map_char)
 {
-	int **board;
 	int i;
 	int j;
 
-	board = (int**)malloc(sizeof(int*) * (nrow + 1));
+	(*board) = (int**)malloc(sizeof(int*) * (dim[0] + 1));
 	i = 0;
-	while (i < nrow)
+	while (i < dim[0])
 	{
 		j = 0;
-		board[i] = (int*)malloc(sizeof(int) * (ncol));
-		while (j < ncol)
+		(*board)[i] = (int*)malloc(sizeof(int) * (dim[1]));
+		while (j < dim[1])
 		{
 			if (str[i][j] == map_char[0])
-				board[i][j] = 0;
+				(*board)[i][j] = 0;
 			else if (str[i][j] == map_char[1])
-				board[i][j] = 1;
+				(*board)[i][j] = 1;
+			else
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (board);
+	return (1);
 }
 
 void	ft_add_solution(char **tab_string, int solution[3], char *map_char)
