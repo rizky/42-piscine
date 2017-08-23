@@ -21,7 +21,7 @@ char	*ft_strdup(char *src)
 	len = ft_strlen(src);
 	i = 0;
 	str = (char*)malloc(sizeof(*str) * (len + 1));
-	while(src[i])
+	while (src[i])
 	{
 		str[i] = src[i];
 		i++;
