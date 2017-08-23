@@ -39,5 +39,5 @@ void	ft_error(char *prog_name, char *arg)
 
 void	ft_map_error(void)
 {
-	write(1, "map error\n", 10);
+	write(2, "map error\n", 10);
 }

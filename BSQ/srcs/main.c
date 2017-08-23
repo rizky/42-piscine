@@ -115,6 +115,7 @@ void	ft_run_bsq(char **tab_string, int nrow, int ncol, char *map_char)
 	solution[2] = 0;
 	dim[0] = nrow;
 	dim[1] = ncol - 1;
+	board = (int**)malloc(sizeof(int*) * (dim[0] + 1));
 	if (ft_input_to_array(tab_string, &board, dim, map_char))
 	{
 		ft_count_obstacle(board, nrow, ncol - 1);

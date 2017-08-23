@@ -37,4 +37,4 @@ test: fclean all
 
 error: fclean all
 	./bsq files/error/a.txt;
-	./bsq files/error/a.txt files/a.txt files/error/b.txt files/error/c.txt;
+	./bsq files/error/a.txt files/a.txt files/error/b.txt files/error/c.txt files/error/d.txt;

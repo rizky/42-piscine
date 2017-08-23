@@ -45,7 +45,10 @@ int		ft_input_to_array(char **str, int ***board, int dim[2], char *map_char)
 	int i;
 	int j;
 
-	(*board) = (int**)malloc(sizeof(int*) * (dim[0] + 1));
+	if (map_char[0] == map_char[1] || map_char[1] == map_char[2])
+		return (0);
+	if (map_char[2] == map_char[0])
+		return (0);
 	i = 0;
 	while (i < dim[0])
 	{
