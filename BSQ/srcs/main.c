@@ -18,9 +18,12 @@ int		g_ncol;
 char	*g_map_char;
 char	**g_tab_string;
 
-void	ft_extract_map_desc(char *map_desc, char *first_line)
+void	ft_extract_map(int fd, char *map_desc, char *first_line)
 {
-	int len_map_desc;
+	char	*buf;
+	int		ret;
+	int		len_map_desc;
+	int		i;
 
 	len_map_desc = ft_strlen(map_desc);
 	g_nrow = ft_atoi(map_desc);
@@ -29,49 +32,43 @@ void	ft_extract_map_desc(char *map_desc, char *first_line)
 	g_map_char[2] = map_desc[len_map_desc - 1];
 	g_map_char[1] = map_desc[len_map_desc - 2];
 	g_map_char[0] = map_desc[len_map_desc - 3];
+	g_tab_string = (char**)malloc(sizeof(char*) * (g_nrow + 1));
+	g_tab_string[0] = ft_strdup(first_line);
+	buf = (char*)malloc(sizeof(char) * (g_ncol + 1));
+	i = 1;
+	while ((ret = read(fd, buf, g_ncol)))
+	{
+		g_tab_string[i] = ft_strdup(buf);
+		i++;
+	}
 }
 
-void	ft_read_input(int fd, int ret, int buf_size)
+void	ft_read_input(int fd, int state, int buf_size)
 {
 	char	*buf;
-	int		state;
+	int		ret;
 	char	*first_line;
 	char	*map_desc;
 
-	buf_size = 1;
-	state = 0;
 	buf = (char*)malloc(sizeof(char) * (buf_size + 1));
 	map_desc = (char*)malloc(sizeof(char));
 	first_line = (char*)malloc(sizeof(char));
-	while ((ret = read(fd, buf, buf_size)))
+	while (state == 0 && (ret = read(fd, buf, buf_size)))
 	{
 		buf[ret] = '\0';
 		if (ft_strcmp(buf, "\n") == 0)
 			state++;
-		if (state == 0)
-			map_desc = ft_strcat(map_desc, buf);
-		else if (state == 1)
-		{
-			if (ft_strcmp(buf, "\n") != 0)
-				first_line = ft_strcat(first_line, buf);
-		}
-		else if (state == 2)
-		{
-			first_line = ft_strcat(first_line, "\n");
-			ft_extract_map_desc(map_desc, first_line);
-			g_tab_string = (char**)malloc(sizeof(char*) * (g_nrow + 1));
-			g_tab_string[state - 2] = ft_strdup(first_line);
-			buf_size = g_ncol;
-			free(buf);
-			buf = (char*)malloc(sizeof(char) * (buf_size + 1));
-			state++;
-		}
 		else
-		{
-			g_tab_string[state - 2] = ft_strdup(buf);
-			state++;
-		}
+			map_desc = ft_strcat(map_desc, buf);
 	}
+	while (state == 1 && (ret = read(fd, buf, buf_size)))
+	{
+		buf[ret] = '\0';
+		if (ft_strcmp(buf, "\n") == 0)
+			state++;
+		first_line = ft_strcat(first_line, buf);
+	}
+	ft_extract_map(fd, map_desc, first_line);
 }
 
 void	ft_find_square(int **board, int nrow, int ncol, int **solution)
