@@ -19,7 +19,6 @@
 # include <sys/uio.h>
 # include <errno.h>
 # include <stdlib.h>
-# define BUF_SIZE 50000
 
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
@@ -28,4 +27,8 @@ void	ft_error(char *prog_name, char *arg);
 int		ft_strlen(char *str);
 char	*ft_strcat(char *dest, char *src);
 void	ft_putnbr(int nb);
+int		ft_strcmp(char *s1, char *s2);
+int		ft_atoi(char *str);
+void	ft_putstr_at_once(char *str, int len);
+char	*ft_strdup(char *src);
 #endif

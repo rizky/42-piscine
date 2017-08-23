@@ -26,9 +26,10 @@ stdin: fclean all
 	perl bsq.pl 15 15 5 | ./bsq
 
 extreme: fclean all
-	./bsq files/extreme.txt;
+	time ./bsq files/extreme.txt > outputs/output.txt
 
 test: fclean all
-	@./bsq files/a.txt;
-	@perl bsq.pl 6 18 3 | ./bsq
-	@./bsq files/a.txt files/b.txt;
+	./bsq files/a.txt;
+	perl bsq.pl 6 18 3 | ./bsq
+	./bsq files/a.txt files/b.txt;
+	time ./bsq files/extreme.txt > outputs/output.txt

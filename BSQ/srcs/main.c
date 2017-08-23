@@ -13,17 +13,65 @@
 #include "ft.h"
 
 char 	*g_input;
+int		g_nrow;
+int		g_ncol;
+char	*g_map_char;
+char 	**g_tab_string;
+
+void	ft_extract_map_desc(char *map_desc, char *first_line)
+{
+	int len_map_desc;
+
+	len_map_desc = ft_strlen(map_desc);
+	g_nrow = ft_atoi(map_desc);
+	g_ncol = ft_strlen(first_line);
+	g_map_char = (char*)malloc(sizeof(char) * (3 + 1));
+	g_map_char[2] = map_desc[len_map_desc - 1];
+	g_map_char[1] = map_desc[len_map_desc - 2];
+	g_map_char[0] = map_desc[len_map_desc - 3];
+}
 
 void	ft_read_input(int fd)
 {
 	char	*buf;
 	int		ret;
+	int		buf_size;
+	int		state;
+	char	*first_line;
+	char 	*map_desc;
+	int		i;
 
-	buf = (char*)malloc(sizeof(char) * (BUF_SIZE + 1));
-	while ((ret = read(fd, buf, BUF_SIZE)))
+	buf_size = 1;
+	state = 0;
+	buf = (char*)malloc(sizeof(char) * (buf_size + 1));
+	map_desc = (char*)malloc(sizeof(char));
+	first_line = (char*)malloc(sizeof(char));
+	while ((ret = read(fd, buf, buf_size)))
 	{
 		buf[ret] = '\0';
-		g_input = ft_strcat(g_input, buf);
+		if (ft_strcmp(buf, "\n") == 0)
+			state++;
+		if (state == 0)
+			map_desc = ft_strcat(map_desc, buf);
+		else if (state == 1)
+		{
+			if(ft_strcmp(buf, "\n") != 0)
+				first_line = ft_strcat(first_line, buf);
+		}
+		else if (state == 2)
+		{
+			ft_extract_map_desc(map_desc, first_line);
+			g_tab_string = (char**)malloc(sizeof(char*) * (g_nrow + 1));
+			i = 0;
+			g_tab_string[i] = ft_strdup(buf);
+			buf_size = g_ncol;
+			state++;
+		}
+		else
+		{
+			i++;
+			g_tab_string[i] = ft_strdup(buf);
+		}
 	}
 }
 
@@ -252,7 +300,6 @@ int		main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		g_input = (char*)malloc(sizeof(char));
 		ft_read_input(0);
 		board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
 		ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
@@ -262,11 +309,10 @@ int		main(int argc, char **argv)
 	{
 		while (i < argc)
 		{
-			g_input = (char*)malloc(sizeof(char));
 			ft_display_file(argv[0], argv[i]);
-			board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
-			ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
-			ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
+			// board = ft_input_to_array(g_input, ft_get_row(g_input), ft_get_col(g_input));
+			// ft_count_obstacle(board, ft_get_row(g_input), ft_get_col(g_input));
+			// ft_find_square(board, ft_get_row(g_input), ft_get_col(g_input));
 			i++;
 		}
 	}

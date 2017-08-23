@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 16:55:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 17:04:02 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 20:37:16 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/06 12:34:58 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-void	ft_putstr(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
-	char *c;
+	int	i;
 
-	c = str;
-	while (*c != '\0')
+	i = 0;
+	while (s1[i] || s2[i])
 	{
-		ft_putchar(*c);
-		c++;
+		if ((s1[i] - s2[i]) != 0)
+			return (s1[i] - s2[i]);
+		i++;
 	}
-}
-
-void	ft_putstr_at_once(char *str, int len)
-{
-	write(1, str, len);
+	return (0);
 }

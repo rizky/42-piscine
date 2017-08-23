@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/03 16:55:20 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/03 17:04:02 by rnugroho         ###   ########.fr       */
+/*   Created: 2017/08/05 17:22:42 by rnugroho          #+#    #+#             */
+/*   Updated: 2017/08/05 18:32:36 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-void	ft_putstr(char *str)
+int		ft_atoi(char *str)
 {
-	char *c;
+	char	*c;
+	int		sign;
+	int		number;
 
 	c = str;
-	while (*c != '\0')
+	sign = 1;
+	number = 0;
+	while (*c == ' ' || *c == '\t' || *c == '\v' || *c == '+')
+		c++;
+	if (*c == '-')
 	{
-		ft_putchar(*c);
+		sign = -1;
 		c++;
 	}
-}
-
-void	ft_putstr_at_once(char *str, int len)
-{
-	write(1, str, len);
+	while (*c != '\0')
+	{
+		if (*c >= '0' && *c <= '9')
+			number = (number * 10) + (*c - '0');
+		else
+			break ;
+		c++;
+	}
+	return (number * sign);
 }
