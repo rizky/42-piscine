@@ -74,106 +74,65 @@ void	ft_read_input(int fd, int ret, int buf_size)
 	}
 }
 
-int		*ft_find_square(int **board, int nrow, int ncol)
+void	ft_find_square(int **board, int nrow, int ncol, int **solution)
 {
-	int i;
-	int j;
+	int pos[2];
 	int size;
-	int nobs;
-	int tl;
-	int tr;
-	int bl;
-	int br;
+	int obs;
+
+	pos[0] = 0;
+	size = 1;
+	while ((pos[0] + size - 1) < nrow)
+	{
+		pos[1] = 0;
+		while ((pos[1] + size - 1) < ncol)
+		{
+			obs = 0;
+			while (obs == 0 && (size + pos[0] - 1 < nrow) && (size + pos[1] - pos[0] < ncol))
+			{
+				obs = ft_get_obstacle(board, pos, size, solution);
+				if (obs == 0)
+					size++;
+			}
+			pos[1]++;
+		}
+		pos[0]++;
+	}
+}
+
+int		ft_run_bsq(char **tab_string, int nrow, int ncol, char *map_char)
+{
+	int **board;
 	int *solution;
 
-	i = 0;
-	size = 1;
 	solution = (int*)malloc(sizeof(int) * 3);
 	solution[0] = 0;
 	solution[1] = 0;
 	solution[2] = 0;
-	while ((i + size - 1) < nrow)
-	{
-		j = 0;
-		while ((j + size - 1) < ncol)
-		{
-			nobs = 0;
-			while (nobs == 0 && (size + i - 1 < nrow) && (size + j - 1 < ncol))
-			{
-				if (i > 0 && j > 0)
-					tl = board[i - 1][j - 1];
-				else
-					tl = 0;
-				if (i > 0)
-					tr = board[i - 1][j + size - 1];
-				else
-					tr = 0;
-				if (j > 0)
-					bl = board[i + size - 1][j - 1];
-				else
-					bl = 0;
-				br = board[i + size - 1][j + size - 1];
-				nobs = br - bl - tr + tl;
-				if (solution[2] < size && nobs == 0)
-				{
-					solution[0] = i;
-					solution[1] = j;
-					solution[2] = size;
-				}
-				if (nobs == 0)
-					size++;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (solution);
-}
-
-void	ft_add_solution(char **tab_string, int solution[3], char *map_char)
-{
-	int i;
-	int j;
-
-	i = solution[0];
-	while (i < solution[0] + solution[2])
-	{
-		j = solution[1];
-		while (j < solution[1] + solution[2])
-		{
-			tab_string[i][j] = g_map_char[2];
-			j++;
-		}
-		i++;
-	}
+	board = ft_input_to_array(tab_string, nrow, ncol - 1, map_char);
+	ft_count_obstacle(board, nrow, ncol - 1);
+	ft_find_square(board, nrow, ncol - 1, &solution);
+	ft_add_solution(tab_string, solution, map_char);
+	ft_print_tab_string(tab_string, ncol);
+	return (0);
 }
 
 int		main(int argc, char **argv)
 {
 	int i;
-	int **board;
-	int *solution;
 
 	i = 1;
 	if (argc < 2)
 	{
 		ft_read_input(0, 0, 1);
-		board = ft_input_to_array(g_tab_string, g_nrow, g_ncol - 1, g_map_char);
-		ft_count_obstacle(board, g_nrow, g_ncol - 1);
-		solution = ft_find_square(board, g_nrow, g_ncol - 1);
-		ft_add_solution(g_tab_string, solution, g_map_char);
-		ft_print_tab_string(g_tab_string, g_ncol);
+		ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
 	}
 	else
 	{
 		while (i < argc)
 		{
 			ft_file(argv[0], argv[i]);
-			board = ft_input_to_array(g_tab_string, g_nrow, g_ncol - 1, g_map_char);
-			ft_count_obstacle(board, g_nrow, g_ncol - 1);
-			solution = ft_find_square(board, g_nrow, g_ncol - 1);
-			ft_add_solution(g_tab_string, solution, g_map_char);
-			ft_print_tab_string(g_tab_string, g_ncol);
+			ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
 			i++;
 		}
 	}

@@ -28,3 +28,34 @@ void	ft_putstr_at_once(char *str, int len)
 {
 	write(1, str, len);
 }
+
+void	ft_print_tab_string(char **tab_string, int ncol)
+{
+	int i;
+
+	i = 0;
+	while (tab_string[i])
+	{
+		ft_putstr_at_once(tab_string[i], ncol);
+		i++;
+	}
+}
+
+void	ft_print_array(int **board, int nrow, int ncol)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < nrow)
+	{
+		j = 0;
+		while (j < ncol - 1)
+		{
+			ft_putnbr(board[i][j]);
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
+}

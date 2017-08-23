@@ -12,37 +12,6 @@
 
 #include "ft.h"
 
-void	ft_print_tab_string(char **tab_string, int ncol)
-{
-	int i;
-
-	i = 0;
-	while (tab_string[i])
-	{
-		ft_putstr_at_once(tab_string[i], ncol);
-		i++;
-	}
-}
-
-void	ft_print_array(int **board, int nrow, int ncol)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < nrow)
-	{
-		j = 0;
-		while (j < ncol - 1)
-		{
-			ft_putnbr(board[i][j]);
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
-	}
-}
-
 void	ft_count_obstacle(int **board, int nrow, int ncol)
 {
 	int i;
@@ -94,4 +63,52 @@ int		**ft_input_to_array(char **str, int nrow, int ncol, char *map_char)
 		i++;
 	}
 	return (board);
+}
+
+void	ft_add_solution(char **tab_string, int solution[3], char *map_char)
+{
+	int i;
+	int j;
+
+	i = solution[0];
+	while (i < solution[0] + solution[2])
+	{
+		j = solution[1];
+		while (j < solution[1] + solution[2])
+		{
+			tab_string[i][j] = map_char[2];
+			j++;
+		}
+		i++;
+	}
+}
+
+int		ft_get_obstacle(int **board, int pos[2], int size, int **solution)
+{
+	int corner[4];
+	int obs;
+
+	obs = 0;
+	if (pos[0] > 0 && pos[1] > 0)
+		corner[0] = board[pos[0] - 1][pos[1] - 1];
+	else
+		corner[0] = 0;
+	if (pos[0] > 0)
+		corner[1] = board[pos[0] - 1][pos[1] + size - 1];
+	else
+		corner[1] = 0;
+	if (pos[1] > 0)
+		corner[2] = board[pos[0] + size - 1][pos[1] - 1];
+	else
+		corner[2] = 0;
+	corner[3] = board[pos[0] + size - 1][pos[1] + size - 1];
+	obs = corner[3] - corner[2] - corner[1] + corner[0];
+	if ((*solution)[2] < size && obs == 0)
+	{
+		(*solution)[0] = pos[0];
+		(*solution)[1] = pos[1];
+		(*solution)[2] = size;
+		size++;
+	}
+	return (obs);
 }
