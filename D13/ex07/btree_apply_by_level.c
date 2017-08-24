@@ -12,6 +12,8 @@
 
 #include "ft_btree.h"
 
+int		g_is_first;
+
 int		ft_max7(int left, int right)
 {
 	if (left > right)
@@ -36,7 +38,10 @@ void	btree_apply_by_level2(t_btree *root, int current_level,
 	if (!root)
 		return ;
 	if (level == current_level)
-		(*applyf)(root->item, current_level, 0);
+	{
+		(*applyf)(root->item, current_level, g_is_first);
+		g_is_first = 0;
+	}
 	else
 	{
 		btree_apply_by_level2(root->left, current_level + 1, level, applyf);
@@ -55,6 +60,7 @@ void	btree_apply_by_level(t_btree *root,
 	j = 0;
 	while (j < i)
 	{
+		g_is_first = 1;
 		btree_apply_by_level2(root, 0, j, applyf);
 		j++;
 	}

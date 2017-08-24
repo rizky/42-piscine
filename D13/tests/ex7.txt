@@ -1,0 +1,15 @@
+
++i:[By] l:[0] f:[1]$
++i:[1uWnN6] l:[1] f:[1]$
+ i:[USLejYI4Ns] l:[1] f:[0]$
++i:[3ncWxdr] l:[2] f:[1]$
+ i:[Pz] l:[2] f:[0]$
+ i:[hkI] l:[2] f:[0]$
++i:[LwHE] l:[3] f:[1]$
+ i:[dG] l:[3] f:[0]$
+ i:[vDMfNS] l:[3] f:[0]$
++i:[CUt3vck7PwV8] l:[4] f:[1]$
+ i:[MjL] l:[4] f:[0]$
+ i:[W] l:[4] f:[0]$
+ i:[vNQx] l:[4] f:[0]$
++i:[H4zu6nblOM] l:[5] f:[1]$
