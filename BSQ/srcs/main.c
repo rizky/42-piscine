@@ -6,7 +6,7 @@
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 17:47:22 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/21 17:47:23 by rnugroho         ###   ########.fr       */
+/*   Updated: 2017/08/23 22:39:33 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ int		ft_extract_map(int fd, char *map_desc, char *buf, char *first_line)
 	return (1);
 }
 
-int		ft_read_input(int fd, int state, int buf_size)
+int		ft_read_input(int fd, int state, int buf_size, int ret)
 {
 	char	*buf;
-	int		ret;
 	char	*first_line;
 	char	*map_desc;
 
@@ -72,6 +71,8 @@ int		ft_read_input(int fd, int state, int buf_size)
 			state++;
 		first_line = ft_strcat(first_line, buf);
 	}
+	if (map_desc[0] == '\0')
+		return (0);
 	return (ft_extract_map(fd, map_desc, buf, first_line));
 }
 
@@ -80,7 +81,6 @@ void	ft_find_square(int **board, int nrow, int ncol, int **solution)
 	int pos[2];
 	int size;
 	int obs;
-	int is_inside;
 
 	pos[0] = 0;
 	size = 1;
@@ -90,8 +90,8 @@ void	ft_find_square(int **board, int nrow, int ncol, int **solution)
 		while ((pos[1] + size - 1) < ncol)
 		{
 			obs = 0;
-			is_inside = (size + pos[0] - 1 < nrow);
-			while (!obs && is_inside && (size + pos[1] - 1 < ncol))
+			while (!obs && (size + pos[0] - 1 < nrow)
+			&& (size + pos[1] - 1 < ncol))
 			{
 				obs = ft_get_obstacle(board, pos, size, solution);
 				if (obs == 0)
@@ -134,7 +134,7 @@ int		main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 	{
-		if (ft_read_input(0, 0, 1))
+		if (ft_read_input(0, 0, 1, 0))
 			ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
 		else
 			ft_map_error();
@@ -143,10 +143,11 @@ int		main(int argc, char **argv)
 	{
 		while (i < argc)
 		{
+			if (argc > 2)
+				if (i > 1)
+					ft_putchar('\n');
 			if (ft_file(argv[0], argv[i]))
 				ft_run_bsq(g_tab_string, g_nrow, g_ncol, g_map_char);
-			else
-				ft_map_error();
 			i++;
 		}
 	}

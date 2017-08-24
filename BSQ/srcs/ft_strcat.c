@@ -33,6 +33,7 @@ char	*ft_strcat(char *dest, char *src)
 		j++;
 	}
 	comb[i] = '\0';
+	free(dest);
 	return (comb);
 }
 

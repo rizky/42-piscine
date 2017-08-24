@@ -12,7 +12,7 @@
 
 #include "ft_btree.h"
 
-int		ft_max(int left, int right)
+int		ft_max7(int left, int right)
 {
 	if (left > right)
 		return (left);
@@ -20,12 +20,12 @@ int		ft_max(int left, int right)
 		return (right);
 }
 
-int		btree_level_count(t_btree *root)
+int		btree_level_count7(t_btree *root)
 {
 	if (!root)
 		return (0);
-	return (ft_max(btree_level_count(root->left),
-	btree_level_count(root->right)) + 1);
+	return (ft_max7(btree_level_count7(root->left),
+	btree_level_count7(root->right)) + 1);
 }
 
 void	btree_apply_by_level2(t_btree *root, int current_level,
@@ -51,7 +51,7 @@ void	btree_apply_by_level(t_btree *root,
 	int i;
 	int j;
 
-	i = btree_level_count(root);
+	i = btree_level_count7(root);
 	j = 0;
 	while (j < i)
 	{

@@ -6,7 +6,7 @@
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 17:47:09 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/21 17:47:09 by rnugroho         ###   ########.fr       */
+/*   Updated: 2017/08/23 22:27:14 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_count_obstacle(int **board, int nrow, int ncol);
 int		ft_input_to_array(char **str, int ***board, int dim[2], char *map_char);
 void	ft_map_error(void);
 int		ft_file(char *prog_name, char *arg);
-int		ft_read_input(int fd, int ret, int buf_size);
+int		ft_read_input(int fd, int state, int buf_size, int ret);
 void	ft_add_solution(char **tab_string, int solution[3], char *map_char);
 int		ft_get_obstacle(int **board, int pos[2], int size, int **solution);
 #endif

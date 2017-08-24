@@ -6,7 +6,7 @@
 /*   By: rnugroho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 13:34:08 by rnugroho          #+#    #+#             */
-/*   Updated: 2017/08/23 13:34:08 by rnugroho         ###   ########.fr       */
+/*   Updated: 2017/08/23 22:25:33 by rnugroho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int		ft_file(char *prog_name, char *arg)
 	if (fd == -1)
 		ft_error(prog_name, arg);
 	else
-		is_valid = ft_read_input(fd, 0, 1);
+	{
+		if (ft_read_input(fd, 0, 1, 0) == 0)
+			ft_map_error();
+		else
+			is_valid = 1;
+	}
 	if (close(fd) == -1 && fd != -1)
 		ft_putstr("Failed to close");
 	return (is_valid);

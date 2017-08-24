@@ -68,7 +68,10 @@ int		eval_expr(char *argv)
 
 	root = btree_create_node(ft_unparented(argv));
 	if (ft_build_eval_tree(&root, "+"))
+	{
+		btree_apply_prefix(root, &ft_putstr);
 		return (btree_evaluate_prefix(root));
+	}
 	else if (ft_build_eval_tree(&root, "-"))
 		return (btree_evaluate_prefix(root));
 	else if (ft_build_eval_tree(&root, "/"))
@@ -77,7 +80,7 @@ int		eval_expr(char *argv)
 		return (btree_evaluate_prefix(root));
 	else if (ft_build_eval_tree(&root, "%"))
 		return (btree_evaluate_prefix(root));
-	btree_apply_prefix(root, &ft_putstr);
+	
 	ft_putstr("\n");
 	return (0);
 }
