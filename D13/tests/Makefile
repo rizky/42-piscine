@@ -17,3 +17,6 @@ re: fclean all
 
 debug:
 	@gcc -g $(SRC)
+
+run: re
+	./main

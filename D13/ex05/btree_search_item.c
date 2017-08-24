@@ -17,9 +17,9 @@ void	*btree_search_item(t_btree *root,
 {
 	if (!(root))
 		return (0);
-	btree_search_item((root)->left, data_ref, cmpf);
-	if ((*cmpf)(data_ref, (*root).item) == 0)
+	btree_search_item(root->left, data_ref, cmpf);
+	if ((*cmpf)(data_ref, root->item) == 0)
 		return (root);
-	btree_search_item((root)->right, data_ref, cmpf);
+	btree_search_item(root->right, data_ref, cmpf);
 	return (0);
 }

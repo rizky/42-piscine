@@ -14,7 +14,7 @@
 
 void	btree_apply_infix(t_btree *root, void (*applyf)(void *))
 {
-	if (!root)
+	if (root)
 	{
 		if (root->left)
 			btree_apply_infix(root->left, applyf);

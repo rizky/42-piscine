@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "ft_btree.h"
+#include <stdio.h>
 
 void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 {
-	if (!root)
+	if (root)
 	{
-		(*applyf)(root->item);
+		applyf(root->item);
 		if (root->left)
 			btree_apply_prefix(root->left, applyf);
 		if (root->right)
