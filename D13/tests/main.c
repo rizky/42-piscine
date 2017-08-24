@@ -4,7 +4,8 @@
 
 void ft_putstr_w(void *data)
 {
-    ft_putstr((char*)data);
+	ft_putstr((char*)data);
+	ft_putstr("\n");
 }
 
 void	ft_putnbr(int nb)
@@ -65,9 +66,9 @@ int main()
 	t_btree *result;
 	t_btree *root2;
 
-    root = btree_create_node(strdup("b"));
-    root->left = btree_create_node(strdup("a"));
-	root->right = btree_create_node(strdup("c"));
+    root = btree_create_node(strdup("2"));
+    root->left = btree_create_node(strdup("5"));
+	root->right = btree_create_node(strdup("7"));
 	ft_putstr("x01 \n");
     btree_apply_prefix(root, &ft_putstr_w);
 	ft_putstr("\n\nex02 \n");
@@ -75,23 +76,30 @@ int main()
 	ft_putstr("\n\nex03 \n");
     btree_apply_suffix(root, &ft_putstr_w);
 	ft_putstr("\n\nex04 \n");
-    btree_insert_data(&(root), strdup("d"), &ft_strcmp_w);
-    btree_apply_infix(root, &ft_putstr_w);
-    ft_putstr("\n");
-    btree_insert_data(&(root), strdup("a"), &ft_strcmp_w);
-    btree_apply_infix(root, &ft_putstr_w);
-    ft_putstr("\n");
-    btree_insert_data(&(root), strdup("b"), &ft_strcmp_w);
-    btree_apply_infix(root, &ft_putstr_w);
-    ft_putstr("\n\nex05 \n");
-    result = btree_search_item(root, strdup("b"), &ft_strcmp_w);
+    btree_insert_data(&(root), strdup("3"), &ft_strcmp_w);
     btree_apply_prefix(root, &ft_putstr_w);
     ft_putstr("\n");
-    result = btree_search_item(root, strdup("a"), &ft_strcmp_w);
-    btree_apply_prefix(result, &ft_putstr_w);
+    btree_insert_data(&(root), strdup("1"), &ft_strcmp_w);
+    btree_apply_prefix(root, &ft_putstr_w);
     ft_putstr("\n");
-    result = btree_search_item(root, strdup("c"), &ft_strcmp_w);
-    btree_apply_prefix(result, &ft_putstr_w);
+    btree_insert_data(&(root), strdup("8"), &ft_strcmp_w);
+    btree_apply_prefix(root, &ft_putstr_w);
+	ft_putstr("\n\nex05 \n");
+	root2 = NULL;
+	btree_insert_data(&(root2), strdup("Kfsmap8Tk"), &ft_strcmp_w);
+	btree_insert_data(&(root2), strdup("nxRFh3m"), &ft_strcmp_w);	
+	btree_insert_data(&(root2), strdup("s2aVoSelWbX"), &ft_strcmp_w);
+	btree_insert_data(&(root2), strdup("Kfsmap8Tk"), &ft_strcmp_w);
+	btree_insert_data(&(root2), strdup("nxRFh3m"), &ft_strcmp_w);
+    btree_insert_data(&(root2), strdup("s2aVoSelWbX"), &ft_strcmp_w);
+	result = btree_search_item(root2, strdup("s2aVoSelWbX"), &ft_strcmp_w);
+	
+	btree_apply_infix(root2, &ft_putstr_w);
+	ft_putstr("\n");
+	// if (result == root2)
+	// {
+		ft_putstr((char*)result->item);
+	// }
 	ft_putstr("\n");
 	ft_putstr("\n\nex06 \n");
 	ft_putnbr(btree_level_count(root));
