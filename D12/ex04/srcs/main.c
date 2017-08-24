@@ -5,10 +5,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <utmp.h>
+#include <time.h>
 
 void utmpprint(struct utmp *log)
 {
-	printf("\n ut_name: %s ut_line: %ld ut_host %s\n", log->ut_name, log->ut_line, log->ut_host);
+  printf("%s\t%s\t%s\t%d\n", log->ut_name, log->ut_line, log->ut_host, log->ut_tv.tv_usec);
 }
 
 int main() {
@@ -18,7 +19,7 @@ int main() {
 	struct utmp log[logsize];
 	int i = 0;
 
-	file = open("/var/run/utmpx", O_RDONLY);
+	file = open("/var/run/utmp", O_RDONLY);
 	if( file < 0 ) 
 	{ 
 	   printf("Failed to open");
