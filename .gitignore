@@ -9,3 +9,4 @@ main
 BSQ/outputs/*
 BSQ/bsq
 BSQ/outputs/output.txt
+.vscode/c_cpp_properties.json
