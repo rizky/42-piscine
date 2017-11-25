@@ -17,13 +17,17 @@ void	*btree_search_item(t_btree *root,
 {
 	t_btree *result;
 
+	result = 0;
 	if (!(root))
 		return (0);
 	result = btree_search_item(root->left, data_ref, cmpf);
-	if (!result)
-		if ((*cmpf)(data_ref, root->item) == 0)
-			return (root);
+	if (result)
+		return (result);
+	if ((*cmpf)(data_ref, root->item) == 0)
+		return (root);
 	if (!result)
 		result = btree_search_item(root->right, data_ref, cmpf);
-	return (result);
+	if (result)
+		return (result);
+	return (0);
 }
